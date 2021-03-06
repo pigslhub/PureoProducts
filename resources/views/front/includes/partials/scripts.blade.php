@@ -1,0 +1,14 @@
+<script src="{{asset('front/js/vendor/jquery-3.5.1.min.js')}}"></script>
+<script src="{{asset('front/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+<script src="{{asset('front/js/vendor/waypoints.min.js')}}"></script>
+<script src="{{asset('front/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('front/js/metismenu.min.js')}}"></script>
+<script src="{{asset('front/js/slick.min.js')}}"></script>
+<script src="{{asset('front/js/jquery.fancybox.min.js')}}"></script>
+<script src="{{asset('front/js/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('front/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('front/js/jquery-ui-slider-range.js')}}"></script>
+<script src="{{asset('front/js/ajax-form.js')}}"></script>
+<script src="{{asset('front/js/wow.min.js')}}"></script>
+<script src="{{asset('front/js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{asset('front/js/main.js')}}"></script>
