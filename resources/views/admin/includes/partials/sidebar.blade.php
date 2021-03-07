@@ -18,13 +18,11 @@
             </li>
             <li><a class="sidebar-header" href="{{route('adminProducts.index')}}"><i data-feather="server"></i><span>Products</span></a>
             </li>
-            <li><a class="sidebar-header" href="{{route('adminShops.index')}}"><i data-feather="home"></i><span>Shop Management</span></a>
-            </li>
+            <!-- <li><a class="sidebar-header" href="{{route('adminShops.index')}}"><i data-feather="home"></i><span>Shop Management</span></a>
+            </li> -->
             <li><a class="sidebar-header" href="{{route('orders.loadAllOrders')}}"><i data-feather="package"></i><span>Order</span></a>
             </li>
             <li><a class="sidebar-header" href="{{route('adminAdmins.index')}}"><i data-feather="user-plus"></i><span>Admins Management</span></a>
-            </li>
-            <li><a class="sidebar-header" href="{{route('adminDrivers.index')}}"><i data-feather="truck"></i><span>Drivers Management</span></a>
             </li>
             <li><a class="sidebar-header" href="{{route('adminCustomers.index')}}"><i data-feather="users"></i><span>Customers Management</span></a>
             </li>

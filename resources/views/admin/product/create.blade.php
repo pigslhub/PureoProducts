@@ -10,6 +10,16 @@
 @endsection
 
 @section('styles')
+<link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+<style>
+    .bootstrap-tagsinput {
+        width: 100% !important;
+        }
+    .bootstrap-tagsinput .tag {
+        padding: 6px;
+        margin-top:5px;
+        }
+</style>
 @endsection
 
 @section('content')
@@ -28,18 +38,52 @@
                     @endif
                     @csrf
                         <div class="form-row">
-                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->category_id : $sub_category_id}}" name="sub_category_id">
+                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->sub_category_id : $sub_category_id}}" name="sub_category_id">
                             <div class="col-md-6">
                                 <label for="product_name" class="col-form-label">{{ __('Product Name') }}</label>
-                                <input type="text" name="product_name" id="product_name" class="form-control"
-                                value="{{ isset($adminProduct) ? $adminProduct->product_name : ''}}">
+                                <input type="text" name="name" id="product_name" class="form-control"
+                                value="{{ isset($adminProduct) ? $adminProduct->name : ''}}">
                             </div>
-
+                            <div class="col-md-6">
+                                <label for="product_name" class="col-form-label">{{ __('Price') }}</label>
+                                <input type="text" name="price" id="product_name" class="form-control"
+                                value="{{ isset($adminProduct) ? $adminProduct->price : ''}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="product_name" class="col-form-label">{{ __('Description') }}</label>
+                                <input type="text" name="description" id="product_name" class="form-control"
+                                value="{{ isset($adminProduct) ? $adminProduct->description : ''}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="product_name" class="col-form-label">{{ __('Volumes') }}</label><br>
+                                <input type="text" name="volumes" data-role="tagsinput" id="product_name"
+                                value="{{ isset($adminProduct) ? $adminProduct->volumes : ''}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="product_name" class="col-form-label">{{ __('Instructions') }}</label><br>
+                                <input type="text" name="instruction" data-role="tagsinput" id="product_name"
+                                value="{{ isset($adminProduct) ? $adminProduct->instruction : ''}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="product_name" class="col-form-label">{{ __('Ingredients') }}</label><br>
+                                <input type="text" name="ingredients" data-role="tagsinput" id="product_name"
+                                value="{{ isset($adminProduct) ? $adminProduct->ingredients : ''}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="product_name" class="col-form-label">{{ __('Available in stock') }}</label>
+                                <input type="text" name="in_stock" id="product_name" class="form-control"
+                                value="{{ isset($adminProduct) ? $adminProduct->in_stock : ''}}">
+                            </div>
                             <div class="col-md-6">
                                 <label for="icon" class="col-form-label">{{ __('Icon') }}</label>
                                 <input type="file" name="icon" id="icon" class="form-control"><br>
                                 @if(isset($adminProduct))
+                                    @if($adminProduct->icon == null || $adminProduct->icon == '')
+                                    <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
+                                    @else
                                     <img src="{{asset('storage/'.$adminProduct->icon)}}" style="height:80px;width:80px;border-radius:50%">
+                                    @endif
+
                                 @endif
                             </div>
                         </div>
@@ -68,7 +112,11 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Enter Product</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Sub Category</th>
+                                    <th scope="col">In Stock</th>
+                                    <th scope="col">Price</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -78,8 +126,16 @@
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $product->name}}</td>
+                                        <td>{{ $product->subcategory == null ? "---" : $product->subcategory->category->name}}</td>
+                                        <td>{{ $product->subcategory == null ? "---" : $product->subcategory->name}}</td>
+                                        <td>{{ $product->in_stock}}</td>
+                                        <td>{{ $product->price}}</td>
                                         <td>
-                                            <img src="{{asset('storage/'.$product->icon)}}" style="height:80px;width:80px;border-radius:50%">
+                                                @if($product->icon == null || $product->icon == '')
+                                                <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
+                                                @else
+                                                <img src="{{asset('storage/'.$product->icon)}}" style="height:80px;width:80px;border-radius:50%">
+                                                @endif
                                         </td>
                                         <td>
                                             <button data-toggle="modal"
@@ -113,4 +169,5 @@
 @endsection
 
 @section('scripts')
+<script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 @endsection

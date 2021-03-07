@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'icon', 'sub_category_id', 'price', 'description', 'volumes', 'in_stock',
+    protected $fillable = ['name', 'icon', 'subcategory_id', 'price', 'description', 'volumes', 'in_stock',
     'instruction', 'ingredients'];
 
     public function subcategory()

@@ -10,7 +10,7 @@ class ProductsTableSeeder extends Seeder
             array(
                 'name' => 'Argana Shampoo',
                 'icon' => '',
-                'sub_category_id' => '1',
+                'subcategory_id' => '1',
                 'price' => '150.00',
                 'description' => 'Product Description',
                 'volumes' => '8oz',

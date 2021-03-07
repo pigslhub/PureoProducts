@@ -13,17 +13,7 @@
         <div class="nav-right col p-0">
             <ul class="nav-menus">
                 <li>
-                    <!--<form class="form-inline search-form" action="#" method="get">-->
-                    <!--  <div class="form-group">-->
-                    <!--    <div class="Typeahead Typeahead--twitterUsers">-->
-                    <!--      <div class="u-posRelative">-->
-                    <!--        <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search...">-->
-                    <!--        <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>-->
-                    <!--      </div>-->
-                    <!--      <div class="Typeahead-menu"></div>-->
-                    <!--    </div>-->
-                    <!--  </div>-->
-                    <!--</form>-->
+
                 </li>
                 <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                             data-feather="maximize"></i></a></li>
@@ -69,12 +59,7 @@
                 </div>
             </div>
         </script>
-        <script id="empty-template" type="text/x-handlebars-template">
-            <div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down,
-                yikes!
-            </div>
 
-        </script>
     </div>
 </div>
 <!-- Page Header Ends -->

@@ -29,15 +29,15 @@ class SubCategoryController extends Controller
 
     public function store(Request $request)
     {
-//        $subcategory = SubCategory::create($request->except('icon'));
-//        if ($request->hasFile('icon')) {
-//            $filePath = $request->file('icon')->store('categories/icons', 'public');
-//            $subcategory->update([
-//                "icon" => $filePath
-//            ]);
-//        }
+       $subcategory = SubCategory::create($request->except('icon'));
+       if ($request->hasFile('icon')) {
+           $filePath = $request->file('icon')->store('subcategories/icons', 'public');
+           $subcategory->update([
+               "icon" => $filePath
+           ]);
+       }
 
-//        return redirect()->back()->with("success", "Shop Type created successfully");
+       return redirect()->back()->with("success", "Sub-Category created successfully");
     }
 
     public function show(SubCategory $subcategory)
@@ -45,30 +45,30 @@ class SubCategoryController extends Controller
         // return view('adminCategorys.show', compact('$subcategory'));
     }
 
-    public function edit(Request $request ,SubCategory $subcategory )
+    public function edit(Request $request ,SubCategory $adminSubCategory )
     {
-//        return view('admin.subcategory.create', compact('$subcategory'));
+       return view('admin.subcategory.create', compact('adminSubCategory'));
 
     }
 
-    public function update(Request $request, SubCategory $subcategory )
+    public function update(Request $request, SubCategory $adminSubCategory )
     {
-//        $adminCategory->update($request->except('icon'));
-//        if($request->hasfile('icon')) {
-//            $filePath = $request->file('icon')->store('categories/icons','public');
-//            $adminCategory->update([
-//                'icon' => $filePath,
-//            ]);
-//        };
-//
-//        return redirect()->route('adminCategory.create', ['id' => $request->shop_type_id])->with('success', 'Shop Type Updated Successfully');
+        $adminSubCategory->update($request->except('icon'));
+       if($request->hasfile('icon')) {
+           $filePath = $request->file('icon')->store('subcategories/icons','public');
+            $adminSubCategory->update([
+               'icon' => $filePath,
+           ]);
+       };
+
+       return redirect()->route('adminSubCategories.create', ['id' => $request->category_id])->with('success', 'Sub Category Updated Successfully');
 
     }
 
-    public function destroy(SubCategory $subcategory)
+    public function destroy(SubCategory $adminSubCategory)
     {
-//        $adminCategory->delete();
-//        return redirect()->back()->with('success', 'Shop Type Deleted Successfully');
+        $adminSubCategory->delete();
+       return redirect()->back()->with('success', 'Sub Category Deleted Successfully');
     }
 
 }

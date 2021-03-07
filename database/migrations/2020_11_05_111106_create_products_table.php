@@ -12,7 +12,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('icon')->nullable();
-            $table->unsignedBigInteger('sub_category_id')->nullable();
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->double('price')->nullable();
             $table->string('description')->nullable();
             $table->string('volumes')->nullable();
