@@ -10,7 +10,7 @@
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/tagsinput.css')}}">
 <style>
     .bootstrap-tagsinput {
         width: 100% !important;
@@ -38,7 +38,7 @@
                     @endif
                     @csrf
                         <div class="form-row">
-                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->sub_category_id : $sub_category_id}}" name="sub_category_id">
+                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->subcategory_id : $sub_category_id}}" name="subcategory_id">
                             <div class="col-md-6">
                                 <label for="product_name" class="col-form-label">{{ __('Product Name') }}</label>
                                 <input type="text" name="name" id="product_name" class="form-control"
