@@ -22,42 +22,41 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-//        $category = ShopType::create($request->except('icon'));
-//        if ($request->hasFile('icon')) {
-//            $filePath = $request->file('icon')->store('shoptypes/icons', 'public');
-//            $category->update([
-//                "icon" => $filePath
-//            ]);
-//        }
-//
-//        return redirect()->route('adminShopTypes.index')->with("success", "Shop Type created successfully");
+        $category = Category::create($request->except('icon'));
+        if ($request->hasFile('icon')) {
+            $filePath = $request->file('icon')->store('categories/icons', 'public');
+            $category->update([
+                "icon" => $filePath
+            ]);
+        }
+        return redirect()->route('adminCategories.index')->with("success", "Category created successfully");
     }
 
-    public function show(ShopType $shopType)
+    public function show(Category $category)
     {
-        // return view('adminShopTypes.show', compact('shopType'));
+         return view('adminCategories.show', compact('category'));
     }
 
-    public function edit(Request $request, ShopType $adminShopType)
+    public function edit(Category $adminCategory)
     {
-//        return view('admin.category.edit', compact('adminShopType'));
+        return view('admin.category.edit', compact('adminCategory'));
     }
 
-    public function update(Request $request, ShopType $adminShopType)
+    public function update(Request $request, Category $adminCategory)
     {
-//        $adminShopType->update($request->except('icon'));
-//        if ($request->hasfile('icon')) {
-//            $filePath = $request->file('icon')->store('shoptypes/icons', 'public');
-//            $adminShopType->update([
-//                'icon' => $filePath,
-//            ]);
-//        };
-//        return redirect()->route('adminShopTypes.index')->with('success', 'Shop Type Updated Successfully');
+        $adminCategory->update($request->except('icon'));
+        if ($request->hasfile('icon')) {
+            $filePath = $request->file('icon')->store('categories/icons', 'public');
+            $adminCategory->update([
+                'icon' => $filePath,
+            ]);
+        };
+        return redirect()->route('adminCategories.index')->with('success', 'Category Updated Successfully');
     }
 
-    public function destroy(Category $adminShopType)
+    public function destroy(Category $category)
     {
-//        $adminShopType->delete();
-//        return redirect()->back()->with('success', 'Shop Type Deleted Successfully');
+        $category->delete();
+        return redirect()->back()->with('success', 'Category Deleted Successfully');
     }
 }
