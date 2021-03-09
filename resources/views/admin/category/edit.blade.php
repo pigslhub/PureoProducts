@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Edit Shop Type')
+@section('title', 'Edit Category')
 
 @section('breadcrumb-title', 'Category')
 

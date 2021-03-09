@@ -1,6 +1,10 @@
 @extends('admin.layouts.master')
 
+@if(Route::currentRouteName() == 'adminSubCategories.edit')
+@section('title', 'Edit SubCategory')
+@else
 @section('title', 'Add New SubCategory')
+@endif
 
 @section('breadcrumb-title', 'SubCategory')
 
