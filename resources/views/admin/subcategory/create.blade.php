@@ -1,12 +1,16 @@
 @extends('admin.layouts.master')
 
+@if(Route::currentRouteName() == 'adminSubCategories.edit')
+@section('title', 'Edit SubCategory')
+@else
 @section('title', 'Add New SubCategory')
+@endif
 
 @section('breadcrumb-title', 'SubCategory')
 
 @section('breadcrumb-item')
     <li class="breadcrumb-item">Create</li>
-    <li class="breadcrumb-item active">Category</li>
+    <li class="breadcrumb-item active">Sub Category</li>
 @endsection
 
 @section('styles')
@@ -97,7 +101,7 @@
                                         <td>
                                             <button data-toggle="modal"
                                                     data-target="#confirm_subcategory_{{$subcategory->id}}"
-                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Category">
+                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Sub Category">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             @include('includes.modals.confirm', ['model' => 'subcategory', 'route' => route('adminSubCategories.destroy', ['adminSubCategory' => $subcategory->id]), 'form' => true])

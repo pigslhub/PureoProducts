@@ -14,7 +14,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="pull-left">Sub Category List</h5>
+                        <h5 class="pull-left">Sub Categories List</h5>
                         <div class=" pull-right">
                             {{-- <a href="{{ route('adminCategory.create') }}" class="btn btn-primary btn-sm px-2" title=""><i
                                     class="fa fa-plus"></i> Add New SubCategory</a> --}}

@@ -1,8 +1,9 @@
 <!-- Page Sidebar Start-->
 <div class="page-sidebar">
     <div class="main-header-left d-none d-lg-block">
-        <div class="logo-wrapper"><a href="#"><img style="width: 210px; height:35px;"
-                                                   src="{{asset('assets/images/endless-logo.png')}}" alt=""></a></div>
+        <h4 style="color: white" class="text-center">PureO Natural Products</h4>
+{{--        <div class="logo-wrapper"><a href="#"><img style="width: 210px; height:35px;"--}}
+{{--                                                   src="{{asset('assets/images/endless-logo.png')}}" alt=""></a></div>--}}
     </div>
     <div class="sidebar custom-scrollbar">
         <div class="sidebar-user text-center">

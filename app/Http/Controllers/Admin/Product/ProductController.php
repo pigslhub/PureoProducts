@@ -18,10 +18,9 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-
         $sub_category_id = $request->id;
-        $products = Product::where('subcategory_id',$request->id)->get();
-        return view('admin.product.create',compact('products', 'sub_category_id'));
+        $adminProducts = Product::where('subcategory_id',$request->id)->get();
+        return view('admin.product.create',compact('adminProducts', 'sub_category_id'));
     }
 
     public function store(Request $request)
@@ -34,7 +33,7 @@ class ProductController extends Controller
            ]);
        }
 
-       return redirect()->back()->with("success", "Product added successfully");
+       return redirect()->back()->with("success", "Product Added Successfully");
     }
 
     public function show(Request $request)
@@ -53,6 +52,8 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $adminProduct )
     {
+        $adminProducts = Product::where('subcategory_id',$request->subcategory_id)->get();
+//        dd($adminProductsAfterEdit->toArray());
        $adminProduct->update($request->except('icon'));
        if($request->hasfile('icon')) {
            $filePath = $request->file('icon')->store('products/icons','public');
@@ -61,7 +62,8 @@ class ProductController extends Controller
            ]);
        };
 
-       return redirect()->route('adminProducts.create', ['id' => $request->category_id])->with('success', 'Product Updated Successfully');
+       return redirect()->route('adminProducts.create', ['id' => $request->subcategory_id])->with('success', 'Product Updated Successfully');
+//        return redirect()->back()->with("success", "Product Added Successfully");
 
     }
 

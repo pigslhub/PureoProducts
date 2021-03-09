@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Edit Shop Type')
+@section('title', 'Edit Category')
 
-@section('breadcrumb-title', 'Advertisement')
+@section('breadcrumb-title', 'Category')
 
 @section('breadcrumb-item')
     <li class="breadcrumb-item">Edit</li>
-    <li class="breadcrumb-item active">Advertisement</li>
+    <li class="breadcrumb-item active">Category</li>
 @endsection
 
 @section('styles')
@@ -14,8 +14,8 @@
 
 @extends('layouts.form')
 
-@section('form-heading', 'Edit Advertisement')
-@section('route', route('adminShopTypes.update', $adminShopType->id))
+@section('form-heading', 'Edit Category')
+@section('route', route('adminCategories.update', ['adminCategory' => $adminCategory->id]))
 
 @section('form-fields')
     @include('admin.category.fields')

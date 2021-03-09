@@ -1,6 +1,10 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Add New Product')
+@if(Route::currentRouteName() == 'adminProducts.edit')
+    @section('title', 'Edit Product')
+@else
+    @section('title', 'Add New Product')
+@endif
 
 @section('breadcrumb-title', 'Product')
 
@@ -38,10 +42,10 @@
                     @endif
                     @csrf
                         <div class="form-row">
-                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->sub_category_id : $sub_category_id}}" name="sub_category_id">
+                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->subcategory_id : $sub_category_id}}" name="subcategory_id">
                             <div class="col-md-6">
                                 <label for="product_name" class="col-form-label">{{ __('Product Name') }}</label>
-                                <input type="text" name="name" id="product_name" class="form-control"
+                                <input type="text" name="name" id="name" class="form-control"
                                 value="{{ isset($adminProduct) ? $adminProduct->name : ''}}">
                             </div>
                             <div class="col-md-6">
@@ -83,7 +87,6 @@
                                     @else
                                     <img src="{{asset('storage/'.$adminProduct->icon)}}" style="height:80px;width:80px;border-radius:50%">
                                     @endif
-
                                 @endif
                             </div>
                         </div>
@@ -100,69 +103,66 @@
 </div>
 @if(Route::currentRouteName() == 'adminProducts.edit')
 @else
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <table class="table data-table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Sub Category</th>
-                                    <th scope="col">In Stock</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @forelse($products as $product)
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <table class="table data-table">
+                                    <thead>
                                     <tr>
-                                        <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{ $product->name}}</td>
-                                        <td>{{ $product->subcategory == null ? "---" : $product->subcategory->category->name}}</td>
-                                        <td>{{ $product->subcategory == null ? "---" : $product->subcategory->name}}</td>
-                                        <td>{{ $product->in_stock}}</td>
-                                        <td>{{ $product->price}}</td>
-                                        <td>
-                                                @if($product->icon == null || $product->icon == '')
-                                                <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
-                                                @else
-                                                <img src="{{asset('storage/'.$product->icon)}}" style="height:80px;width:80px;border-radius:50%">
-                                                @endif
-                                        </td>
-                                        <td>
-                                            <button data-toggle="modal"
-                                                    data-target="#confirm_product_{{$product->id}}"
-                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Product">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                            @include('includes.modals.confirm', ['model' => 'product', 'route' => route('adminProducts.destroy', ['adminProduct' => $product->id]), 'form' => true])
-
-                                            <a href="{{ route('adminProducts.edit', ['adminProduct' => $product->id]) }}"
-                                               class="btn btn-primary btn-sm mb-1 px-2" title="Edit Product"><i
-                                                    class="fa fa-pencil"></i></a>
-
-
-                                        </td>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Sub Category</th>
+                                        <th scope="col">In Stock</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                @empty
-                                @endforelse
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    @forelse($adminProducts as $adminProduct)
+                                        <tr>
+                                            <th scope="row">{{$loop->iteration}}</th>
+                                            <td>{{ $adminProduct->name}}</td>
+                                            <td>{{ $adminProduct->subcategory == null ? "---" : $adminProduct->subcategory->category->name}}</td>
+                                            <td>{{ $adminProduct->subcategory == null ? "---" : $adminProduct->subcategory->name}}</td>
+                                            <td>{{ $adminProduct->in_stock}}</td>
+                                            <td>{{ $adminProduct->price}}</td>
+                                            <td>
+                                                @if($adminProduct->icon == null || $adminProduct->icon == '')
+                                                    <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
+                                                @else
+                                                    <img src="{{asset('storage/'.$adminProduct->icon)}}" style="height:80px;width:80px;border-radius:50%">
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <button data-toggle="modal"
+                                                        data-target="#confirm_adminProduct_{{$adminProduct->id}}"
+                                                        class="btn btn-danger btn-sm mb-1 px-2" title="Delete Product">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                @include('includes.modals.confirm', ['model' => 'adminProduct', 'route' => route('adminProducts.destroy', ['adminProduct' => $adminProduct->id]), 'form' => true])
+
+                                                <a href="{{ route('adminProducts.edit', ['adminProduct' => $adminProduct->id]) }}"
+                                                   class="btn btn-primary btn-sm mb-1 px-2" title="Edit Product"><i
+                                                        class="fa fa-pencil"></i></a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                    @endforelse
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endif
 
 
