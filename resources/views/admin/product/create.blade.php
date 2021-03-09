@@ -10,7 +10,7 @@
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/tagsinput.css')}}">
 <style>
     .bootstrap-tagsinput {
         width: 100% !important;
@@ -169,5 +169,5 @@
 @endsection
 
 @section('scripts')
-<script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+<script src="{{asset('assets/js/tagsinput.js')}}"></script>
 @endsection
