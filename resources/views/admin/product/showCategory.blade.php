@@ -33,14 +33,13 @@
                                                 <div class="user-card-image"><img class="img rounded-circle image-radius" src="{{asset('storage/'.$category->icon)}}" width="100" height="100" ></div>
                                                 <div class="user-deatils text-center">
 {{--                                                    <h5>{{$shopType->type}}--}}
-                                                        <h5>{{$category->category_name}}</h5>
+                                                        <h5>{{$category->name}}</h5>
                                                     {{-- <h6 class="mb-0">marshikisteen@gmail.com</h6> --}}
                                                     <a href="{{route('product.createField',$category->id)}}" class="btn btn-sm btn-primary" type="button">Select</a>
                                                     {{-- <a href="{{route('manageMyShop.store',['shop' => $shop->id])}}"
                                                         class="btn btn-sm btn-primary" title="Apply for Shop-Type"><i
                                                             class="fa fa-plus"></i></a> --}}
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
