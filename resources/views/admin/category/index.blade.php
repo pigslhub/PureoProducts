@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'ShopType')
+@section('title', 'Category')
 
 @section('breadcrumb-title', 'Category')
 
@@ -42,7 +42,7 @@
                                         <td>
                                             <button data-toggle="modal"
                                                     data-target="#confirm_category_{{$category->id}}"
-                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Shop Type">
+                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Category">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             @include('includes.modals.confirm', ['model' => 'category', 'route' => route('adminCategories.destroy', ['adminCategory' => $category->id]), 'form' => true])
