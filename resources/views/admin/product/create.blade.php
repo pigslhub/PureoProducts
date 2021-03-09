@@ -1,6 +1,10 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Add New Product')
+@if(Route::currentRouteName() == 'adminProducts.edit')
+    @section('title', 'Edit Product')
+@else
+    @section('title', 'Add New Product')
+@endif
 
 @section('breadcrumb-title', 'Product')
 
