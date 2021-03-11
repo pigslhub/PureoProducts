@@ -162,45 +162,78 @@
                         <!-- slider area start -->
                         <section class="slider__area slider__area-4 p-relative">
                             <div class="slider-active">
-                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" data-background="{{ asset('frontend/assets/img/argan_oil_system_banner.png') }}">
+                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" style="background-color: #f5f5f5">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-xl-7 col-lg-7 col-md-9 col-sm-11 col-12">
-{{--                                                <div class="slider__content slider__content-4">--}}
-{{--                                                    <h2 data-animation="fadeInUp" data-delay=".2s">Handmade <br> Hand carved Coffee</h2>--}}
-{{--                                                    <p data-animation="fadeInUp" data-delay=".4s">As rich and unique as the coffee beans it is intended for, this little scoop will make your morning ritual a special occasion every day. </p>--}}
-{{--                                                    <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Discover now</a>--}}
-{{--                                                </div>--}}
+                                            <div class=" d-sm-none d-md-block col-md-7 col-sm-12 col-12">
+                                                <div class="slider__content slider__content-4">
+                                                    <h2 data-animation="fadeInUp" data-delay=".2s">Handmade <br> Hand carved Coffee</h2>
+                                                    <p data-animation="fadeInUp" data-delay=".4s">As rich and unique as the coffee beans it is intended for, this little scoop will make your morning ritual a special occasion every day. </p>
+                                                    <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Discover now</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-12 col-12">
+                                                <div class="slider__content slider__content-4">
+                                                    <img src="{{ asset('frontend/assets/img/3d.png') }}" class="img-fluid">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" data-background="{{ asset('frontend/assets/img/16_oz_retail_deal.png') }}">
+                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" style="background-color: #f5f5f5">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-xl-7 col-lg-7 col-md-9 col-sm-11 col-12">
+                                            <div class="d-sm-none d-md-block col-md-7 col-sm-12 col-12">
+                                                <div class="slider__content slider__content-4">
+                                                    <h2 data-animation="fadeInUp" data-delay=".2s">Think Different &<br> Do it otherwise</h2>
+                                                    <p data-animation="fadeInUp" data-delay=".4s">As rich and unique as the coffee beans it is intended for, this little scoop will make your morning ritual a special occasion every day. </p>
+                                                    <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Discover now</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-12 col-12">
+                                                <div class="slider__content slider__content-4">
+                                                    <img src="{{ asset('frontend/assets/img/3d.png') }}" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" style="background-color: #f5f5f5">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="d-sm-none d-md-block col-md-7 col-sm-12 col-12">
+                                                <div class="slider__content slider__content-4">
+                                                    <h2 data-animation="fadeInUp" data-delay=".2s">Think Different &<br> Do it otherwise</h2>
+                                                    <p data-animation="fadeInUp" data-delay=".4s">As rich and unique as the coffee beans it is intended for, this little scoop will make your morning ritual a special occasion every day. </p>
+                                                    <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Discover now</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-12 col-12">
+                                                <div class="slider__content slider__content-4">
+                                                    <img src="{{ asset('frontend/assets/img/conditioner4oz.png')}}" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+{{--                                <div class="single-slider single-slider-2 slider__height-4 d-flex" style="background-color: #f5f5f5">--}}
+{{--                                    <div class="container">--}}
+{{--                                        <div class="row">--}}
+{{--                                            <div class="col-md-7 col-sm-12 col-12">--}}
 {{--                                                <div class="slider__content slider__content-4">--}}
 {{--                                                    <h2 data-animation="fadeInUp" data-delay=".2s">Think Different &<br> Do it otherwise</h2>--}}
 {{--                                                    <p data-animation="fadeInUp" data-delay=".4s">As rich and unique as the coffee beans it is intended for, this little scoop will make your morning ritual a special occasion every day. </p>--}}
 {{--                                                    <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Discover now</a>--}}
 {{--                                                </div>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" data-background="{{ asset('frontend/assets/img/second_ment_banner.jpg')}}">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-xl-7 col-lg-7 col-md-9 col-sm-11 col-12">
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-5 col-sm-12 col-12">--}}
 {{--                                                <div class="slider__content slider__content-4">--}}
-{{--                                                    <h2 data-animation="fadeInUp" data-delay=".2s">Think Different &<br> Do it otherwise</h2>--}}
-{{--                                                    <p data-animation="fadeInUp" data-delay=".4s">As rich and unique as the coffee beans it is intended for, this little scoop will make your morning ritual a special occasion every day. </p>--}}
-{{--                                                    <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Discover now</a>--}}
+{{--                                                    <img src="{{ asset('frontend/assets/img/conditioner4oz.png')}}" style="height: 200px" class="img-fluid">--}}
 {{--                                                </div>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </section>
                         <!-- slider area end -->
