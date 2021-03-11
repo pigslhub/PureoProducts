@@ -7,6 +7,8 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Intervention\Image\Facades\Image;
+
 
 class ProductController extends Controller
 {
@@ -26,12 +28,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
        $product = Product::create($request->except('icon'));
-       if ($request->hasFile('icon')) {
-           $filePath = $request->file('icon')->store('products/icons', 'public');
-           $product->update([
-               "icon" => $filePath
-           ]);
-       }
+
+
+            if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
+                $dir = public_path('storage/products/icons/');
+                if (!file_exists($dir)) mkdir($dir, 0777, true);
+                $image = Image::make(request()->file('icon'));
+                $image->fit(400, 400)->save($dir . '/' . $product->id .'-400x400.jpg');
+                $product->update(['icon' => "/products/icons/{$product->id}-400x400.jpg"]);
+            }
 
        return redirect()->back()->with("success", "Product Added Successfully");
     }
@@ -55,12 +60,14 @@ class ProductController extends Controller
         $adminProducts = Product::where('subcategory_id',$request->subcategory_id)->get();
 //        dd($adminProductsAfterEdit->toArray());
        $adminProduct->update($request->except('icon'));
-       if($request->hasfile('icon')) {
-           $filePath = $request->file('icon')->store('products/icons','public');
-           $adminProduct->update([
-               'icon' => $filePath,
-           ]);
-       };
+        if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
+            $dir = public_path('storage/products/icons/');
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $image = Image::make(request()->file('icon'));
+            $image->fit(400, 400)->save($dir . '/' . $adminProduct->id . '-400x400.jpg');
+            $adminProduct->update(['icon' => "/products/icons/{$adminProduct->id}-400x400.jpg"]);
+        }
+
 
        return redirect()->route('adminProducts.create', ['id' => $request->subcategory_id])->with('success', 'Product Updated Successfully');
 //        return redirect()->back()->with("success", "Product Added Successfully");
