@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Intervention\Image\Facades\Image;
+
 
 class CategoryController extends Controller
 {
@@ -23,12 +25,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = Category::create($request->except('icon'));
-        if ($request->hasFile('icon')) {
-            $filePath = $request->file('icon')->store('categories/icons', 'public');
-            $category->update([
-                "icon" => $filePath
-            ]);
+        if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
+            $dir = public_path('storage/categories/icons/');
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $image = Image::make(request()->file('icon'));
+            $image->resize(800, 800)->save($dir . '/' . $category->id . '-700x1200.jpg');
+            $category->update(['icon' => "/categories/icons/{$category->id}-700x1200.jpg"]);
         }
+
         return redirect()->route('adminCategories.index')->with("success", "Category created successfully");
     }
 
@@ -45,12 +49,14 @@ class CategoryController extends Controller
     public function update(Request $request, Category $adminCategory)
     {
         $adminCategory->update($request->except('icon'));
-        if ($request->hasfile('icon')) {
-            $filePath = $request->file('icon')->store('categories/icons', 'public');
-            $adminCategory->update([
-                'icon' => $filePath,
-            ]);
-        };
+        if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
+            $dir = public_path('storage/categories/icons/');
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $image = Image::make(request()->file('icon'));
+            $image->resize(800, 800)->save($dir . '/' . $adminCategory->id . '-700x1200.jpg');
+            $adminCategory->update(['icon' => "/categories/icons/{$adminCategory->id}-700x1200.jpg"]);
+        }
+
         return redirect()->route('adminCategories.index')->with('success', 'Category Updated Successfully');
     }
 
