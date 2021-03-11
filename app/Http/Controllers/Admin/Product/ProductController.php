@@ -34,8 +34,8 @@ class ProductController extends Controller
                 $dir = public_path('storage/products/icons/');
                 if (!file_exists($dir)) mkdir($dir, 0777, true);
                 $image = Image::make(request()->file('icon'));
-                $image->fit(400, 400)->save($dir . '/' . $product->id .'-400x400.jpg');
-                $product->update(['icon' => "/products/icons/{$product->id}-400x400.jpg"]);
+                $image->resize(700, 1200)->save($dir . '/' . $product->id .'-700x1200.jpg');
+                $product->update(['icon' => "/products/icons/{$product->id}-700x1200.jpg"]);
             }
 
        return redirect()->back()->with("success", "Product Added Successfully");
@@ -64,8 +64,8 @@ class ProductController extends Controller
             $dir = public_path('storage/products/icons/');
             if (!file_exists($dir)) mkdir($dir, 0777, true);
             $image = Image::make(request()->file('icon'));
-            $image->fit(400, 400)->save($dir . '/' . $adminProduct->id . '-400x400.jpg');
-            $adminProduct->update(['icon' => "/products/icons/{$adminProduct->id}-400x400.jpg"]);
+            $image->resize(700, 1200)->save($dir . '/' . $adminProduct->id . '-700x1200.jpg');
+            $adminProduct->update(['icon' => "/products/icons/{$adminProduct->id}-700x1200.jpg"]);
         }
 
 
