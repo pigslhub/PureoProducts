@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SubCategory;
 use phpDocumentor\Reflection\Types\True_;
+use Intervention\Image\Facades\Image;
+
 
 class SubCategoryController extends Controller
 {
@@ -30,12 +32,13 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
        $subcategory = SubCategory::create($request->except('icon'));
-       if ($request->hasFile('icon')) {
-           $filePath = $request->file('icon')->store('subcategories/icons', 'public');
-           $subcategory->update([
-               "icon" => $filePath
-           ]);
-       }
+        if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
+            $dir = public_path('storage/subcategories/icons/');
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $image = Image::make(request()->file('icon'));
+            $image->resize(800, 800)->save($dir . '/' . $subcategory->id . '-700x1200.jpg');
+            $subcategory->update(['icon' => "/subcategories/icons/{$subcategory->id}-700x1200.jpg"]);
+        }
 
        return redirect()->back()->with("success", "Sub-Category created successfully");
     }
@@ -54,12 +57,14 @@ class SubCategoryController extends Controller
     public function update(Request $request, SubCategory $adminSubCategory )
     {
         $adminSubCategory->update($request->except('icon'));
-       if($request->hasfile('icon')) {
-           $filePath = $request->file('icon')->store('subcategories/icons','public');
-            $adminSubCategory->update([
-               'icon' => $filePath,
-           ]);
-       };
+
+        if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
+            $dir = public_path('storage/subcategories/icons/');
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $image = Image::make(request()->file('icon'));
+            $image->resize(800, 800)->save($dir . '/' . $adminSubCategory->id . '-800x800.jpg');
+            $adminSubCategory->update(['icon' => "/subcategories/icons/{$adminSubCategory->id}-800x800.jpg"]);
+        }
 
        return redirect()->route('adminSubCategories.create', ['id' => $request->category_id])->with('success', 'Sub Category Updated Successfully');
 

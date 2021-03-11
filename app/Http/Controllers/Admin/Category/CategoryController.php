@@ -29,8 +29,8 @@ class CategoryController extends Controller
             $dir = public_path('storage/categories/icons/');
             if (!file_exists($dir)) mkdir($dir, 0777, true);
             $image = Image::make(request()->file('icon'));
-            $image->resize(800, 800)->save($dir . '/' . $category->id . '-700x1200.jpg');
-            $category->update(['icon' => "/categories/icons/{$category->id}-700x1200.jpg"]);
+            $image->resize(800, 800)->save($dir . '/' . $category->id . '-800x800.jpg');
+            $category->update(['icon' => "/categories/icons/{$category->id}-800x800.jpg"]);
         }
 
         return redirect()->route('adminCategories.index')->with("success", "Category created successfully");
