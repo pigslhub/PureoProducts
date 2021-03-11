@@ -39,6 +39,18 @@ function _getallCategoryTypes()
     return $shopTypes;
 }
 
+function _getAllCategories()
+{
+    $categories = Category::inRandomOrder()->get();
+    return $categories;
+}
+
+function _getRandomProducts()
+{
+    $products = \App\Models\Product::inRandomOrder()->get();
+    return $products;
+}
+
 function _getAllShops()
 {
     $allShop = Shop::all();

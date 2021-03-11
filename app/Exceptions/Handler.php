@@ -63,10 +63,10 @@ class Handler extends ExceptionHandler
                 break;
                 /*case "driver":
                 $redirect = "driver.login";
-                 break;
+                 break; */
             case "customer":
                 $redirect = "customer.login";
-                 break;*/
+                 break;
             default:
                 $redirect = "/";
                 break;
