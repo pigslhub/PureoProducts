@@ -11,5 +11,5 @@ Route::group(['prefix' => 'customer' , 'namespace' => 'Customer\Auth'], function
 
 Route::group(['prefix' => 'customer', 'namespace' => 'Customer', 'middleware' => 'auth:customer'], function(){
     Route::get('/', ['uses' => 'CustomerController@index' , 'as' => 'customer.dashboard']);
-
+    Route::resource('customers','CustomerController');
 });

@@ -15,6 +15,12 @@
      return view('frontend.index');
  });
 
+Route::get('/cart', function () {
+    return view('frontend.cart');
+});
+
+Route::get('/addToCart', ['uses' => 'FrontendController@addToCart' , 'as' => 'frontend.cart']);
+
 Auth::routes(['verify' => true]);
 //Route::view('/', 'default')->name('/');
 //Route::view('/dashboard', 'default')->name('default  ');
