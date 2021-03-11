@@ -37,7 +37,11 @@
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $category->name}}</td>
                                         <td>
-                                            <img src="{{asset('storage/'.$category->icon)}}" style="height:80px;width:80px;border-radius:50%">
+                                            @if($category->icon == null || $category->icon=='')
+                                                <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
+                                                @else
+                                                <img src="{{asset('storage/'.$category->icon)}}" style="height:80px;width:80px;border-radius:50%">
+                                                @endif
                                         </td>
                                         <td>
                                             <button data-toggle="modal"
