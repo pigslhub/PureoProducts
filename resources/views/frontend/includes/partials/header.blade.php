@@ -5,7 +5,9 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                     <div class="logo">
-                        <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt="logo"></a>
+                        <a href="index.html">
+                            <img src="{{ asset('frontend/assets/img/logo/logo.png') }}" style="height: 80px" alt="logo">
+                        </a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8">
