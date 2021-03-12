@@ -128,11 +128,12 @@
                                             <td>{{ $adminProduct->in_stock}}</td>
                                             <td>{{ $adminProduct->price}}</td>
                                             <td>
-                                                @if($adminProduct->icon == null || $adminProduct->icon == '')
+                                                <img src="{{$adminProduct->getIconPath()}}" style="height:80px;width:80px;border-radius:50%">
+                                                {{-- @if($adminProduct->icon == null || $adminProduct->icon == '')
                                                     <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
                                                 @else
                                                     <img src="{{asset('storage/'.$adminProduct->icon)}}" style="height:80px;width:80px;border-radius:50%">
-                                                @endif
+                                                @endif --}}
                                             </td>
                                             <td>
                                                 <button data-toggle="modal"
