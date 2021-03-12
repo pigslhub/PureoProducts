@@ -29,9 +29,9 @@ class Product extends Model
             'sm' => '100x75',
             'md' => '400x300',
             'lg' => '1000x750',
-            'psm' => '50x100',
-            'pmd' => '200x400',
-            'plg' => '500x1000',
+            'psm' => '50x75',
+            'pmd' => '200x300',
+            'plg' => '500x750',
         ];
         if ($this->icon && file_exists('storage/' . $this->icon))
         return asset('storage/products/icons/' . $this->id . '-' . $sizes[$size] . '.png');
@@ -45,7 +45,7 @@ class Product extends Model
             $dir = public_path('storage/products/icons/');
             if (!file_exists($dir)) mkdir($dir, 0777, true);
             $image = Image::make(request()->file('icon'));
-            if ($image->width() > $image->height()) {
+            if ($image->width() >= $image->height()) {
                 Image::make(request()->file('icon'))->resize(100, 75)->save($dir . '/' . $this->id . '-100x75.png');
                 Image::make(request()->file('icon'))->resize(400, 300)->save($dir . '/' . $this->id . '-400x300.png');
                 Image::make(request()->file('icon'))->resize(1000, 775)->save($dir . '/' . $this->id . '-1000x775.png');
