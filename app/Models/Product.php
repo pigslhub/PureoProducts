@@ -49,12 +49,14 @@ class Product extends Model
                 $image->resize(100, 75)->save($dir . '/' . $this->id . '-100x75.jpg');
                 $image->resize(400, 300)->save($dir . '/' . $this->id . '-400x300.jpg');
                 $image->resize(1000, 775)->save($dir . '/' . $this->id . '-1000x775.jpg');
+                $this->update(['icon' => "/products/icons/{$this->id}-100x75.jpg"]);
             } else {
                 $image->resize(50, 100)->save($dir . '/' . $this->id . '-50x100.jpg');
                 $image->resize(200, 400)->save($dir . '/' . $this->id . '-200x400.jpg');
                 $image->resize(500, 1000)->save($dir . '/' . $this->id . '-500x1000.jpg');
+                $this->update(['icon' => "/products/icons/{$this->id}-50x100.jpg"]);
             }
-            $this->update(['icon' => "/products/icons/{$this->id}-100x75.jpg"]);
+
         }
     }
 }
