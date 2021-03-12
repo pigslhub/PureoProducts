@@ -50,12 +50,9 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             @include('includes.modals.confirm', ['model' => 'category', 'route' => route('adminCategories.destroy', ['adminCategory' => $category->id]), 'form' => true])
-
                                             <a href="{{ route('adminCategories.edit', ['adminCategory' => $category->id]) }}"
                                                class="btn btn-primary btn-sm mb-1 px-2" title="Edit Category"><i
                                                     class="fa fa-pencil"></i></a>
-
-
                                         </td>
                                     </tr>
                                 @empty

@@ -81,13 +81,7 @@
                             <div class="col-md-6">
                                 <label for="icon" class="col-form-label">{{ __('Icon') }}</label>
                                 <input type="file" name="icon" id="icon" class="form-control"><br>
-                                @if(isset($adminProduct))
-                                    @if($adminProduct->icon == null || $adminProduct->icon == '')
-                                    <img src="{{asset('assets/images/noImg.jpg')}}" style="height:80px;width:80px;border-radius:50%">
-                                    @else
-                                    <img src="{{asset('storage/'.$adminProduct->icon)}}" style="height:80px;width:80px;border-radius:50%">
-                                    @endif
-                                @endif
+
                             </div>
                         </div>
                         @if(Route::currentRouteName() == 'adminProducts.edit')
