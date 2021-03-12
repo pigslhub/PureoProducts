@@ -260,64 +260,26 @@
                             </div>
                         </div>
                         <!-- banner area end -->
-                          <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-grid" role="tabpanel" aria-labelledby="pills-grid-tab">
-                                        <div class="row custom-row-10">
+                          <div class="banner__area pt-20">
+                                    <div class="container custom-container">
+                                        <div class="row">
                                             @forelse( _getRandomProducts() as $product )
-                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 custom-col-10">
-                                                <div class="product__wrapper mb-60">
-                                                    <div class="product__thumb">
-                                                        <a href="product-details.html" class="w-img">
-                                                            <img src="{{ asset('storage/'.$product->icon) }}" alt="product-img">
-                                                            <img class="product__thumb-2" src="assets/img/shop/product/product-10.jpg" alt="product-img">
-                                                        </a>
-                                                        <div class="product__action transition-3">
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                                                                <i class="fal fa-heart"></i>
-                                                            </a>
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="fal fa-sliders-h"></i>
-                                                            </a>
-                                                            <!-- Button trigger modal -->
-                                                            <a href="#" data-toggle="modal" data-target="#productModalId">
-                                                                <i class="fal fa-search"></i>
-                                                            </a>
-
-                                                        </div>
-                                                        <div class="product__sale">
-                                                            <span class="new">new</span>
-                                                            <span class="percent">-16%</span>
-                                                        </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                                <div class="banner__item mb-30 p-relative" style="background-color:#f5f5f5">
+                                                    <div class="banner__thumb fix">
+                                                        <a href="product-details.html" class="w-img"><img style="width:150px;height:150px;float:right" src="{{$product->getIconPath('emd')}}" alt="banner"></a>
                                                     </div>
-                                                    <div class="product__content p-relative">
-                                                        <div class="product__content-inner">
-                                                            <h4><a href="product-details.html">Wooden container Bowl</a></h4>
-                                                            <div class="product__price transition-3">
-                                                                <span>$96.00</span>
-                                                                <span class="old-price">$96.00</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="add-cart p-absolute transition-3">
-                                                            <a href="#">+ Add to Cart</a>
-                                                        </div>
+                                                    <div class="banner__content p-absolute transition-3">
+                                                        <h5><a href="product-details.html">{{$product->name}}</a></h5>
+                                                        <a href="product-details.html" class="link-btn">Discover now</a>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             @empty
                                             @endforelse
                                         </div>
-                                        <div class="row mt-10 mb-10">
-                                            <div class="col-xl-12">
-                                                <div class="product__load-btn text-center mt-25">
-                                                    <a href="#" class="os-btn os-btn-3">Load More</a>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-
                                 </div>
-
                     </div>
                 </div>
             </div>
