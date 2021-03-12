@@ -16,11 +16,7 @@ class Product extends Model
     {
         return $this->belongsTo(SubCategory::class);
     }
-    //
-    //    public function carts()
-    //    {
-    //        return $this->hasMany(Cart::class);
-    //    }
+    
 
 
     public function getIconPath($size = 'sm')

@@ -10,3 +10,9 @@
 [09-Mar-2021 14:13:51 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
 [09-Mar-2021 14:15:15 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
 [09-Mar-2021 14:17:12 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
+[12-Mar-2021 17:21:37 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
+[12-Mar-2021 17:42:24 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 65536 bytes) in /home/pigstuhq/pureoproducts.pigslhub.com/vendor/intervention/image/src/Intervention/Image/Gd/Decoder.php on line 138
+[12-Mar-2021 17:43:47 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 65536 bytes) in /home/pigstuhq/pureoproducts.pigslhub.com/vendor/intervention/image/src/Intervention/Image/Gd/Decoder.php on line 138
+[12-Mar-2021 18:39:40 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
+[12-Mar-2021 18:42:54 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
+[12-Mar-2021 19:03:21 UTC] PHP Fatal error:  Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found in /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php on line 9
