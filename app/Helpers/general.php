@@ -47,7 +47,13 @@ function _getAllCategories()
 
 function _getRandomProducts()
 {
-    $products = \App\Models\Product::inRandomOrder()->get();
+    $products = \App\Models\Product::inRandomOrder()->limit(12)->get();
+    return $products;
+}
+
+function _getAllProducts()
+{
+    $products = \App\Models\Product::get();
     return $products;
 }
 
