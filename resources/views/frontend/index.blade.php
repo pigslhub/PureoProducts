@@ -16,9 +16,6 @@
 </div>
 <!-- prealoder area end -->
 
-<!-- header area start -->
-
-<!-- header area end -->
 
 <!-- scroll up area start -->
 <div class="scroll-up" id="scroll" style="display: none;">
@@ -307,12 +304,12 @@
                                             @empty
                                             @endforelse
                                         </div>
-                                        <div class="row mt-10 mb-10">
-                                            <div class="col-xl-12">
-                                                <div class="product__load-btn text-center mt-25">
-                                                    <a href="#" class="os-btn os-btn-3">Load More</a>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="product__load-btn text-center mt-25">
+                                            <a href={{ route('frontend.products') }} class="os-btn os-btn-3">Load More</a>
                                         </div>
                                     </div>
 

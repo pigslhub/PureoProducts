@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*-----------------------------------------------------------------------------------
 
-    Theme Name: Outstock - Clean, Minimal eCommerce HTML5 Template 
+    Theme Name: Outstock - Clean, Minimal eCommerce HTML5 Template
     Author: Basic Theme
     Support: mdsalim400@gmail.com
-    Description:  Clean, Minimal eCommerce HTML5 Template 
+    Description:  Clean, Minimal eCommerce HTML5 Template
     Version: 1.0
 
 -----------------------------------------------------------------------------------
@@ -12,21 +12,21 @@
     CSS INDEX
     ===================
 
-    01. Theme default CSS	
-    02. Header CSS	
-    03. Slider CSS	
-    04. Banner CSS	
-    05. Shop CSS	
-    06. Client CSS	
-    07. Blog CSS	
-    08. Subscribe CSS	
-    09. Testimonial CSS	
-    10. Contact CSS	
-    11. Pricing CSS	
-    12. Contact CSS	
-    13. Error CSS	
-    14. Login CSS	
-    15. Footer CSS	
+    01. Theme default CSS
+    02. Header CSS
+    03. Slider CSS
+    04. Banner CSS
+    05. Shop CSS
+    06. Client CSS
+    07. Blog CSS
+    08. Subscribe CSS
+    09. Testimonial CSS
+    10. Contact CSS
+    11. Pricing CSS
+    12. Contact CSS
+    13. Error CSS
+    14. Login CSS
+    15. Footer CSS
 
 -----------------------------------------------------------------------------------*/
 /*----------------------------------------*/
@@ -1988,7 +1988,7 @@ p {
   }
 }
 .sidebar__widget-content .price__slider button:hover {
-  background: #bc8246;
+  background: #BC8246;
   color: #ffffff;
 }
 .sidebar__widget-content .price__slider label {
@@ -2253,7 +2253,7 @@ p {
 }
 .product__sale span {
   position: relative;
-  background: #bc8246;
+  background: #014623;
   color: #fff;
   float: left;
   font-size: 11px;
@@ -2271,8 +2271,8 @@ p {
   border: 0;
 }
 .product__sale span::after {
-  border: 5px solid #bc8246;
-  border-color: transparent transparent #bc8246 #bc8246;
+  border: 5px solid #014623;
+  border-color: transparent transparent #014623 #014623;
   border-width: 10px 5px;
   position: absolute;
   right: -10px;
@@ -2281,8 +2281,8 @@ p {
   z-index: 1;
 }
 .product__sale span::before {
-  border: 5px solid #bc8246;
-  border-color: #bc8246 transparent transparent #bc8246;
+  border: 5px solid #014623;
+  border-color: #014623 transparent transparent #014623;
   border-width: 9px 5px;
   position: absolute;
   right: -10px;
@@ -2291,16 +2291,16 @@ p {
   z-index: 1;
 }
 .product__sale span.percent {
-  background: #201f1f;
+  background: #8CC53F;
 }
 .product__sale span.percent::after {
-  border: 5px solid #201f1f;
-  border-color: transparent transparent #201f1f #201f1f;
+  border: 5px solid #8CC53F;
+  border-color: transparent transparent #8CC53F #8CC53F;
   border-width: 10px 5px;
 }
 .product__sale span.percent::before {
-  border: 5px solid #201f1f;
-  border-color: #201f1f transparent transparent #201f1f;
+  border: 5px solid #8CC53F;
+  border-color: #8CC53F transparent transparent #8CC53F;
   border-width: 9px 5px;
 }
 .product__sale-2 {

@@ -19,7 +19,11 @@ Route::get('/cart', function () {
     return view('frontend.cart');
 });
 
-Route::get('/addToCart', ['uses' => 'FrontendController@addToCart' , 'as' => 'frontend.cart']);
+Route::group(['namespace' => 'Frontend'], function(){
+    Route::get('/productsPage', ['uses' => 'FrontendController@productsPage' , 'as' => 'frontend.products']);
+    Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);
+    Route::get('/yourCart/{product}', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
+});
 
 Auth::routes(['verify' => true]);
 //Route::view('/', 'default')->name('/');
