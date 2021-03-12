@@ -256,8 +256,17 @@
                                         <div class="product__wrapper mb-60">
                                             <div class="product__thumb">
                                                 <a href="{{ route('frontend.productDetails', $product) }}" class="w-img">
-                                                    <img src="{{ asset('storage/'.$product->icon) }}" style="height: 350px" alt="product-img">
-                                                    <img class="product__thumb-2" src="{{ asset('storage/'.$product->icon) }}" style="height: 350px" alt="product-img">
+                                                    @if(strpos($product->icon,'100x75'))
+                                                    <img src="{{ $product->getIconPath('md') }}" style="height: 350px" alt="product-img">
+                                                    <img class="product__thumb-2" src="{{ $product->getIconPath('md') }}" style="height: 350px" alt="product-img">
+                                                    @elseif(strpos($product->icon,'50x75'))
+                                                    <img src="{{ $product->getIconPath('pmd') }}" style="height: 350px" alt="product-img">
+                                                    <img class="product__thumb-2" src="{{ $product->getIconPath('pmd') }}" style="height: 350px" alt="product-img">
+                                                    @else
+                                                    <img src="{{ $product->getIconPath('emd') }}" style="height: 350px" alt="product-img">
+                                                    <img class="product__thumb-2" src="{{ $product->getIconPath('emd') }}" style="height: 350px" alt="product-img">
+                                                    @endif
+                                                    
                                                 </a>
                                                 <div class="product__action transition-3">
                                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
