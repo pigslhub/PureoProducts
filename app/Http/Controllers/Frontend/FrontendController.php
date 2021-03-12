@@ -19,8 +19,13 @@ class FrontendController extends Controller
         return view('frontend.products.productDetails', compact('product'));
     }
 
-    public function yourCart(Request $request, Product $product)
+    public function yourCart()
     {
-        return view('frontend.cart.yourCart', compact('product'));
+        return view('frontend.cart.yourCart');
+    }
+
+    public function checkout()
+    {
+        return view('frontend.cart.checkout');
     }
 }

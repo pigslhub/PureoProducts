@@ -125,8 +125,8 @@
                                         </li>
                                         <li>
                                             <div class="checkout-link">
-                                                <a href="cart.html" class="os-btn">view Cart</a>
-                                                <a class="os-btn os-btn-black" href="checkout.html">Checkout</a>
+                                                <a href="{{ route('frontend.yourCart')}}" class="os-btn">view Cart</a>
+                                                <a class="os-btn os-btn-black" href="{{ route('frontend.checkout') }}">Checkout</a>
                                             </div>
                                         </li>
                                     </ul>

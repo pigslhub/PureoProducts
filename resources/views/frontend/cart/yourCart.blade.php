@@ -149,7 +149,7 @@
 <!-- extra info area end -->
 <main>
     <!-- page title area start -->
-    <section class="page__title p-relative d-flex align-items-center" data-background="{{ asset('frontend/assets/img/page-title/page-title-1.jpg') }}">
+    <section class="page__title p-relative d-flex align-items-center" style="height: 350px" data-background="{{ asset('frontend/assets/img/page-title/page-title-1.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -235,7 +235,7 @@
                                         <li>Subtotal <span>$250.00</span></li>
                                         <li>Total <span>$250.00</span></li>
                                     </ul>
-                                    <a class="os-btn" href="checkout.html">Proceed to checkout</a>
+                                    <a class="os-btn" href="{{ route('frontend.checkout') }}">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>
