@@ -22,7 +22,8 @@ Route::get('/cart', function () {
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/productsPage', ['uses' => 'FrontendController@productsPage' , 'as' => 'frontend.products']);
     Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);
-    Route::get('/yourCart/{product}', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
+    Route::get('/yourCart', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
+    Route::get('/checkout', ['uses' => 'FrontendController@checkout' , 'as' => 'frontend.checkout']);
 });
 
 Auth::routes(['verify' => true]);
