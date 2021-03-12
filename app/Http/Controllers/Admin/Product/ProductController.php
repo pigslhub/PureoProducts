@@ -47,13 +47,9 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $adminProduct )
     {
-        $adminProducts = Product::where('subcategory_id',$request->subcategory_id)->get();
-        $adminProducts->updateIcon();
-
-
+        $adminProduct->update($request->except('icon'));
+        $adminProduct->updateIcon();
        return redirect()->route('adminProducts.create', ['id' => $request->subcategory_id])->with('success', 'Product Updated Successfully');
-//        return redirect()->back()->with("success", "Product Added Successfully");
-
     }
 
     public function destroy(Product $adminProduct)

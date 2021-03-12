@@ -260,32 +260,16 @@
                             </div>
                         </div>
                         <!-- banner area end -->
-
-                        <!-- product area start -->
-                        <section class="product__area pt-60 pb-100">
-                            <div class="container custom-container">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="section__title-wrapper text-center mb-55">
-                                            <div class="section__title mb-10">
-                                                <h2>Trending Products</h2>
-                                            </div>
-                                            <div class="section__sub-title">
-{{--                                                <p>Mirum est notare quam littera gothica quam nunc putamus parum claram!</p>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="product__slider-4 owl-carousel">
+                          <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-grid" role="tabpanel" aria-labelledby="pills-grid-tab">
+                                        <div class="row custom-row-10">
                                             @forelse( _getRandomProducts() as $product )
-                                            <div class="product__item">
+                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 custom-col-10">
                                                 <div class="product__wrapper mb-60">
                                                     <div class="product__thumb">
-                                                        <a href="" class="w-img">
+                                                        <a href="product-details.html" class="w-img">
                                                             <img src="{{ asset('storage/'.$product->icon) }}" alt="product-img">
-                                                            <img class="product__thumb-2" src="{{ asset('storage/'.$product->icon) }}" alt="product-img">
+                                                            <img class="product__thumb-2" src="assets/img/shop/product/product-10.jpg" alt="product-img">
                                                         </a>
                                                         <div class="product__action transition-3">
                                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -300,13 +284,17 @@
                                                             </a>
 
                                                         </div>
+                                                        <div class="product__sale">
+                                                            <span class="new">new</span>
+                                                            <span class="percent">-16%</span>
+                                                        </div>
                                                     </div>
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
-                                                            <h4><a href="product-details.html">{{ $product->name }}</a></h4>
+                                                            <h4><a href="product-details.html">Wooden container Bowl</a></h4>
                                                             <div class="product__price transition-3">
-                                                                <span>{{ $product->price }}</span>
-                                                                <span class="old-price">{{ $product->price }}</span>
+                                                                <span>$96.00</span>
+                                                                <span class="old-price">$96.00</span>
                                                             </div>
                                                         </div>
                                                         <div class="add-cart p-absolute transition-3">
@@ -315,37 +303,20 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             @empty
                                             @endforelse
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="product__load-btn text-center mt-25">
-                                            <a href="#" class="os-btn os-btn-3">Load More</a>
+                                        <div class="row mt-10 mb-10">
+                                            <div class="col-xl-12">
+                                                <div class="product__load-btn text-center mt-25">
+                                                    <a href="#" class="os-btn os-btn-3">Load More</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
-                            </div>
-                        </section>
-                        <!-- product area end -->
-
-                        <!-- banner area start -->
-
-                        <!-- banner area end -->
-
-                        <!-- product offer area start -->
-
-                        <!-- product offer area end -->
-
-                        <!-- blog area start -->
-
-                        <!-- blog area end -->
-
-                        <!-- subscribe area start -->
-{{--                        --}}
-                        <!-- subscribe area end -->
 
                     </div>
                 </div>
