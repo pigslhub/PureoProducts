@@ -51,10 +51,10 @@ class Product extends Model
                 Image::make(request()->file('icon'))->resize(1000, 775)->save($dir . '/' . $this->id . '-1000x775.jpg');
                 $this->update(['icon' => "/products/icons/{$this->id}-100x75.jpg"]);
             } else {
-                Image::make(request()->file('icon'))->resize(50, 100)->save($dir . '/' . $this->id . '-50x100.jpg');
-                Image::make(request()->file('icon'))->resize(200, 400)->save($dir . '/' . $this->id . '-200x400.jpg');
-                Image::make(request()->file('icon'))->resize(500, 1000)->save($dir . '/' . $this->id . '-500x1000.jpg');
-                $this->update(['icon' => "/products/icons/{$this->id}-50x100.jpg"]);
+                Image::make(request()->file('icon'))->resize(50, 100)->save($dir . '/' . $this->id . '-50x75.jpg');
+                Image::make(request()->file('icon'))->resize(200, 400)->save($dir . '/' . $this->id . '-200x300.jpg');
+                Image::make(request()->file('icon'))->resize(500, 1000)->save($dir . '/' . $this->id . '-500x750.jpg');
+                $this->update(['icon' => "/products/icons/{$this->id}-50x75.jpg"]);
             }
 
         }
