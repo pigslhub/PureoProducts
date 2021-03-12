@@ -34,7 +34,7 @@ class Product extends Model
             'plg' => '500x1000',
         ];
         if ($this->icon && file_exists('storage/' . $this->icon))
-        return asset('storage/products/icons/' . $this->id . '-' . $sizes[$size] . '.jpg');
+        return asset('storage/products/icons/' . $this->id . '-' . $sizes[$size] . '.png');
         else
         return asset('assets/images/noImg.jpg');
     }
@@ -46,15 +46,15 @@ class Product extends Model
             if (!file_exists($dir)) mkdir($dir, 0777, true);
             $image = Image::make(request()->file('icon'));
             if ($image->width() > $image->height()) {
-                Image::make(request()->file('icon'))->resize(100, 75)->save($dir . '/' . $this->id . '-100x75.jpg');
-                Image::make(request()->file('icon'))->resize(400, 300)->save($dir . '/' . $this->id . '-400x300.jpg');
-                Image::make(request()->file('icon'))->resize(1000, 775)->save($dir . '/' . $this->id . '-1000x775.jpg');
-                $this->update(['icon' => "/products/icons/{$this->id}-100x75.jpg"]);
+                Image::make(request()->file('icon'))->resize(100, 75)->save($dir . '/' . $this->id . '-100x75.png');
+                Image::make(request()->file('icon'))->resize(400, 300)->save($dir . '/' . $this->id . '-400x300.png');
+                Image::make(request()->file('icon'))->resize(1000, 775)->save($dir . '/' . $this->id . '-1000x775.png');
+                $this->update(['icon' => "/products/icons/{$this->id}-100x75.png"]);
             } else {
-                Image::make(request()->file('icon'))->resize(50, 100)->save($dir . '/' . $this->id . '-50x75.jpg');
-                Image::make(request()->file('icon'))->resize(200, 400)->save($dir . '/' . $this->id . '-200x300.jpg');
-                Image::make(request()->file('icon'))->resize(500, 1000)->save($dir . '/' . $this->id . '-500x750.jpg');
-                $this->update(['icon' => "/products/icons/{$this->id}-50x75.jpg"]);
+                Image::make(request()->file('icon'))->resize(50, 100)->save($dir . '/' . $this->id . '-50x75.png');
+                Image::make(request()->file('icon'))->resize(200, 400)->save($dir . '/' . $this->id . '-200x300.png');
+                Image::make(request()->file('icon'))->resize(500, 1000)->save($dir . '/' . $this->id . '-500x750.png');
+                $this->update(['icon' => "/products/icons/{$this->id}-50x75.png"]);
             }
 
         }
