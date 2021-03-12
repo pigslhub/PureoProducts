@@ -29,7 +29,19 @@ class CategoryController extends Controller
             $dir = public_path('storage/categories/icons/');
             if (!file_exists($dir)) mkdir($dir, 0777, true);
             $image = Image::make(request()->file('icon'));
-            $image->resize(800, 800)->save($dir . '/' . $category->id . '-800x800.jpg');
+            if($image->width() > $image->height())
+            {
+                $image->resize(100, 75)->save($dir . '/' . $category->id . '-100x75.jpg');
+                $image->resize(400, 300)->save($dir . '/' . $category->id . '-400x300.jpg');
+                $image->resize(1000, 775)->save($dir . '/' . $category->id . '-1000x775.jpg');
+            }else
+            {
+                $image->resize(50, 100)->save($dir . '/' . $category->id . '-50x100.jpg');
+                $image->resize(200, 400)->save($dir . '/' . $category->id . '-200x400.jpg');
+                $image->resize(500, 1000)->save($dir . '/' . $category->id . '-500x1000.jpg');
+
+            }
+
             $category->update(['icon' => "/categories/icons/{$category->id}-800x800.jpg"]);
         }
 
@@ -53,7 +65,15 @@ class CategoryController extends Controller
             $dir = public_path('storage/categories/icons/');
             if (!file_exists($dir)) mkdir($dir, 0777, true);
             $image = Image::make(request()->file('icon'));
-            $image->resize(800, 800)->save($dir . '/' . $adminCategory->id . '-700x1200.jpg');
+            if ($image->width() > $image->height()) {
+                $image->resize(100, 75)->save($dir . '/' . $adminCategory->id . '-100x75.jpg');
+                $image->resize(400, 300)->save($dir . '/' . $adminCategory->id . '-400x300.jpg');
+                $image->resize(1000, 775)->save($dir . '/' . $adminCategory->id . '-1000x775.jpg');
+            } else {
+                $image->resize(50, 100)->save($dir . '/' . $adminCategory->id . '-50x100.jpg');
+                $image->resize(200, 400)->save($dir . '/' . $adminCategory->id . '-200x400.jpg');
+                $image->resize(500, 1000)->save($dir . '/' . $adminCategory->id . '-500x1000.jpg');
+            }
             $adminCategory->update(['icon' => "/categories/icons/{$adminCategory->id}-700x1200.jpg"]);
         }
 

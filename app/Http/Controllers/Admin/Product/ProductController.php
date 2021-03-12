@@ -28,16 +28,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
        $product = Product::create($request->except('icon'));
-
-
-            if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
-                $dir = public_path('storage/products/icons/');
-                if (!file_exists($dir)) mkdir($dir, 0777, true);
-                $image = Image::make(request()->file('icon'));
-                $image->resize(700, 1200)->save($dir . '/' . $product->id .'-700x1200.jpg');
-                $product->update(['icon' => "/products/icons/{$product->id}-700x1200.jpg"]);
-            }
-
+       $product->updateIcon();
        return redirect()->back()->with("success", "Product Added Successfully");
     }
 
@@ -46,7 +37,6 @@ class ProductController extends Controller
 
         $category_id = $request->id;
         $categories = SubCategory::where('category_id',$request->id)->get();
-
         return view('admin.product.showCategory',compact('categories', 'category_id'));
     }
 
@@ -57,21 +47,9 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $adminProduct )
     {
-        $adminProducts = Product::where('subcategory_id',$request->subcategory_id)->get();
-//        dd($adminProductsAfterEdit->toArray());
-       $adminProduct->update($request->except('icon'));
-        if (request()->hasFile('icon') && request()->file('icon')->isValid()) {
-            $dir = public_path('storage/products/icons/');
-            if (!file_exists($dir)) mkdir($dir, 0777, true);
-            $image = Image::make(request()->file('icon'));
-            $image->resize(700, 1200)->save($dir . '/' . $adminProduct->id . '-700x1200.jpg');
-            $adminProduct->update(['icon' => "/products/icons/{$adminProduct->id}-700x1200.jpg"]);
-        }
-
-
+        $adminProduct->update($request->except('icon'));
+        $adminProduct->updateIcon();
        return redirect()->route('adminProducts.create', ['id' => $request->subcategory_id])->with('success', 'Product Updated Successfully');
-//        return redirect()->back()->with("success", "Product Added Successfully");
-
     }
 
     public function destroy(Product $adminProduct)
