@@ -130,11 +130,11 @@
                                             <td>
 
                                                 @if(strpos($adminProduct->icon,'100x75'))
-                                                    <img class="rounded-circle" src="{{$adminProduct->getIconPath()}}" >
+                                                    <img class="rounded-circle shadow-lg" src="{{$adminProduct->getIconPath()}}" >
                                                 @elseif(strpos($adminProduct->icon,'100x100'))
-                                                    <img class="rounded-circle" src="{{$adminProduct->getIconPath('esm')}}" >
+                                                    <img class="rounded-circle shadow-lg" src="{{$adminProduct->getIconPath('esm')}}" >
                                                 @else
-                                                    <img class="rounded-circle" src="{{$adminProduct->getIconPath('psm')}}" >
+                                                    <img class="rounded-circle shadow-lg" src="{{$adminProduct->getIconPath('psm')}}" >
                                                 @endif
                                             </td>
                                             <td>
