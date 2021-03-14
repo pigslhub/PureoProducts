@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-7">
                         <div class="footer__copyright footer__copyright-2">
-                            <p>Copyright © <a href="index.html">Outstock</a> all rights reserved. Powered by <a href="index.html">basictheme</a></p>
+                            <p>Copyright © <a href="index.html">PureONaturalProducts</a> all rights reserved. Powered by <a>Code Spezialist</a></p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-5">
