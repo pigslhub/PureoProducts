@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
+    public function dashboard()
+    {
+        return view('frontend.dashboard');
+    }
+
     public function productsPage()
     {
         $products = Product::paginate(9);

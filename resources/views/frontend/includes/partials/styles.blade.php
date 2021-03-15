@@ -10,3 +10,4 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/ionicons.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/default.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/toastr.min.css')}}">

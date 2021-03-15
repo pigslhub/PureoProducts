@@ -7,6 +7,8 @@ Route::group(['prefix' => 'customer' , 'namespace' => 'Customer\Auth'], function
     Route::post('/login'   , ['uses' => 'LoginController@login' , 'as' => 'customer.login.submit']);
     Route::post('/logout' , ['uses' => 'LoginController@logout' , 'as' => 'customer.logout']);
 
+    Route::get('/register', ['uses' => 'RegisterController@showRegistrationForm', 'as' => 'customer.register']);
+    Route::post('/register', ['uses' => 'RegisterController@register', 'as' => 'customer.submit.register']);
 });
 
 Route::group(['prefix' => 'customer', 'namespace' => 'Customer', 'middleware' => 'auth:customer'], function(){

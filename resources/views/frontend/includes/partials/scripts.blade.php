@@ -13,3 +13,13 @@
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
+<script src="{{asset('assets/js/toastr.min.js')}}"></script>
+<script>
+@php($notifications = array('error', 'success', 'warning', 'info'))
+@foreach($notifications as $notification)
+    @if(Session::has($notification))
+        {{ "toastr." . $notification }}{!! "('" !!}{{Session::get($notification)}}{!! "')" !!}
+    @endif
+@endforeach
+</script>
