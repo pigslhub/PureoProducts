@@ -7,6 +7,7 @@ use App\Models\Customer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -43,17 +44,15 @@ class LoginController extends Controller
     public function showLoginForm()
     {
 
-        return view('customer.auth.login');
+        return view('customer.auth.userLogin');
     }
 
     public function login(Request $request)
     {
-
-
         $customer = Customer::where(['email' => $request->email])->first();
 
         if (!$customer){
-            return redirect()->back()->with('error', 'Access Denied! Invalid username and password');
+            return redirect()->back()->with('error', 'Access Denied! Invalid username or password');
         }
 
          $request->validate([
@@ -61,15 +60,10 @@ class LoginController extends Controller
              'password' => 'required|string'
          ]);
 
-        if($customer->status == 1)
-        {
-            if(Auth::guard('customer')->attempt(['email'=>$request->email, 'password'=>$request->password], $request->remember)){
-
-                return redirect()->route('customer.dashboard');
-            }
-            return redirect()->back()->withInput($request->only('email', 'remember'));
-
-        } else return redirect()->back()->with('warning', 'Your account is de-activated.');
+        if(Auth::guard('customer')->attempt(['email'=>$request->email, 'password'=> $request->password], $request->remember)){
+            return redirect()->route('customer.dashboard');
+        }
+        return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
     protected function guard()

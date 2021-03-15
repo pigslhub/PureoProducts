@@ -15,10 +15,6 @@
      return view('frontend.index');
  });
 
-Route::get('/cart', function () {
-    return view('frontend.cart');
-});
-
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/productsPage', ['uses' => 'FrontendController@productsPage' , 'as' => 'frontend.products']);
     Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);

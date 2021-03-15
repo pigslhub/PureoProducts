@@ -28,7 +28,6 @@
                     </div>
                     <ul class="profile-dropdown onhover-show-div p-20">
                         <li><a href="{{ route('admin.profile') }}"><i data-feather="user"></i>Edit Profile</a></li>
-
                         <li>
                             <a href="{{ route('admin.logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

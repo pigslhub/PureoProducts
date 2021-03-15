@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="#">
                             <img src="{{ asset('frontend/assets/img/logo/logo.png') }}" style="height: 80px" alt="logo">
                         </a>
                     </div>
@@ -27,8 +27,7 @@
                         <div class="header__action">
                             <ul>
                                 @guest('customer')
-                                    <li><a href="javascript:void(0);" class="cart"><i class="ion-person"></i> Sign up </a></li>
-                                    <li><a href="javascript:void(0);" class="cart"><i class="ion-person"></i> Sign In </a></li>
+                                    <li><a href="{{ route('customer.login') }}" class="cart"><i class="ion-person"></i> Sign In </a></li>
                                 @else
                                 <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart <span>(01)</span></a>
                                     <ul class="mini-cart">
@@ -67,6 +66,29 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li><a href="javascript:void(0);" class="cart"><i class="ion-person"></i> {{ auth('customer')->user()->name }} </a>
+                                    <ul class="mini-cart">
+{{--                                        <li class="total-price">--}}
+{{--                                            <a href="{{ route('customer.logout') }}"--}}
+{{--                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
+{{--                                                <i class="ion-person"></i> Logout</a>--}}
+{{--                                        </li>--}}
+{{--                                        <form id="logout-form" action="{{ route('customer.logout') }}" method="POST"--}}
+{{--                                              style="display: none;">--}}
+{{--                                            @csrf--}}
+{{--                                        </form>--}}
+                                        <li>
+                                            <div>
+                                                <a href="{{ route('customer.logout') }}"
+                                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <i class="ion-power" style="color: black; margin-left: 5px"></i> <span style="color: black"> Logout</span></a>
+                                                <form id="logout-form" action="{{ route('customer.logout') }}" method="POST"
+                                                      style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 @endguest
                             </ul>
                         </div>

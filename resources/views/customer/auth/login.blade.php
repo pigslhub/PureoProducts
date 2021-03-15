@@ -53,7 +53,7 @@
                                     <div class="form-group form-row mt-3 mb-0">
                                         <button class="btn btn-primary btn-block" type="submit">Login</button>
                                         <div class="mt-3 w-100 text-center">Forgot password ? <a href="#">Reset Password</a></div>
-                                    <div class="mt-3 w-100 text-center">Don't Have Account ? <a href="{{}}">Register Now</a></div>
+                                    <div class="mt-3 w-100 text-center">Don't Have Account ? <a href="#">Register Now</a></div>
                                     </div>
                                 </form>
                             </div>

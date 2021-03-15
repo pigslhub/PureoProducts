@@ -113,6 +113,9 @@
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pT846Z1u3rzhWWnxGU9Bk6dBK3" />
@@ -167,6 +170,9 @@
       <updated>1615195526712</updated>
       <workItem from="1615195534454" duration="13977000" />
       <workItem from="1615274339233" duration="4167000" />
+      <workItem from="1615581102739" duration="1100000" />
+      <workItem from="1615619291948" duration="646000" />
+      <workItem from="1615635636930" duration="17935000" />
     </task>
     <servers />
   </component>
@@ -182,10 +188,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="369" y="85" width="627" height="558" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1615542253148" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1615487008026">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1615725207980">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615487008026" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615725207980" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1615400396905">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

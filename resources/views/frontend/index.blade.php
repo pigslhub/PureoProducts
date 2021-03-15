@@ -71,44 +71,46 @@
                         </section>
                         <!-- slider area end -->
 
-                        <!-- banner area start -->
-                        <div class="banner__area pt-20" id="categories">
-                            <div class="container custom-container">
-                                <div class="row">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- banner area start -->
+                                <div class="banner__area pt-20" id="categories">
+                                    <div class="container custom-container">
+                                        <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="section__title-wrapper text-center mb-55">
                                                     <div class="section__title mb-10">
                                                         <h2>Trending Categories</h2>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
-                                    @forelse( _getAllCategories() as $category )
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                        <div class="banner__item mb-30 p-relative" style="background-color:#f5f5f5">
-                                            <div class="banner__thumb fix">
-                                                @if(strpos($category->icon,'100x75'))
-                                                    <a href={{ route('frontend.products') }} class="w-img"><img style="height:150px;width:150px;float:right" src="{{ $category->getIconPath('md') }}" alt="banner"></a>
-                                                @elseif(strpos($category->icon,'50x75'))
-                                                    <a href={{ route('frontend.products') }} class="w-img"><img style="height:150px;width:150px;float:right" src="{{ $category->getIconPath('pmd') }}" alt="banner"></a>
-                                                @else
-                                                    <a href={{ route('frontend.products') }} class="w-img"><img style="height:150px;width:150px;float:right" src="{{ $category->getIconPath('emd') }}" alt="banner"></a>
-                                                @endif
-                                                
-                                            </div>
-                                            <div class="banner__content p-absolute transition-3">
-                                                <h5><a href={{ route('frontend.products') }}>{{ $category->name }}</a></h5>
-                                                <a href={{ route('frontend.products') }} class="link-btn">Discover now</a>
-                                            </div>
+                                            @forelse( _getAllCategories() as $category )
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                                    <div class="banner__item mb-30 p-relative" style="background-color:#f5f5f5">
+                                                        <div class="banner__thumb fix">
+                                                            @if(strpos($category->icon,'100x75'))
+                                                                <a href={{ route('frontend.products') }} class="w-img"><img style="height:150px;width:150px;float:right" src="{{ $category->getIconPath('md') }}" alt="banner"></a>
+                                                            @elseif(strpos($category->icon,'50x75'))
+                                                                <a href={{ route('frontend.products') }} class="w-img"><img style="height:150px;width:150px;float:right" src="{{ $category->getIconPath('pmd') }}" alt="banner"></a>
+                                                            @else
+                                                                <a href={{ route('frontend.products') }} class="w-img"><img style="height:150px;width:150px;float:right" src="{{ $category->getIconPath('emd') }}" alt="banner"></a>
+                                                            @endif
+                                                        </div>
+                                                        <div class="banner__content p-absolute transition-3">
+                                                            <h5><a href={{ route('frontend.products') }}>{{ $category->name }}</a></h5>
+                                                            <a href={{ route('frontend.products') }} class="link-btn">Discover now</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @empty
+                                            @endforelse
                                         </div>
                                     </div>
-                                        @empty
-                                    @endforelse
                                 </div>
+                                <!-- banner area end -->
                             </div>
-                        </div>
-                        <!-- banner area end -->
-                          <div class="banner__area pt-20" id="products">
+                            <div class="col-md-8">
+                                <div class="banner__area pt-20" id="products">
                                     <div class="container custom-container">
                                         <div class="row">
                                             <div class="col-xl-12">
@@ -116,13 +118,13 @@
                                                     <div class="section__title mb-10">
                                                         <h2>Trending Products</h2>
                                                     </div>
-                                                    
                                                 </div>
                                             </div>
                                             @forelse( _getRandomProducts() as $product )
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                                <div class="banner__item mb-30 p-relative" style="background-color:#f5f5f5">
-                                                    <div class="banner__thumb fix">
+{{--                                                @if($product->id == $product->subcategory->category->id)--}}
+                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                                    <div class="banner__item mb-30 p-relative" style="background-color:#f5f5f5">
+                                                        <div class="banner__thumb fix">
                                                             @if(strpos($product->icon,'100x75'))
                                                                 <a href={{ route('frontend.products') }} class="w-img"><img style="width:150px;height:112px;float:right" src="{{ $product->getIconPath('md') }}" alt="banner"></a>
                                                             @elseif(strpos($product->icon,'50x75'))
@@ -130,27 +132,28 @@
                                                             @else
                                                                 <a href={{ route('frontend.products') }} class="w-img"><img style="width:150px;height:150px;float:right" src="{{ $product->getIconPath('emd') }}" alt="banner"></a>
                                                             @endif
-                                                        
-                                                    </div>
-                                                    <div class="banner__content p-absolute transition-3">
-                                                        <h5><a href="product-details.html">{{$product->name}}</a></h5>
-                                                        <a href={{ route('frontend.products') }} class="link-btn">Discover now</a>
+                                                        </div>
+                                                        <div class="banner__content p-absolute transition-3">
+                                                            <h5><a href="product-details.html">{{$product->name}}</a></h5>
+                                                            <a href={{ route('frontend.products') }} class="link-btn">Discover now</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @empty
                                             @endforelse
                                         </div>
+                                    </div>
+                                </div>
 
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="row mb-20 mt-10">
+                            <div class="col-xl-12">
+                                <div class="product__load-btn text-center mt-25">
+                                    <a href={{ route('frontend.products') }} class="os-btn os-btn-3">Load More</a>
                                 </div>
-                                <div class="row mb-20 mt-10">
-                                    <div class="col-xl-12">
-                                        <div class="product__load-btn text-center mt-25">
-                                            <a href={{ route('frontend.products') }} class="os-btn os-btn-3">Load More</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

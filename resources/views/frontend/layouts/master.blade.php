@@ -6,7 +6,7 @@
     @include('frontend.includes.partials.styles')
     <style>
         html {
-        scroll-behavior:smooth 
+        scroll-behavior:smooth
         }
     </style>
 </head>
@@ -23,7 +23,6 @@
     </div>
 </div>
 <!-- prealoder area end -->
-
 
 <!-- scroll up area start -->
 <div class="scroll-up" id="scroll" style="display: none;">
@@ -46,12 +45,12 @@
                         </div>
                         <div class="header__search-categories">
                             <ul class="search-category">
-                                <li><a href="shop.html">All Categories</a></li>
-                                <li><a href="shop.html">Accessories</a></li>
-                                <li><a href="shop.html">Chair</a></li>
-                                <li><a href="shop.html">Tablet</a></li>
-                                <li><a href="shop.html">Men</a></li>
-                                <li><a href="shop.html">Women</a></li>
+                                <li><a href="#">All Categories</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Chair</a></li>
+                                <li><a href="#">Tablet</a></li>
+                                <li><a href="#">Men</a></li>
+                                <li><a href="#">Women</a></li>
 
                             </ul>
                         </div>
@@ -78,23 +77,23 @@
         </div>
         <!-- side-mobile-menu start -->
         <nav class="side-mobile-menu d-block d-lg-none">
-            @guest('customer')    
+            @guest('customer')
             <ul id="mobile-menu-active">
                 <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Categories</a></li>
-                <li><a href="blog.html">Products</a></li>
-                <li><a href="contact.html">Login</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Login</a></li>
             </ul>
             @else
-            <h3>{{auth()->user('customer')->name}}</h3>
+            <h3>hello{{ auth('customer')->user()->name }}</h3>
             <ul id="mobile-menu-active">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Categories</a></li>
-                <li><a href="blog.html">Products</a></li>
-                <li><a href="contact.html">Logout</a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
             @endguest
-            
+
         </nav>
         <!-- side-mobile-menu end -->
     </div>
