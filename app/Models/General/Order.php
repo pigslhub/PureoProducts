@@ -11,21 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['order_id', 'customer_id', 'amount', 'status', 'purchased', 'checkout_session' ];
+    protected $fillable = ['order_id', 'customer_id', 'amount', 'status', 'purchased', 'checkout_session','firstname','lastname','address1','address2','city','state','country','zipcode','postalcode','phone' ];
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
-    }
-
-    public function driver()
-    {
-        return $this->belongsTo(Driver::class);
-    }
-
-    public function shop()
-    {
-        return $this->belongsTo(Shop::class);
     }
     public function carts()
     {

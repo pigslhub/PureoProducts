@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('carts.update') }}" method="POST">
+
                         <div class="table-content table-responsive">
                             <table class="table">
                                 <thead>
@@ -42,12 +42,18 @@
                                     <th class="product-price">Unit Price</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-subtotal">Total</th>
+                                    <th class="product-remove">Update</th>
                                     <th class="product-remove">Remove</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @forelse($carts as $cart)
+
+
                                 <tr>
+                                <form action="{{ route('carts.update',['cart' => $cart->id]) }}" method="POST">
+                                        @method('PUT')
+                                        @csrf
                                     <td class="product-thumbnail"><a href="product-details.html">
                                                 @if(strpos($cart->product->icon,'100x75'))
                                                     <img src="{{ $cart->product->getIconPath('md') }}" style="width:150px;height: 120px;" alt="product-img">
@@ -61,35 +67,41 @@
                                     <td class="product-name"><a href="product-details.html">{{ $cart->product->name }}</a></td>
                                     <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
                                     <td class="product-quantity">
-                                        <div class="cart-plus-minus"><input type="number" value={{ $cart->qty }} /></div>
+                                        <div class="cart-plus-minus"><input type="number" name="qty" value={{ $cart->qty }} /></div>
                                     </td>
                                     <td class="product-subtotal"><span class="amount">{{ $cart->total }}</span></td>
-                                    <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+
+                                    <td class="product-remove">
+                                        <button class="btn" type="submit"><i class="fa fa-check"></i></button>
+                                    </td>
+                                    </form>
+                                    <td class="product-remove">
+                                        <button data-toggle="modal"
+                                                    data-target="#confirm_cart_{{$cart->id}}"
+                                                    class="btn" title="Delete Cart">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            @include('includes.modals.confirm', ['model' => 'cart', 'route' => route('carts.destroy', ['cart' => $cart->id]), 'form' => true])
+
+                                    </td>
                                 </tr>
+
                                 @empty
                                     <tr>
-                                       <td colspan="6">No Item found in your cart</td>
+                                       <td colspan="7">No Item found in your cart</td>
                                     </tr>
                                 @endforelse
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="coupon-all">
-                                    <div class="coupon2">
-                                        <button class="os-btn os-btn-black" name="update_cart" type="submit">Update cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-md-5 ml-auto">
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                     <ul class="mb-20">
-                                        <li>Subtotal <span>$250.00</span></li>
-                                        <li>Total <span>$250.00</span></li>
+                                        <li>Subtotal <span>${{ _getCustomerCartTotalAmount() }}</span></li>
+                                        <li>Total <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                     </ul>
                                     <a class="os-btn" href="{{ route('frontend.checkout') }}">Proceed to checkout</a>
                                 </div>

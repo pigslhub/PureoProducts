@@ -16,25 +16,21 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('order_id')->nullable();
-            $table->unsignedBigInteger('shop_id')->nullable();
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->unsignedBigInteger('driver_id')->nullable();
-            $table->string('description')->nullable();
             $table->double('amount')->nullable();
-            $table->string('due_date')->nullable();
-            $table->string('pickup_date')->nullable();
-            $table->string('pickup_time')->nullable();
-            $table->string('due_time')->nullable();
-            $table->string('zip_code')->nullable();
             $table->string('status')->nullable();
-            $table->string('purchased')->default(0);
-            $table->string('order_type')->nullable();
+            $table->string('purchased')->nullable();
             $table->string('checkout_session')->nullable();
-            $table->string('checkout_session_status')->nullable();
-            $table->integer('has_cart')->default(1);
-            $table->string('payment_type')->nullable();
-            $table->string('shop_rating')->nullable();
-            $table->string('driver_rating')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('postalcode')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
