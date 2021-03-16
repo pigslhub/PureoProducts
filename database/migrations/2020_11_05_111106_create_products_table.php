@@ -10,9 +10,9 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('sub_category_id')->nullable();
             $table->string('name')->nullable();
             $table->string('icon')->nullable();
-            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->double('price')->nullable();
             $table->string('description')->nullable();
             $table->string('volumes')->nullable();

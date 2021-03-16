@@ -127,17 +127,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Frontend" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\products" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\includes\partials" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -172,7 +173,7 @@
       <workItem from="1615274339233" duration="4167000" />
       <workItem from="1615581102739" duration="1100000" />
       <workItem from="1615619291948" duration="646000" />
-      <workItem from="1615635636930" duration="17935000" />
+      <workItem from="1615635636930" duration="53592000" />
     </task>
     <servers />
   </component>
@@ -184,17 +185,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="451" y="153" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1615410121132" />
-    <state x="369" y="85" width="627" height="558" key="find.popup" timestamp="1615542253148">
+    <state x="369" y="85" width="758" height="558" key="find.popup" timestamp="1615889360829">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="369" y="85" width="627" height="558" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1615542253148" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1615725207980">
+    <state x="369" y="85" width="758" height="558" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1615889360829" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1615892872796">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615725207980" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1615400396905">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615892872796" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1615809095675">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1615400396905" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1615809095675" />
   </component>
 </project>

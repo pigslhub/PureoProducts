@@ -10,14 +10,16 @@ class SubCategory extends Model
 {
     protected $fillable = ['name', 'icon', 'category_id'];
 
-   public function category(){
-       return $this->belongsTo(Category::class);
-   }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);
     }
-    
+
     public function getIconPath($size = 'sm')
     {
         $sizes = [
@@ -32,9 +34,9 @@ class SubCategory extends Model
             'elg' => '750x750',
         ];
         if ($this->icon && file_exists('storage/' . $this->icon))
-        return asset('storage/subcategories/icons/' . $this->id . '-' . $sizes[$size] . '.png');
+            return asset('storage/subcategories/icons/' . $this->id . '-' . $sizes[$size] . '.png');
         else
-        return asset('assets/images/noImg.jpg');
+            return asset('assets/images/noImg.jpg');
     }
 
     public function updateIcon()

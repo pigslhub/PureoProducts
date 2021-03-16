@@ -33,6 +33,12 @@ function _getAllShopCategories()
     return $categories;
 }
 
+function _getAllSubCategories()
+{
+    $subcategories = \App\Models\SubCategory::inRandomOrder()->limit(6)->get();
+    return $subcategories;
+}
+
 function _getallCategoryTypes()
 {
     $shopTypes = ShopType::all();
@@ -49,6 +55,12 @@ function _getRandomProducts()
 {
     $products = \App\Models\Product::inRandomOrder()->limit(12)->get();
     return $products;
+}
+
+function _getCartsCount()
+{
+    $carts = \App\Models\General\Cart::get()->count();
+    return $carts;
 }
 
 function _getAllProducts()

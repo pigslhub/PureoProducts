@@ -21,8 +21,8 @@ class Category extends Model
     {
         return $this->hasMany(SubCategory::class);
     }
-    
-    
+
+
     public function getIconPath($size = 'sm')
     {
         $sizes = [

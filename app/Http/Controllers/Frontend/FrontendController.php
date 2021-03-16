@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Category;
+use App\Models\General\Cart;
 use App\Models\Product;
+use App\Models\SubCategory;
+use Illuminate\Contracts\Auth\SupportsBasicAuth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,10 +17,16 @@ class FrontendController extends Controller
         return view('frontend.dashboard');
     }
 
-    public function productsPage()
+    public function productsPage(SubCategory $subCategory)
     {
-        $products = Product::paginate(9);
-        return view('frontend.products.products', compact('products'));
+//        dd($subCategory->products->toArray());
+        return view('frontend.products.products', compact('subCategory'));
+    }
+
+    public function subcategories(Category $category)
+    {
+        $subcategories = SubCategory::get();
+        return view('frontend.subcategory.subcategory', compact('subcategories', 'category'));
     }
 
     public function productDetails(Request $request, Product $product)
@@ -24,9 +34,11 @@ class FrontendController extends Controller
         return view('frontend.products.productDetails', compact('product'));
     }
 
-    public function yourCart()
+    public function yourCart($id)
     {
-        return view('frontend.cart.yourCart');
+        $carts = Cart::with('product')->where(['customer_id'=>$id,'purchased'=>'no'])->get();
+
+        return view('frontend.cart.yourCart',compact('carts'));
     }
 
     public function checkout()

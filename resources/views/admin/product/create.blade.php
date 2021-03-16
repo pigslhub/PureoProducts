@@ -42,7 +42,7 @@
                     @endif
                     @csrf
                         <div class="form-row">
-                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->subcategory_id : $sub_category_id}}" name="subcategory_id">
+                        <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->sub_category_id : $sub_category_id}}" name="sub_category_id">
                             <div class="col-md-6">
                                 <label for="product_name" class="col-form-label">{{ __('Product Name') }}</label>
                                 <input type="text" name="name" id="name" class="form-control"
