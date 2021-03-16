@@ -29,39 +29,46 @@
                                 @guest('customer')
                                     <li><a href="{{ route('customer.login') }}" class="cart"><i class="ion-person"></i> Sign In </a></li>
                                 @else
-                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart <span>{{ _getCartsCount() }}</span></a>
+                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart <span>( {{ _getCartsCount() }} )</span></a>
                                     <ul class="mini-cart">
+                                        @forelse(_getCustomerCart() as $cart)
                                         <li>
                                             <div class="cart-img f-left">
                                                 <a href="#">
-                                                    <img src="{{ asset('frontend/assets/img/shop/product/cart-sm/16.jpg') }}" alt="" />
+                                                    @if(strpos($cart->product->icon,'100x75'))
+                                                    <img src="{{ $cart->product->getIconPath('md') }}" style="width:100px;height: 80px;" alt="product-img">
+                                                    @elseif(strpos($cart->product->icon,'50x75'))
+                                                        <img src="{{ $cart->product->getIconPath('pmd') }}" style="width:60px ;height: 95px" alt="product-img">
+                                                    @else
+                                                        <img src="{{ $cart->product->getIconPath('emd') }}" style="width:100px; height: 100px" alt="product-img">
+                                                    @endif
+
                                                 </a>
                                             </div>
                                             <div class="cart-content f-left text-left">
                                                 <h5>
-                                                    <a href="#">Consectetur adi </a>
+                                                    <a href="#">{{ $cart->product->name }} </a>
                                                 </h5>
                                                 <div class="cart-price">
-                                                    <span class="ammount">1 <i class="fal fa-times"></i></span>
-                                                    <span class="price">$ 400</span>
+                                                    <span class="ammount">{{ $cart->qty }} <i class="fal fa-times"></i></span>
+                                                    <span class="price">${{ $cart->product->price }}</span><br>
+                                                    <span class="price"><b>Total : ${{ $cart->qty * $cart->product->price }}</b></span>
                                                 </div>
                                             </div>
-                                            <div class="del-icon f-right mt-30">
-                                                <a href="#">
-                                                    <i class="fal fa-times"></i>
-                                                </a>
-                                            </div>
                                         </li>
+                                        @empty
+                                            <li>Nothing in cart</li>
+                                        @endforelse
                                         <li>
                                             <div class="total-price">
                                                 <span class="f-left">Subtotal:</span>
-                                                <span class="f-right">$400.0</span>
+                                                <span class="f-right">${{_getCustomerCartTotalAmount()}}</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="checkout-link">
                                                 <a href="{{ route('carts.index')}}" class="os-btn">View Cart</a>
-                                                <a class="os-btn os-btn-black" href="{{ route('frontend.checkout') }}">Checkout</a>
+
                                             </div>
                                         </li>
                                     </ul>

@@ -28,16 +28,23 @@ class FrontendCartController extends Controller
 
     public function store(Request $request)
     {
-        $product = Product::where('id',$request->product_id)->first();
-        Cart::create([
-            'product_id' => $request->product_id,
-            'qty' => $request->qty,
-            'customer_id' => auth('customer')->user()->id,
-            'price' => $product->price,
-            'total' => $product->price * $request->qty
-        ]);
+        if(auth('customer')->user() == null )
+        {
+            return redirect(route('customer.login'))->with('danger', "Login your account before cart.");
+        }else
+        {
+            $product = Product::where('id', $request->product_id)->first();
+            Cart::create([
+                'product_id' => $request->product_id,
+                'qty' => $request->qty,
+                'customer_id' => auth('customer')->user()->id,
+                'price' => $product->price,
+                'total' => $product->price * $request->qty
+            ]);
 
-        return redirect()->back()->with('success',"Product added to cart successfully");
+            return redirect()->back()->with('success', "Product added to cart successfully");
+        }
+
     }
 
     public function show($id)
@@ -50,13 +57,20 @@ class FrontendCartController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Cart $cart)
     {
-        //
+        $cart->update([
+            "qty" => $request->qty,
+            "total" => $cart->price * $request->qty
+        ]);
+
+        return redirect()->back()->with('success',"Cart Updated Successfully");
     }
 
-    public function destroy($id)
+    public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+        return redirect()->back()->with('success', "Cart Deleted Successfully");
+        // dd($cart->toArray());
     }
 }

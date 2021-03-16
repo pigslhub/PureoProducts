@@ -149,9 +149,7 @@
 {{--                                                        <span class="old-price">$96.00</span>--}}
                                                     </div>
                                                 </div>
-                                                <div class="add-cart p-absolute transition-3">
-                                                    <a href="{{ route('frontend.yourCart',auth('customer')->user()->id) }}">+ Add to Cart</a>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
