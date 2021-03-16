@@ -9,15 +9,18 @@ use Intervention\Image\Facades\Image;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'icon', 'subcategory_id', 'price', 'description', 'volumes', 'in_stock',
+    protected $fillable = ['name', 'icon', 'sub_category_id', 'price', 'description', 'volumes', 'in_stock',
     'instruction', 'ingredients'];
 
-    public function subcategory()
+    public function sub_category()
     {
         return $this->belongsTo(SubCategory::class);
     }
-    
 
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
 
     public function getIconPath($size = 'sm')
     {

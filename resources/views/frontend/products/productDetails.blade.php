@@ -5,25 +5,25 @@
 @section('content')
 <main>
     <!-- page title area start -->
-    <section class="page__title p-relative d-flex align-items-center" style="height: 350px" data-background="{{ asset('frontend/assets/img/page-title/page-title-1.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="page__title-inner text-center">
-                        <h1>Product Details</h1>
-                        <div class="page__title-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Product details</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="page__title p-relative d-flex align-items-center" style="height: 350px" data-background="{{ asset('frontend/assets/img/page-title/page-title-1.jpg') }}">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-xl-12">--}}
+{{--                    <div class="page__title-inner text-center">--}}
+{{--                        <h1>Product Details</h1>--}}
+{{--                        <div class="page__title-breadcrumb">--}}
+{{--                            <nav aria-label="breadcrumb">--}}
+{{--                                <ol class="breadcrumb justify-content-center">--}}
+{{--                                    <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+{{--                                    <li class="breadcrumb-item active" aria-current="page"> Product details</li>--}}
+{{--                                </ol>--}}
+{{--                            </nav>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <!-- page title area end -->
 
 
@@ -66,23 +66,25 @@
                                 <span class="review rating-left"><a href="#">Add your Review</a></span>
                             </div>
                             <div class="product__price-2 mb-25">
-                                <span>${{ $product->price }}</span>
+                                <span>Price: ${{ $product->price }}</span>
 {{--                                <span class="old-price">$96.00</span>--}}
+                            </div>
+                            <div class="product__price-2 mb-25">
+                                <span>Available in Stock: ${{ $product->in_stock }}</span>
+                                {{--                                <span class="old-price">$96.00</span>--}}
                             </div>
                             <div class="product__modal-des mb-30">
                                 <p>Description: {{ $product->description }}.</p>
                             </div>
                             <div class="product__modal-form mb-30">
-                                <form action="#">
+                                <form action="{{route('carts.store')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$product->id}}" >
                                     <div class="product__modal-input size mb-20">
                                         <label>Volume <i class="fas fa-star-of-life"></i></label>
                                         <select>
                                             <option>- Please select -</option>
-                                            <option> 2oz</option>
-                                            <option> 4oz</option>
-                                            <option> 8oz</option>
-                                            <option> 16oz</option>
-                                            <option> 32oz</option>
+                                            <option>{{$product->volumes}}</option>
                                         </select>
                                     </div>
                                     <div class="product__modal-required mb-5">
@@ -93,17 +95,19 @@
                                             <label>Quantity</label>
                                         </div>
                                         <div class="product-quantity mr-20 mb-20">
-                                            <div class="cart-plus-minus"><input type="text" value="1" /></div>
+                                            <div class="cart-plus-minus">
+                                                <input type="number" value="1" name="qty" />
+                                            </div>
                                         </div>
                                         <div class="pro-cart-btn">
-                                            <a href="#" class="add-cart-btn mb-20">+ Add to Cart</a>
+                                            <button type="submit" class="add-cart-btn mb-20">+ Add to Cart</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="product__tag mb-25">
                                 <span>Category:</span>
-                                <span><a href="#">{{ $product->subcategory->category->name }}</a></span>
+                                <span><a href="#">{{ $product->sub_category->category->name }}</a></span>
                             </div>
 {{--                            <div class="product__share">--}}
 {{--                                <span>Share :</span>--}}
@@ -136,19 +140,20 @@
                             <div class="tab-content" id="pro-detailsContent">
                                 <div class="tab-pane fade show active" id="des" role="tabpanel">
                                     <div class="product__details-des">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when anunknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+                                        <p>{{ $product->description }}</p>
 
+                                        <h4>Instructions</h4>
                                         <div class="product__details-des-list mb-20">
                                             <ul>
-                                                <li><span>Claritas est etiam processus dynamicus.</span></li>
-                                                <li><span>Qui sequitur mutationem consuetudium lectorum.</span></li>
-                                                <li><span>Claritas est etiam processus dynamicus.</span></li>
-                                                <li><span>Qui sequitur mutationem consuetudium lectorum.</span></li>
-                                                <li><span>Claritas est etiam processus dynamicus.</span></li>
-                                                <li><span>Qui sequitur mutationem consuetudium lectorum.</span></li>
+                                                <li><span>hello{{ $product->instruction }}</span></li>
                                             </ul>
                                         </div>
-                                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release.</p>
+                                        <h4>Ingredients:</h4>
+                                        <div class="product__details-des-list mb-20">
+                                            <ul>
+                                                <li><span>hello{{ $product->ingredients }}</span></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="review" role="tabpanel">
@@ -277,128 +282,5 @@
         </div>
     </section>
     <!-- shop details area end -->
-
-    <!-- shop modal start -->
-    <!-- Modal -->
-    <div class="modal fade" id="productModalId" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered product-modal" role="document">
-            <div class="modal-content">
-                <div class="product__modal-wrapper p-relative">
-                    <div class="product__modal-close p-absolute">
-                        <button   data-dismiss="modal"><i class="fal fa-times"></i></button>
-                    </div>
-                    <div class="product__modal-inner">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
-                                <div class="product__modal-box">
-                                    <div class="tab-content mb-20" id="nav-tabContent">
-                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <div class="product__modal-img w-img">
-                                                <img src="assets/img/shop/product/quick-view/quick-big-1.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <div class="product__modal-img w-img">
-                                                <img src="assets/img/shop/product/quick-view/quick-big-2.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <div class="product__modal-img w-img">
-                                                <img src="assets/img/shop/product/quick-view/quick-big-3.jpg" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <nav>
-                                        <div class="nav nav-tabs justify-content-between" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-                                                <div class="product__nav-img w-img">
-                                                    <img src="assets/img/shop/product/quick-view/quick-sm-1.jpg" alt="">
-                                                </div>
-                                            </a>
-                                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                                <div class="product__nav-img w-img">
-                                                    <img src="assets/img/shop/product/quick-view/quick-sm-2.jpg" alt="">
-                                                </div>
-                                            </a>
-                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
-                                                <div class="product__nav-img w-img">
-                                                    <img src="assets/img/shop/product/quick-view/quick-sm-3.jpg" alt="">
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12">
-                                <div class="product__modal-content">
-                                    <h4><a href="product-details.html">Wooden container Bowl</a></h4>
-                                    <div class="rating rating-shop mb-15">
-                                        <ul>
-                                            <li><span><i class="fas fa-star"></i></span></li>
-                                            <li><span><i class="fas fa-star"></i></span></li>
-                                            <li><span><i class="fas fa-star"></i></span></li>
-                                            <li><span><i class="fas fa-star"></i></span></li>
-                                            <li><span><i class="fal fa-star"></i></span></li>
-                                        </ul>
-                                        <span class="rating-no ml-10">
-                                                    3 rating(s)
-                                                </span>
-                                    </div>
-                                    <div class="product__price-2 mb-25">
-                                        <span>$96.00</span>
-                                        <span class="old-price">$96.00</span>
-                                    </div>
-                                    <div class="product__modal-des mb-30">
-                                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                                    </div>
-                                    <div class="product__modal-form">
-                                        <form action="#">
-                                            <div class="product__modal-input size mb-20">
-                                                <label>Size <i class="fas fa-star-of-life"></i></label>
-                                                <select>
-                                                    <option>- Please select -</option>
-                                                    <option> S</option>
-                                                    <option> M</option>
-                                                    <option> L</option>
-                                                    <option> XL</option>
-                                                    <option> XXL</option>
-                                                </select>
-                                            </div>
-                                            <div class="product__modal-input color mb-20">
-                                                <label>Color <i class="fas fa-star-of-life"></i></label>
-                                                <select>
-                                                    <option>- Please select -</option>
-                                                    <option> Black</option>
-                                                    <option> Yellow</option>
-                                                    <option> Blue</option>
-                                                    <option> White</option>
-                                                    <option> Ocean Blue</option>
-                                                </select>
-                                            </div>
-                                            <div class="product__modal-required mb-5">
-                                                <span >Repuired Fiields *</span>
-                                            </div>
-                                            <div class="pro-quan-area d-lg-flex align-items-center">
-                                                <div class="product-quantity-title">
-                                                    <label>Quantity</label>
-                                                </div>
-                                                <div class="product-quantity">
-                                                    <div class="cart-plus-minus"><input type="text" value="1" /></div>
-                                                </div>
-                                                <div class="pro-cart-btn ml-20">
-                                                    <a href="#" class="add-cart-btn mr-10">+ Add to Cart</a>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- shop modal end -->
 </main>
 @endsection

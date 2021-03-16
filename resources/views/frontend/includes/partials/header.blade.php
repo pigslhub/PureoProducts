@@ -15,7 +15,7 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul id="mobile-menu-active">
-                                        <li class="active"><a href="index.html">Home</a></li>
+                                        <li class="active"><a href="#">Home</a></li>
                                         <li><a href="#categories">Categories</a></li>
                                         <li><a href="#products">Products</a></li>
                                 </ul>
@@ -29,17 +29,17 @@
                                 @guest('customer')
                                     <li><a href="{{ route('customer.login') }}" class="cart"><i class="ion-person"></i> Sign In </a></li>
                                 @else
-                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart <span>(01)</span></a>
+                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart <span>{{ _getCartsCount() }}</span></a>
                                     <ul class="mini-cart">
                                         <li>
                                             <div class="cart-img f-left">
-                                                <a href="product-details.html">
+                                                <a href="#">
                                                     <img src="{{ asset('frontend/assets/img/shop/product/cart-sm/16.jpg') }}" alt="" />
                                                 </a>
                                             </div>
                                             <div class="cart-content f-left text-left">
                                                 <h5>
-                                                    <a href="product-details.html">Consectetur adi </a>
+                                                    <a href="#">Consectetur adi </a>
                                                 </h5>
                                                 <div class="cart-price">
                                                     <span class="ammount">1 <i class="fal fa-times"></i></span>
@@ -60,7 +60,7 @@
                                         </li>
                                         <li>
                                             <div class="checkout-link">
-                                                <a href="{{ route('frontend.yourCart')}}" class="os-btn">view Cart</a>
+                                                <a href="{{ route('carts.index')}}" class="os-btn">View Cart</a>
                                                 <a class="os-btn os-btn-black" href="{{ route('frontend.checkout') }}">Checkout</a>
                                             </div>
                                         </li>

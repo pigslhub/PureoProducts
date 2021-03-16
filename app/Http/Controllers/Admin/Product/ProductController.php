@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $sub_category_id = $request->id;
-        $adminProducts = Product::where('subcategory_id',$request->id)->get();
+        $adminProducts = Product::where('sub_category_id',$request->id)->get();
         return view('admin.product.create',compact('adminProducts', 'sub_category_id'));
     }
 
@@ -49,7 +49,7 @@ class ProductController extends Controller
     {
         $adminProduct->update($request->except('icon'));
         $adminProduct->updateIcon();
-       return redirect()->route('adminProducts.create', ['id' => $request->subcategory_id])->with('success', 'Product Updated Successfully');
+       return redirect()->route('adminProducts.create', ['id' => $request->sub_category_id])->with('success', 'Product Updated Successfully');
     }
 
     public function destroy(Product $adminProduct)

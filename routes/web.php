@@ -16,10 +16,12 @@
  });
 
 Route::group(['namespace' => 'Frontend'], function(){
-    Route::get('/productsPage', ['uses' => 'FrontendController@productsPage' , 'as' => 'frontend.products']);
+    Route::get('/productsPage/{subCategory}', ['uses' => 'FrontendController@productsPage' , 'as' => 'frontend.products']);
+    Route::get('/subcategories/{category}', ['uses' => 'FrontendController@subcategories' , 'as' => 'frontend.subcategories']);
     Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);
-    Route::get('/yourCart', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
+    Route::get('/yourCart/{id}', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
     Route::get('/checkout', ['uses' => 'FrontendController@checkout' , 'as' => 'frontend.checkout']);
+    Route::resource('carts','FrontendCartController');
 });
 
 Auth::routes(['verify' => true]);

@@ -37,7 +37,7 @@ class SubCategoryController extends Controller
        return redirect()->back()->with("success", "Sub-Category created successfully");
     }
 
-    public function show(SubCategory $subcategory)
+    public function show(SubCategory $subCategory)
     {
         // return view('adminCategorys.show', compact('$subcategory'));
     }
