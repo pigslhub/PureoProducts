@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="product-quantity mr-20 mb-20">
                                             <div class="cart-plus-minus">
-                                                <input type="number" value="1" name="qty" />
+                                                <input type="text" value="1" name="qty" />
                                             </div>
                                         </div>
                                         <div class="pro-cart-btn">

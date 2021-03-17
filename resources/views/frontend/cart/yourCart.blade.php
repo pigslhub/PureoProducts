@@ -45,11 +45,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                     <input type="hidden" id="customer_id" value="{{ auth('customer')->user()->id }}" id="">
+
                                 @forelse($carts as $cart)
 
 
                                 <tr>
-                                 <input type="text" id="customer_id" value="{{ auth('customer')->user()->id }}" id="">
                                 <form action="{{ route('carts.update',['cart' => $cart->id]) }}" method="POST">
                                         @method('PUT')
                                         @csrf
@@ -66,10 +67,9 @@
                                     <td class="product-name"><a href="product-details.html">{{ $cart->product->name }}</a></td>
                                     <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
                                     <td class="product-quantity">
-                                        <div class="cart-plus-minus"><input type="number" name="qty" value={{ $cart->qty }} /></div>
+                                        <div class="cart-plus-minus"><input type="text" name="qty" value={{ $cart->qty }} /></div>
                                     </td>
                                     <td class="product-subtotal"><span class="amount">{{ $cart->total }}</span></td>
-
                                     <td class="product-remove">
                                         <button class="btn" type="submit"><i class="fa fa-check"></i></button>
                                     </td>
@@ -102,17 +102,7 @@
                                         <li>Subtotal <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                         <li>Total <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                     </ul>
-                                    @if( Request::get('sc_checkout'))
-                                        @if(Request::get('sc_checkout') == "success")
-                                        <button class="os-btn" type="submit">Place the order</button>
-                                        @else
-                                        <button class="os-btn" id="checkout-button">Complete Payment</button>
-                                        @endif
-                                    @else
-                                    <button class="os-btn" id="checkout-button">Complete Payment</button>
-                                    @endif
-
-
+                                    <button class="os-btn" id="checkout-button">Complete your Order</button>
                                 </div>
                             </div>
                         </div>
@@ -137,16 +127,16 @@
         $("#checkout-button").on('click',function(){
             var customer_id  = $("#customer_id").val();
             $.ajax({
-                type: 'post',
-                url: "{{ route('frontend.checkout') }}",
-                data: {'customer_id': customer_id},
-                success: function (data) {
-                   var res =  stripe.redirectToCheckout({ sessionId: data });
-                   console.log(res);
-                },
-                error: function (err) {
-                    console.log(err);
-                },
+                    type: 'post',
+                    url: "{{ route('frontend.checkoutpayment') }}",
+                    data: {'customer_id': customer_id},
+                    success: function (data) {
+                    var res =  stripe.redirectToCheckout({ sessionId: data });
+
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    },
                 });
 
         });

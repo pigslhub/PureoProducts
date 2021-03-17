@@ -23,7 +23,7 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/yourCart/{id}', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
     Route::get('/checkout', ['uses' => 'FrontendController@checkout' , 'as' => 'frontend.checkout']);
     Route::resource('carts','FrontendCartController');
-    Route::post('checkoutsession', 'PaymentController@createSession')->name('frontend.checkout');
+    Route::post('checkoutsession', 'PaymentController@createSession')->name('frontend.checkoutpayment');
 });
 
 Auth::routes(['verify' => true]);

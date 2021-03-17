@@ -18,7 +18,7 @@ class PaymentController extends Controller
         foreach ($carts as $cart) {
             $singleCart = array(
                 'name' => $cart->product->name,
-                'images' => ['http://127.0.0.1:8000/storage/' . $cart->product->icon],
+                'images' => ['http://127.0.0.1:8000/storage/'.$cart->product->icon],
                 'amount' => $cart->price * 100,
                 'currency' => 'USD',
                 'quantity' => $cart->qty,
@@ -29,16 +29,17 @@ class PaymentController extends Controller
             'sk_test_bAnYzlXvZ8HE0QPKk4b7qV8V008qbkGp2v'
         );
         $session = $stripe->checkout->sessions->create([
-            // 'billing_address_collection' => 'required',
+            'billing_address_collection' => 'required',
             // 'success_url' => 'https://ezcare2go.com/login/shop?sc_checkout=success&sc_sid={CHECKOUT_SESSION_ID}',
             // 'cancel_url' => 'https://ezcare2go.com?sc_checkout=cancel',
-            'success_url' => 'http://127.0.0.1:8000/carts?sc_checkout=success',
-            'cancel_url' => 'http://127.0.0.1:8000/carts?sc_checkout=cancel',
+            'success_url' => 'http://127.0.0.1:8000/checkout?sc_checkout=success&sc_sid={CHECKOUT_SESSION_ID}',
+            'cancel_url' => 'http://127.0.0.1:8000/checkout?sc_checkout=cancel',
             'payment_method_types' => ['card'],
             'line_items' => $cartForStripe,
             'mode' => 'payment',
         ]);
 
+        // return response()->json(['id' => $session->id]);
         return $session->id;
         // return response()->json(['id' => $session->id]);
 

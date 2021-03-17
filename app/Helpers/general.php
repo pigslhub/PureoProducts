@@ -73,7 +73,7 @@ function _getRandomProducts()
 
 function _getCartsCount()
 {
-    $carts = \App\Models\General\Cart::get()->count();
+    $carts = \App\Models\General\Cart::where(['customer_id' => auth('customer')->user()->id, 'purchased' => '0'])->get()->count();
     return $carts;
 }
 
@@ -101,6 +101,25 @@ function _getCustomerCartTotalAmount()
         }
     }
     return $total;
+}
+
+function _updateCustomerOrderData($checkoutSession)
+{
+   $order =  Order::create([
+        "order_id" => Illuminate\Support\Str::random(10),
+        "checkout_session" => $checkoutSession,
+        "amount" => _getCustomerCartTotalAmount(),
+        "customer_id" => auth('customer')->user()->id,
+        "status" => "place",
+        "purchased" => "1"
+    ]);
+
+    $cart = Cart::where(['customer_id' => auth('customer')->user()->id, 'purchased' => '0'])->update([
+        "purchased" => '1',
+        'order_id' => $order->id
+    ]);
+
+
 }
 
 
