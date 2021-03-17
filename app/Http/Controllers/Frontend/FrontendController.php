@@ -14,7 +14,7 @@ class FrontendController extends Controller
 {
     public function dashboard()
     {
-        return view('frontend.dashboard');
+        return view('frontend.index');
     }
 
     public function productsPage(SubCategory $subCategory)

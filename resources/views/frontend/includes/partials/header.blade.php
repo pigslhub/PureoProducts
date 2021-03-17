@@ -15,9 +15,13 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul id="mobile-menu-active">
-                                        <li class="active"><a href="#">Home</a></li>
+                                    @if(Route::currentRouteName() == 'frontend.dashboard')
+                                        <li class="active"><a href="{{ route('frontend.dashboard') }}">Home</a></li>
                                         <li><a href="#categories">Categories</a></li>
                                         <li><a href="#products">Products</a></li>
+                                    @else
+                                        <li class="active"><a href="{{ route('frontend.dashboard') }}">Home</a></li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>
