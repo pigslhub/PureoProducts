@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                     <div class="logo">
-                        <a href="#">
+                        <a href="{{ route('frontend.dashboard') }}">
                             <img src="{{ asset('frontend/assets/img/logo/logo.png') }}" style="height: 80px" alt="logo">
                         </a>
                     </div>
@@ -18,7 +18,14 @@
                                     @if(Route::currentRouteName() == 'frontend.dashboard')
                                         <li class="active"><a href="{{ route('frontend.dashboard') }}">Home</a></li>
                                         <li><a href="#categories">Categories</a></li>
-                                        <li><a href="#products">Products</a></li>
+                                        <li class="has-dropdown"><a href="">Products</a>
+                                            <ul class="submenu transition-3">
+                                                @forelse( _getAllCategories() as $category )
+                                                    <li><a href="{{ route('frontend.subcategories', $category) }}">{{ $category->name }}</a></li>
+                                                @empty
+                                                @endforelse
+                                            </ul>
+                                        </li>
                                     @else
                                         <li class="active"><a href="{{ route('frontend.dashboard') }}">Home</a></li>
                                     @endif
