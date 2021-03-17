@@ -48,7 +48,7 @@ function _getallCategoryTypes()
 
 function _getAllCategories()
 {
-    $categories = Category::inRandomOrder()->get();
+    $categories = Category::get();
     return $categories;
 }
 

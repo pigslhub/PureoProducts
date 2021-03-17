@@ -15,7 +15,7 @@
                         <div class="page__title-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
-                                    <li class="#"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('frontend.dashboard') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"> Products</li>
                                 </ol>
                             </nav>
@@ -92,7 +92,7 @@
                         <div class="shop__header d-sm-flex justify-content-between align-items-center mb-40">
                             <div class="shop__header-left">
                                 <div class="show-text">
-                                    <span>Showing 1-12 of {{ \App\Models\Product::get()->count() }} results</span>
+                                    <span>Showing {{ $subCategory->products->count() }} results</span>
                                 </div>
                             </div>
                             <div class="shop__header-right d-flex align-items-center justify-content-between justify-content-sm-end">
@@ -106,6 +106,11 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-grid" role="tabpanel" aria-labelledby="pills-grid-tab">
                                 <div class="row custom-row-10">
+                                    @if( $subCategory->products->count() == '0' )
+                                    <div class="text-center">
+                                        <h4 style="margin-left: 10px"> No Products Found </h4>
+                                    </div>
+                                    @else
                                     @forelse( $subCategory->products as $product )
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 custom-col-10">
                                         <div class="product__wrapper mb-60">
@@ -121,7 +126,6 @@
                                                     <img src="{{ $product->getIconPath('emd') }}" style="height: 350px" alt="product-img">
                                                     <img class="product__thumb-2" src="{{ $product->getIconPath('emd') }}" style="height: 350px" alt="product-img">
                                                     @endif
-
                                                 </a>
                                                 <div class="product__action transition-3">
                                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -155,6 +159,7 @@
                                     </div>
                                     @empty
                                     @endforelse
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -172,11 +177,11 @@
 {{--                                        </ul>--}}
 {{--                                    </div>--}}
 {{--                                    <div class="text-center">{{ $products->links() }}</div>--}}
-{{--                                    <div class="shop__header-left">--}}
-{{--                                        <div class="show-text bottom">--}}
-{{--                                            <span>Showing 1–12 of {{ \App\Models\Product::get()->count() }} results</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="shop__header-left">
+                                        <div class="show-text bottom">
+                                            <span>Showing {{ $subCategory->products->count() }} results</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

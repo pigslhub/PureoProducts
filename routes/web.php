@@ -16,6 +16,7 @@
  });
 
 Route::group(['namespace' => 'Frontend'], function(){
+    Route::get('/dashboard', ['uses' => 'FrontendController@dashboard' , 'as' => 'frontend.dashboard' ]);
     Route::get('/productsPage/{subCategory}', ['uses' => 'FrontendController@productsPage' , 'as' => 'frontend.products']);
     Route::get('/subcategories/{category}', ['uses' => 'FrontendController@subcategories' , 'as' => 'frontend.subcategories']);
     Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);
