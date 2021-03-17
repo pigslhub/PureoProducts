@@ -33,7 +33,7 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                            <h1>Your order has been completed successfully.</h1>
-                           <a href="#" class="btn os-btn">View Your Orders</a>
+                           <a href="{{ route('frontend.allOrders') }}" class="btn os-btn">View Your Orders</a>
                     </div>
                     <div class="col-md-2"></div>
                 </div>

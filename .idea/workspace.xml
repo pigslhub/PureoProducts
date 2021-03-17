@@ -116,6 +116,7 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pT846Z1u3rzhWWnxGU9Bk6dBK3" />
@@ -127,18 +128,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/orders" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\products" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\includes\partials" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\orders" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -174,7 +176,7 @@
       <workItem from="1615581102739" duration="1100000" />
       <workItem from="1615619291948" duration="646000" />
       <workItem from="1615635636930" duration="60895000" />
-      <workItem from="1615965646510" duration="14894000" />
+      <workItem from="1615965646510" duration="18758000" />
     </task>
     <servers />
   </component>

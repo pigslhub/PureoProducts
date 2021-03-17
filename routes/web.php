@@ -22,6 +22,8 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);
     Route::get('/yourCart/{id}', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
     Route::get('/checkout', ['uses' => 'FrontendController@checkout' , 'as' => 'frontend.checkout']);
+    Route::get('/allOrders', ['uses' => 'OrderController@allOrders' , 'as' => 'frontend.allOrders']);
+    Route::get('/allOrdersCart/{order}', ['uses' => 'OrderController@allOrdersCart' , 'as' => 'frontend.allOrdersCart']);
     Route::resource('carts','FrontendCartController');
     Route::post('checkoutsession', 'PaymentController@createSession')->name('frontend.checkoutpayment');
 });
