@@ -1,7 +1,5 @@
 @extends('frontend.layouts.master')
-
 @section('title', 'Your Cart')
-
 @section('content')
 <main>
     <!-- page title area start -->
@@ -51,6 +49,7 @@
 
 
                                 <tr>
+                                 <input type="text" id="customer_id" value="{{ auth('customer')->user()->id }}" id="">
                                 <form action="{{ route('carts.update',['cart' => $cart->id]) }}" method="POST">
                                         @method('PUT')
                                         @csrf
@@ -103,7 +102,8 @@
                                         <li>Subtotal <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                         <li>Total <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                     </ul>
-                                    <a class="os-btn" href="{{ route('frontend.checkout') }}">Proceed to checkout</a>
+                                    <button class="os-btn" id="checkout-button">Complete Payment</button>
+                                    <a class="os-btn" >Place the order</a>
                                 </div>
                             </div>
                         </div>
@@ -114,4 +114,34 @@
     </section>
     <!-- Cart Area End-->
 </main>
+@endsection
+@section('scripts')
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    var stripe = Stripe('pk_test_AZtCwmVhmnSK1PaQo0RD00rS00JTZJoAsx');
+    $(document).ready(function(){
+        $("#checkout-button").on('click',function(){
+            var customer_id  = $("#customer_id").val();
+            $.ajax({
+                type: 'post',
+                url: "{{ route('frontend.checkout') }}",
+                data: {'customer_id': customer_id},
+                success: function (data) {
+
+                    stripe.redirectToCheckout({ sessionId: data });
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+                });
+
+        });
+    })
+
+    </script>
 @endsection
