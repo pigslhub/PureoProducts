@@ -87,27 +87,31 @@
                                         <li>
                                             <div class="checkout-link">
                                                 <a href="{{ route('carts.index')}}" class="os-btn">View Cart</a>
-
                                             </div>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:void(0);" class="cart"><i class="ion-person"></i> {{ auth('customer')->user()->name }} </a>
                                     <ul class="mini-cart">
-{{--                                        <li class="total-price">--}}
-{{--                                            <a href="{{ route('customer.logout') }}"--}}
-{{--                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
-{{--                                                <i class="ion-person"></i> Logout</a>--}}
-{{--                                        </li>--}}
-{{--                                        <form id="logout-form" action="{{ route('customer.logout') }}" method="POST"--}}
-{{--                                              style="display: none;">--}}
-{{--                                            @csrf--}}
-{{--                                        </form>--}}
+                                        <li>
+                                            <div>
+                                                <a href="#">
+                                                    <i class="ion-person" style="color: black; margin-left: 5px"></i> <span style="color: black"> My Profile</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a href="{{ route('frontend.allOrders') }}">
+                                                    <i class="ion-bag" style="color: black; margin-left: 5px"></i> <span style="color: black"> My Orders</span>
+                                                </a>
+                                            </div>
+                                        </li>
                                         <li>
                                             <div>
                                                 <a href="{{ route('customer.logout') }}"
                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                <i class="ion-power" style="color: black; margin-left: 5px"></i> <span style="color: black"> Logout</span></a>
+                                                    <i class="ion-power" style="color: black; margin-left: 5px"></i> <span style="color: black"> Logout</span></a>
                                                 <form id="logout-form" action="{{ route('customer.logout') }}" method="POST"
                                                       style="display: none;">
                                                     @csrf

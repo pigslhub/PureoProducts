@@ -83,6 +83,12 @@ function _getAllProducts()
     return $products;
 }
 
+function _customerOngoingOrders()
+{
+    $orders = \App\Models\General\Order::where(['customer_id' => auth('customer')->user()->id, 'status' => 'place'])->get();
+    return $orders;
+}
+
 function _getCustomerCart()
 {
     $carts = Cart::where(['customer_id'=> auth('customer')->user()->id, 'purchased' => '0' ])->get();
