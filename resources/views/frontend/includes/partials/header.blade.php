@@ -28,6 +28,14 @@
                                         </li>
                                     @else
                                         <li class="active"><a href="{{ route('frontend.dashboard') }}">Home</a></li>
+                                        <li class="has-dropdown"><a href="">Products</a>
+                                            <ul class="submenu transition-3">
+                                                @forelse( _getAllCategories() as $category )
+                                                    <li><a href="{{ route('frontend.subcategories', $category) }}">{{ $category->name }}</a></li>
+                                                @empty
+                                                @endforelse
+                                            </ul>
+                                        </li>
                                     @endif
                                 </ul>
                             </nav>
