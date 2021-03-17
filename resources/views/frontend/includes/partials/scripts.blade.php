@@ -27,3 +27,4 @@
     @endif
 @endforeach
 </script>
+@yield('scripts')
