@@ -70,7 +70,7 @@
 {{--                                <span class="old-price">$96.00</span>--}}
                             </div>
                             <div class="product__price-2 mb-25">
-                                <span>Available in Stock: ${{ $product->in_stock }}</span>
+                                <span>Available in Stock: {{ $product->in_stock }}</span>
                                 {{--                                <span class="old-price">$96.00</span>--}}
                             </div>
                             <div class="product__modal-des mb-30">
@@ -80,15 +80,15 @@
                                 <form action="{{route('carts.store')}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}" >
+                                    <div class="product__modal-required mb-5">
+                                        <span >Required Fields *</span>
+                                    </div>
                                     <div class="product__modal-input size mb-20">
-                                        <label>Volume <i class="fas fa-star-of-life"></i></label>
-                                        <select>
-                                            <option>- Please select -</option>
+                                        <label for="volumes">Volume <i class="fas fa-star-of-life"></i></label>
+                                        <select name="volumes" required>
+                                            <option value="">- Please select -</option>
                                             <option>{{$product->volumes}}</option>
                                         </select>
-                                    </div>
-                                    <div class="product__modal-required mb-5">
-                                        <span >Repuired Fiields *</span>
                                     </div>
                                     <div class="pro-quan-area d-sm-flex align-items-center">
                                         <div class="product-quantity-title">

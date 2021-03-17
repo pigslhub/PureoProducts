@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Product;
 use App\Models\Driver;
 use App\Models\Customer;
 use App\Models\General\Order;
@@ -50,6 +51,18 @@ function _getAllCategories()
 {
     $categories = Category::get();
     return $categories;
+}
+
+function _getCategoryForHeader()
+{
+    $category = Category::first();
+    return $category;
+}
+
+function _getProductForHeader()
+{
+    $product = Product::first();
+    return $product;
 }
 
 function _getRandomProducts()
