@@ -102,8 +102,17 @@
                                         <li>Subtotal <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                         <li>Total <span>${{ _getCustomerCartTotalAmount() }}</span></li>
                                     </ul>
+                                    @if( Request::get('sc_checkout'))
+                                        @if(Request::get('sc_checkout') == "success")
+                                        <button class="os-btn" type="submit">Place the order</button>
+                                        @else
+                                        <button class="os-btn" id="checkout-button">Complete Payment</button>
+                                        @endif
+                                    @else
                                     <button class="os-btn" id="checkout-button">Complete Payment</button>
-                                    <a class="os-btn" >Place the order</a>
+                                    @endif
+
+
                                 </div>
                             </div>
                         </div>
@@ -132,8 +141,8 @@
                 url: "{{ route('frontend.checkout') }}",
                 data: {'customer_id': customer_id},
                 success: function (data) {
-
-                    stripe.redirectToCheckout({ sessionId: data });
+                   var res =  stripe.redirectToCheckout({ sessionId: data });
+                   console.log(res);
                 },
                 error: function (err) {
                     console.log(err);
