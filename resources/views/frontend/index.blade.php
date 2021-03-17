@@ -17,8 +17,9 @@
                                         <div class="row">
                                             <div class=" d-sm-none d-md-block col-md-7 col-sm-12 col-12">
                                                 <div class="slider__content slider__content-4">
-                                                    <h2 data-animation="fadeInUp" data-delay=".2s"> ARGAN OIL CONDITIONER<br> Hair Solution</h2>
-                                                    <p data-animation="fadeInUp" data-delay=".4s">It is packed with Organicals AHA Complex that improves the penetration of the cationic polymers and other ingredients while giving your hair the botanical benefits it greatly desires. Excellent comb-out and smoothness that are guaranteed with Argan Oil Conditioner with extracts of Apple, Bilberry, Lemon Peel, Orange Peel, and Papaya. </p>
+                                                    <h2 style="margin-top: 50px" data-animation="fadeInUp" data-delay=".2s"> ARGAN OIL CONDITIONER<br></h2>
+                                                    <h4 data-animation="fadeInUp" data-delay=".2s">Hair Solution</h4>
+                                                    <p data-animation="fadeInUp" data-delay=".4s">It is packed with Organicals AHA Complex that improves the penetration of the cationic polymers and other ingredients while giving your hair the botanical benefits it greatly desires.  </p>
                                                     <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s"><i style="font-size: 24px" class="ion-social-apple"></i></a>
                                                     <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s"><i style="font-size: 24px" class="ion-social-android"></i></a>
                                                 </div>
@@ -36,7 +37,8 @@
                                         <div class="row">
                                             <div class="d-sm-none d-md-block col-md-7 col-sm-12 col-12">
                                                 <div class="slider__content slider__content-4">
-                                                    <h2 data-animation="fadeInUp" data-delay=".2s">GROOMING SHAVING CREAM<br> Men's Collection</h2>
+                                                    <h2 style="margin-top: 50px" data-animation="fadeInUp" data-delay=".2s">GROOMING SHAVING CREAM<br></h2>
+                                                    <h4 data-animation="fadeInUp" data-delay=".2s">Men's Collection</h4>
                                                     <p data-animation="fadeInUp" data-delay=".4s">It’s a shaving cream designed to nurture the skin, while still providing a good shave, but a much more comfortable shave, leaving the skin soft, smooth, and protected. </p>
                                                     <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s"><i style="font-size: 24px" class="ion-social-apple"></i></a>
                                                     <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s"><i style="font-size: 24px" class="ion-social-android"></i></a>
@@ -55,7 +57,8 @@
                                         <div class="row">
                                             <div class="d-sm-none d-lg-block col-md-7 col-sm-12 col-12">
                                                 <div class="slider__content slider__content-4">
-                                                    <h2 data-animation="fadeInUp" data-delay=".2s">OXYGENATION PLUS CLEANSER<br> Skincare</h2>
+                                                    <h2 style="margin-top: 50px" data-animation="fadeInUp" data-delay=".2s">OXYGENATION PLUS CLEANSER<br></h2>
+                                                    <h4 data-animation="fadeInUp" data-delay=".2s">Skincare</h4>
                                                     <p data-animation="fadeInUp" data-delay=".4s">This cleanser is a natural face wash that you’ll reach for time and time again. Formulated to address the issues of combination oily skin (T-Zone) and congested skin with the best that nature has to offer.  </p>
                                                     <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s"><i style="font-size: 24px" class="ion-social-apple"></i></a>
                                                     <a href="#" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s"><i style="font-size: 24px" class="ion-social-android"></i></a>
