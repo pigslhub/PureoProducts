@@ -30,10 +30,10 @@ class PaymentController extends Controller
         );
         $session = $stripe->checkout->sessions->create([
             'billing_address_collection' => 'required',
-            // 'success_url' => 'https://ezcare2go.com/login/shop?sc_checkout=success&sc_sid={CHECKOUT_SESSION_ID}',
-            // 'cancel_url' => 'https://ezcare2go.com?sc_checkout=cancel',
-            'success_url' => 'http://127.0.0.1:8000/checkout?sc_checkout=success&sc_sid={CHECKOUT_SESSION_ID}',
-            'cancel_url' => 'http://127.0.0.1:8000/checkout?sc_checkout=cancel',
+            'success_url' => 'https://pureoproducts.pigslhub.com/checkout?sc_checkout=success&sc_sid={CHECKOUT_SESSION_ID}',
+            'cancel_url' => 'https://pureoproducts.pigslhub.com/checkout?sc_checkout=cancel',
+//            'success_url' => 'http://127.0.0.1:8000/checkout?sc_checkout=success&sc_sid={CHECKOUT_SESSION_ID}',
+//            'cancel_url' => 'http://127.0.0.1:8000/checkout?sc_checkout=cancel',
             'payment_method_types' => ['card'],
             'line_items' => $cartForStripe,
             'mode' => 'payment',
