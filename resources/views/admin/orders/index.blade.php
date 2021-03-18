@@ -106,10 +106,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -119,10 +116,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$orders->order_id}}</td>
                                         <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->driver ==null ? '---': $orders->driver->name }}</td>
                                         <td>{{$orders->amount}}</td>
-                                        <td>{{$orders->due_date}}</td>
-                                        <td>{{$orders->due_time}}</td>
                                         <td>
                                             @if($orders->conversation != null)
                                             <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
@@ -130,11 +124,8 @@
                                             <p>N/A</p>
                                             @endif
                                         </td>
-
                                     </tr>
-
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -154,11 +145,8 @@
                                 <tr><th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
-                                </tr>
+                                   </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($cancelOrders as $orders)
@@ -166,14 +154,9 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$orders->order_id}}</td>
                                         <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->driver ==null ? '---': $orders->driver->name }}</td>
                                         <td>{{$orders->amount}}</td>
-                                        <td>{{$orders->due_date}}</td>
-                                        <td>{{$orders->due_time}}</td>
                                     </tr>
-
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
