@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function allOrders()
+    public function allOngoingOrders()
     {
-        return view('frontend.orders.allOrders');
+        return view('frontend.orders.allOngoingOrders');
     }
 
-    public function allOrdersCart(Order $order)
+    public function allOngoingOrderCarts(Order $order)
     {
-        return view('frontend.orders.singleOrder', compact('order'));
+        return view('frontend.orders.singleOngoingOrderCarts', compact('order'));
+    }
+
+    public function allCompletedOrders()
+    {
+        return view('frontend.orders.allCompletedOrders');
+    }
+
+    public function allCompletedOrderCarts(Order $order)
+    {
+        return view('frontend.orders.singleCompletedOrderCarts', compact('order'));
     }
 }

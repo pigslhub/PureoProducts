@@ -9,12 +9,12 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__title-inner text-center">
-                        <h1>Your Orders</h1>
+                        <h1>Your Ongoing Orders</h1>
                         <div class="page__title-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Your Orders</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Ongoing Orders</li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,7 +48,7 @@
                                 <td class="product-price"><span class="amount">{{ $order->customer->name }}</span></td>
                                 <td class="product-quantity"><span class="amount">{{ $order->amount }}</span></td>
                                 <td class="product-subtotal"><span class="amount">{{ $order->status }}</span></td>
-                                <td class="product-subtotal"><a href="{{ route('frontend.allOrdersCart', $order) }}" class="btn os-btn">View</a></td>
+                                <td class="product-subtotal"><a href="{{ route('frontend.allOngoingOrderCarts', $order) }}" class="btn os-btn">View</a></td>
                             </tr>
                             @empty
                                 <tr>

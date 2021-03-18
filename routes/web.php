@@ -22,8 +22,10 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/productDetails/{product}', ['uses' => 'FrontendController@productDetails' , 'as' => 'frontend.productDetails']);
     Route::get('/yourCart/{id}', ['uses' => 'FrontendController@yourCart' , 'as' => 'frontend.yourCart']);
     Route::get('/checkout', ['uses' => 'FrontendController@checkout' , 'as' => 'frontend.checkout']);
-    Route::get('/allOrders', ['uses' => 'OrderController@allOrders' , 'as' => 'frontend.allOrders']);
-    Route::get('/allOrdersCart/{order}', ['uses' => 'OrderController@allOrdersCart' , 'as' => 'frontend.allOrdersCart']);
+    Route::get('/allOngoingOrders', ['uses' => 'OrderController@allOngoingOrders' , 'as' => 'frontend.allOngoingOrders']);
+    Route::get('/allCompletedOrders', ['uses' => 'OrderController@allCompletedOrders' , 'as' => 'frontend.allCompletedOrders']);
+    Route::get('/allOngoingOrderCarts/{order}', ['uses' => 'OrderController@allOngoingOrderCarts' , 'as' => 'frontend.allOngoingOrderCarts']);
+    Route::get('/allCompletedOrderCarts/{order}', ['uses' => 'OrderController@allCompletedOrderCarts' , 'as' => 'frontend.allCompletedOrderCarts']);
     Route::resource('carts','FrontendCartController');
     Route::post('checkoutsession', 'PaymentController@createSession')->name('frontend.checkoutpayment');
 });

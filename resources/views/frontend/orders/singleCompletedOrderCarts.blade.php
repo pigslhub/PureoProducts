@@ -9,12 +9,12 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__title-inner text-center">
-                        <h1>Your Cart</h1>
+                        <h1>Your Completed Orders Cart</h1>
                         <div class="page__title-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Cart</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Completed Carts</li>
                                 </ol>
                             </nav>
                         </div>
@@ -55,7 +55,7 @@
                                         @endif
                                     </a>
                                 </td>
-                                <td class="product-name"><a href="product-details.html">{{ $cart->product->name }}</a></td>
+                                <td class="product-name"><a href="#">{{ $cart->product->name }}</a></td>
                                 <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
                                 <td class="product-quantity"><span class="amount">{{ $cart->qty }}</span></td>
                                 <td class="product-subtotal"><span class="amount">{{ $cart->total }}</span></td>
