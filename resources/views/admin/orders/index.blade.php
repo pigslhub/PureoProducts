@@ -27,10 +27,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -40,10 +37,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$orders->order_id}}</td>
                                         <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->driver ==null ? '---': $orders->driver->name }}</td>
                                         <td>{{$orders->amount}}</td>
-                                        <td>{{$orders->due_date}}</td>
-                                        <td>{{$orders->due_time}}</td>
                                         <td>
                                                 @if($orders->conversation != null)
                                                     <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
@@ -63,7 +57,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Ready Orders</h4>
+                        <h4>Shipped Orders</h4>
                     </div>
                     <div class="card-body">  
                         <div class="table-responsive">
@@ -73,23 +67,17 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($readyOrders as $orders)
+                                @foreach ($shippedOrder as $orders)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$orders->order_id}}</td>
                                         <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->driver ==null ? '---': $orders->driver->name }}</td>
                                         <td>{{$orders->amount}}</td>
-                                        <td>{{$orders->due_date}}</td>
-                                        <td>{{$orders->due_time}}</td>
                                         <td>
                                             @if($orders->conversation != null)
                                             <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>

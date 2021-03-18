@@ -17,11 +17,7 @@ class OrderController extends Controller
 
     public function loadOrderReceipt(Request $request)
     {
-        // <div class='row'>
-        //     <div class='col-md-12'>
-        //     <button class='btn btn-primary btn-block'>Click me to save customer</button>
-        //     </div>
-        // </div>
+
 
         $notAvailableMessage = "---";
         $totalBill =0;
@@ -90,12 +86,11 @@ class OrderController extends Controller
 
     public function loadAllOrders(Request $request)
     {
-        $onGoingOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['place', 'accept'])->get();
-//        dd($onGoingOrders->toArray());
-        $completeOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['complete'])->get();
-        $readyOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['ready'])->get();
-        $cancelOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['cancel'])->get();
-        return view('admin.orders.index', compact('onGoingOrders', 'completeOrders', 'readyOrders', 'cancelOrders'));
+        $onGoingOrders = Order::with('carts','customer')->whereIn('status', ['place'])->get();
+        $completeOrders = Order::with('carts', 'customer')->whereIn('status', ['complete'])->get();
+        $shippedOrder = Order::with('carts', 'customer')->whereIn('status', ['ship'])->get();
+        $cancelOrders = Order::with('carts', 'customer', 'driver', 'conversation')->whereIn('status', ['cancel'])->get();
+        return view('admin.orders.index', compact('onGoingOrders', 'completeOrders', 'shippedOrder', 'cancelOrders'));
     }
 
     public function loadAllOrdersForChart(Request $request)
