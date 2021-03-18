@@ -10,7 +10,7 @@ class Customer extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    protected $fillable = [ 'name', 'email', 'password' ];
+    protected $fillable = [ 'name', '_token', 'address', 'phone', 'email', 'password', 'fcm_token'];
 
 //    public function orders()
 //    {

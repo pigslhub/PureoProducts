@@ -33,6 +33,7 @@ class RegisterController extends Controller
     {
         return view('customer.auth.userRegister');
     }
+
     public function register(Request $request)
     {
         $request->validate([

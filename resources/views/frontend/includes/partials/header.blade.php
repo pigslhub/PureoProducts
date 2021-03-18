@@ -95,15 +95,22 @@
                                     <ul class="mini-cart">
                                         <li>
                                             <div>
-                                                <a href="#">
+                                                <a href="{{ route('customer.updateProfileForm') }}">
                                                     <i class="ion-person" style="color: black; margin-left: 5px"></i> <span style="color: black"> My Profile</span>
                                                 </a>
                                             </div>
                                         </li>
                                         <li>
                                             <div>
-                                                <a href="{{ route('frontend.allOrders') }}">
-                                                    <i class="ion-bag" style="color: black; margin-left: 5px"></i> <span style="color: black"> My Orders</span>
+                                                <a href="{{ route('frontend.allOngoingOrders') }}">
+                                                    <i class="ion-bag" style="color: black; margin-left: 5px"></i> <span style="color: black"> My Ongoing Orders</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <a href="{{ route('frontend.allCompletedOrders') }}">
+                                                    <i class="ion-bag" style="color: black; margin-left: 5px"></i> <span style="color: black"> My Completed Orders</span>
                                                 </a>
                                             </div>
                                         </li>
