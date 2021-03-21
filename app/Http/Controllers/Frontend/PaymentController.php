@@ -11,14 +11,12 @@ class PaymentController extends Controller
 {
     public function createSession(Request $request)
     {
-
-
         $carts = Cart::where(['customer_id'=>$request->customer_id, 'purchased' => '0'])->get();
         $cartForStripe = array();
         foreach ($carts as $cart) {
             $singleCart = array(
                 'name' => $cart->product->name,
-                'images' => ['http://127.0.0.1:8000/storage/'.$cart->product->icon],
+                'images' => ['http://127.0.0.1:8000/storage/'.$cart->product->getIconPath('md')],
                 'amount' => $cart->price * 100,
                 'currency' => 'USD',
                 'quantity' => $cart->qty,

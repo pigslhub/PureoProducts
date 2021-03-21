@@ -61,12 +61,13 @@
                                     <li><span><i class="fal fa-star"></i></span></li>
                                 </ul>
                                 <span class="rating-no ml-10 rating-left">
-                                            3 rating(s)
-                                        </span>
+                                    3 rating(s)
+                                </span>
                                 <span class="review rating-left"><a href="#">Add your Review</a></span>
                             </div>
                             <div class="product__price-2 mb-25">
-                                <span>Price: ${{ $product->price }}</span>
+                                <span>Single Piece: ${{ $product->price }}</span><br>
+                                <span>More than 6 pieces: ${{ $product->wholesalePrice }}</span>
 {{--                                <span class="old-price">$96.00</span>--}}
                             </div>
                             <div class="product__price-2 mb-25">
@@ -96,7 +97,7 @@
                                         </div>
                                         <div class="product-quantity mr-20 mb-20">
                                             <div class="cart-plus-minus">
-                                                <input type="text" value="1" name="qty" />
+                                                <input type="text" max="{{ $product->in_stock }}" value="1" name="qty" />
                                             </div>
                                         </div>
                                         <div class="pro-cart-btn">

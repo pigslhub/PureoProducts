@@ -34,13 +34,24 @@ class FrontendCartController extends Controller
         }else
         {
             $product = Product::where('id', $request->product_id)->first();
-            Cart::create([
-                'product_id' => $request->product_id,
-                'qty' => $request->qty,
-                'customer_id' => auth('customer')->user()->id,
-                'price' => $product->price,
-                'total' => $product->price * $request->qty
-            ]);
+            if ($request->qty < 6) {
+                Cart::create([
+                    'product_id' => $request->product_id,
+                    'qty' => $request->qty,
+                    'customer_id' => auth('customer')->user()->id,
+                    'price' => $product->price,
+                    'total' => $product->price * $request->qty,
+                ]);
+            }
+            else {
+                Cart::create([
+                    'product_id' => $request->product_id,
+                    'qty' => $request->qty,
+                    'customer_id' => auth('customer')->user()->id,
+                    'price' => $product->wholesalePrice,
+                    'total' => $product->wholesalePrice * $request->qty,
+                ]);
+            }
 
             return redirect()->back()->with('success', "Product added to cart successfully");
         }
@@ -59,10 +70,20 @@ class FrontendCartController extends Controller
 
     public function update(Request $request, Cart $cart)
     {
-        $cart->update([
-            "qty" => $request->qty,
-            "total" => $cart->price * $request->qty
-        ]);
+        if ($request->qty < 6) {
+            $cart->update([
+                "price" => $cart->product->price,
+                "qty" => $request->qty,
+                "total" => $cart->product->price * $request->qty
+            ]);
+        }
+        else {
+            $cart->update([
+                "price" => $cart->product->wholesalePrice,
+                "qty" => $request->qty,
+                "total" => $cart->product->wholesalePrice * $request->qty
+            ]);
+        }
 
         return redirect()->back()->with('success',"Cart Updated Successfully");
     }

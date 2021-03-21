@@ -19,6 +19,8 @@ class ProfileController extends Controller
 //        dd($request->toArray());
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
+            'phone' => ['required', 'string', 'max:50'],
+            'address' => ['required', 'string', 'max:50'],
         ]);
 
         $customer = Customer::where('id' , $request->id )->first();
