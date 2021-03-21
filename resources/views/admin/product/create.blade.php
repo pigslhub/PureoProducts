@@ -38,20 +38,24 @@
                         @method('PUT')
                     @else
                         <form action="{{ route('adminProducts.store') }}" method="post" enctype="multipart/form-data">
-
                     @endif
                     @csrf
                         <div class="form-row">
                         <input type="hidden" value="{{ isset($adminProduct) ? $adminProduct->sub_category_id : $sub_category_id}}" name="sub_category_id">
                             <div class="col-md-6">
-                                <label for="product_name" class="col-form-label">{{ __('Product Name') }}</label>
+                                <label for="name" class="col-form-label">{{ __('Product Name') }}</label>
                                 <input type="text" name="name" id="name" class="form-control"
-                                value="{{ isset($adminProduct) ? $adminProduct->name : ''}}">
+                                value="{{ isset($adminProduct) ? $adminProduct->name : ''}}" autofocus>
                             </div>
                             <div class="col-md-6">
-                                <label for="product_name" class="col-form-label">{{ __('Price') }}</label>
+                                <label for="price" class="col-form-label">{{ __('Price') }}</label>
                                 <input type="text" name="price" id="product_name" class="form-control"
                                 value="{{ isset($adminProduct) ? $adminProduct->price : ''}}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="wholesalePrice" class="col-form-label">{{ __('Wholesale Price') }}</label>
+                                <input type="text" name="wholesalePrice" id="product_name" class="form-control"
+                                       value="{{ isset($adminProduct) ? $adminProduct->price : ''}}">
                             </div>
                             <div class="col-md-6">
                                 <label for="product_name" class="col-form-label">{{ __('Description') }}</label>
@@ -114,6 +118,7 @@
                                         <th scope="col">Sub Category</th>
                                         <th scope="col">In Stock</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Wholesale Price</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -127,6 +132,7 @@
                                             <td>{{ $adminProduct->subcategory == null ? "---" : $adminProduct->subcategory->name}}</td>
                                             <td>{{ $adminProduct->in_stock}}</td>
                                             <td>{{ $adminProduct->price}}</td>
+                                            <td>{{ $adminProduct->wholesalePrice}}</td>
                                             <td>
 
                                                 @if(strpos($adminProduct->icon,'100x75'))

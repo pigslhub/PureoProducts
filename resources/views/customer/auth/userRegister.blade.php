@@ -168,6 +168,24 @@
                             </span>
                             @enderror
 
+                            <label for="phone">Phone Number <span>**</span></label>
+                            <input id="phone" type="text" class="@error('phone') is-invalid @enderror" name="phone"
+                                   value="{{ old('phone') }}" required autocomplete="off" autofocus>
+                            @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
+                            <label for="address">Address <span>**</span></label>
+                            <input id="address" type="text" class="@error('address') is-invalid @enderror" name="address"
+                                   value="{{ old('address') }}" required autocomplete="off" autofocus>
+                            @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
                             <label for="email">Email Address <span>**</span></label>
                             <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email"
                                    value="{{ old('email') }}" required autocomplete="off">

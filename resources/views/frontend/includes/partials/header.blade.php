@@ -70,8 +70,12 @@
                                                 </h5>
                                                 <div class="cart-price">
                                                     <span class="ammount">{{ $cart->qty }} <i class="fal fa-times"></i></span>
-                                                    <span class="price">${{ $cart->product->price }}</span><br>
-                                                    <span class="price"><b>Total : ${{ $cart->qty * $cart->product->price }}</b></span>
+                                                    <span class="price">${{ $cart->price }}</span><br>
+                                                    @if($cart->qty < 6)
+                                                        <span class="price"><b>Total : ${{ $cart->qty * $cart->product->price }}</b></span>
+                                                    @else
+                                                        <span class="price"><b>Total : ${{ $cart->qty * $cart->product->wholesalePrice }}</b></span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </li>
