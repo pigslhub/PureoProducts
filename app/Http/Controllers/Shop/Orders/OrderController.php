@@ -20,8 +20,7 @@ class OrderController extends Controller
 
     public function loadOrderReceipt(Request $request)
     {
-
-
+        dd($request);
         $notAvailableMessage = "---";
         $totalBill =0;
         $orderDetail = Order::where('order_id',$request->order_id)->first();

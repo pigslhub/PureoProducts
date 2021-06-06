@@ -1,0 +1,1 @@
+<?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/admin/includes/partials/footervarview.blade.php ENDPATH**/ ?>

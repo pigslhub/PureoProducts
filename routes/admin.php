@@ -16,7 +16,7 @@ Route::group(['prefix' => 'admin' , 'namespace' => 'Admin\Auth'], function () {
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth:admin'], function(){
-    Route::get('/', ['uses' => 'AdminController@index' , 'as' => 'admin.dashboard']);
+    Route::get('/', ['uses' => 'AdminController@index' , 'as' => 'admin.dashboardPos']);
     Route::post('/loadStats', ['uses' => 'AdminController@loadStats' , 'as' => 'admin.loadStats']);
     //Route Profile
     Route::get('profile', 'ProfileController@index')->name('admin.profile');
@@ -63,6 +63,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
     Route::group(['namespace' => 'Order'], function(){
         Route::post('/loadOrderReceipt' , ['uses' => 'OrderController@loadOrderReceipt'])->name('orders.loadOrderReceipt');
+        Route::post('/loadOrderReceiptOnStartup' , ['uses' => 'OrderController@loadOrderReceiptOnStartup'])->name('orders.loadOrderReceiptOnStartup');
+        Route::post('/completeOrderOnPrint' , ['uses' => 'OrderController@completeOrderOnPrint'])->name('orders.completeOrderOnPrint');
         Route::get('/loadAllOrders' ,'OrderController@loadAllOrders')->name('orders.loadAllOrders');
         Route::post('/loadAllOrdersForChart' ,'OrderController@loadAllOrdersForChart')->name('orders.loadAllOrdersForChart');
         Route::post('/loadMonthlyOrdersForChart' ,'OrderController@loadMonthlyOrdersForChart')->name('orders.loadMonthlyOrdersForChart');

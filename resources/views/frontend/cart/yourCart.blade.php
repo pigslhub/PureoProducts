@@ -48,13 +48,11 @@
                                      <input type="hidden" id="customer_id" value="{{ auth('customer')->user()->id }}" id="">
 
                                 @forelse($carts as $cart)
-
-
                                 <tr>
                                 <form action="{{ route('carts.update',['cart' => $cart->id]) }}" method="POST">
                                         @method('PUT')
                                         @csrf
-                                    <td class="product-thumbnail"><a href="product-details.html">
+                                    <td class="product-thumbnail"><a href="#">
                                                 @if(strpos($cart->product->icon,'100x75'))
                                                     <img src="{{ $cart->product->getIconPath('md') }}" style="width:150px;height: 120px;" alt="product-img">
                                                 @elseif(strpos($cart->product->icon,'50x75'))
@@ -64,8 +62,8 @@
                                                 @endif
                                         </a>
                                     </td>
-                                    <td class="product-name"><a href="product-details.html">{{ $cart->product->name }}</a></td>
-                                    <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
+                                    <td class="product-name"><a href="#">{{ $cart->product->name }}</a></td>
+                                    <td class="product-price"><span class="amount">{{ $cart->price }}</span></td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus"><input type="text" name="qty" value={{ $cart->qty }} /></div>
                                     </td>
@@ -81,7 +79,6 @@
                                                 <i class="fa fa-times"></i>
                                             </button>
                                             @include('includes.modals.confirm', ['model' => 'cart', 'route' => route('carts.destroy', ['cart' => $cart->id]), 'form' => true])
-
                                     </td>
                                 </tr>
 

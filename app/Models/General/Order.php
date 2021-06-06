@@ -11,18 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['order_id', 'customer_id', 'amount', 'status', 'purchased', 'checkout_session','firstname','lastname','address1','address2','city','state','country','zipcode','postalcode','phone' ];
+    protected $fillable = ['amount', 'status', 'purchased'];
 
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
-    }
     public function carts()
     {
         return $this->hasMany(Cart::class);
-    }
-    public function conversation()
-    {
-        return $this->hasOne(Conversation::class);
     }
 }

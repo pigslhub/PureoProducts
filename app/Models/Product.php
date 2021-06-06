@@ -9,7 +9,7 @@ use Intervention\Image\Facades\Image;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'icon', 'sub_category_id', 'price', 'description', 'volumes', 'in_stock',
+    protected $fillable = ['name', 'icon', 'sub_category_id', 'price', 'wholesalePrice', 'description', 'volumes', 'in_stock',
     'instruction', 'ingredients'];
 
     public function sub_category()

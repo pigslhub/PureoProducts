@@ -18,7 +18,7 @@ class DriversTableSeeder extends Seeder
                 'zip_code' => '52250',
                 'dob' => '12-12-1996',
                 'status' => 1,
-                'api_token' => '',
+//                'api_token' => '',
                 'avatar' => '',
                 'rating' => '5',
             ),

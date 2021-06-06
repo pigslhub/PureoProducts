@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Product;
 
 use App\Models\Category;
+use App\Models\General\Cart;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,7 @@ use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
+
     public function index()
     {
         return view('admin.product.index');
