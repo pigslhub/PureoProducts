@@ -12,7 +12,7 @@
             <p>{{auth('admin')->user()->zip_code}}</p>
         </div>
         <ul class="sidebar-menu">
-            <li><a class="sidebar-header" href="{{route('admin.dashboard')}}"><i data-feather="grid"></i><span>Dashboard</span></a></li>
+            <li><a class="sidebar-header" href="{{route('admin.dashboardPos')}}"><i data-feather="grid"></i><span>Dashboard</span></a></li>
             <li><a class="sidebar-header" href="{{route('adminCategories.index')}}"><i
                         data-feather="bar-chart-2"></i><span>Categories</span></a></li>
             <li><a class="sidebar-header" href="{{route('adminSubCategories.index')}}"><i data-feather="server"></i><span>Sub Categories</span></a>

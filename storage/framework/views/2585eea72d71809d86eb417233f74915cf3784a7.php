@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views/admin/includes/partials/footervarview.blade.php ENDPATH**/ ?>

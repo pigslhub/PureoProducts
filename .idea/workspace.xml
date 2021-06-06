@@ -54,7 +54,6 @@
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
-      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
@@ -117,6 +116,7 @@
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pT846Z1u3rzhWWnxGU9Bk6dBK3" />
@@ -128,20 +128,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/customer/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\customer\auth" />
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\orders" />
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\products" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\includes\partials" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\customer\auth" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\orders" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -180,6 +181,11 @@
       <workItem from="1615965646510" duration="19577000" />
       <workItem from="1616060999665" duration="13783000" />
       <workItem from="1616350419578" duration="8792000" />
+      <workItem from="1622579332804" duration="1100000" />
+      <workItem from="1622617700706" duration="146000" />
+      <workItem from="1622636201877" duration="8620000" />
+      <workItem from="1622890364080" duration="13964000" />
+      <workItem from="1622976281357" duration="19331000" />
     </task>
     <servers />
   </component>
@@ -195,10 +201,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1616068138020" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616068336056">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622892364065">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616068336056" />
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1622892364065" />
     <state x="369" y="85" width="758" height="558" key="find.popup" timestamp="1615889360829">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
