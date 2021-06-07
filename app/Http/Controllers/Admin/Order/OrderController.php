@@ -17,16 +17,29 @@ class OrderController extends Controller
     public function loadOrderReceipt(Request $request)
     {
         $product = Product::where('id', $request->product_id)->first();
-        $cart = Cart::create([
-            "product_id" => $product->id,
-            "qty" => $request->quantity,
-            "price" => $product->price,
-            "total" => $product->price * $request->quantity,
-        ]);
+        $productInCart = Cart::where(['product_id'=> $request->product_id,'purchased' => '0'])->first();
+
+        if ($productInCart != null) {
+
+            $productInCart->update([
+                    "qty" => $productInCart->qty + $request->quantity,
+                    "total" => $productInCart->total + $product->price * $request->quantity
+                ]);
+
+            } else {
+                $cart = Cart::create([
+                    "product_id" => $product->id,
+                    "qty" => $request->quantity,
+                    "price" => $product->price,
+                    "total" => $product->price * $request->quantity,
+                ]);
+
+
+            }
 
 
 //        $notAvailableMessage = "---";
-        $totalBill =0;
+        $totalBill = 0;
 //        $orderDetail = Order::where('id',$request->order_id)->first();
 //
         $carts = Cart::where('purchased', '0')->get();
@@ -49,27 +62,25 @@ class OrderController extends Controller
                                     ";
 
 
-                                    foreach($carts as $cart)
-                                    {
-                                        $totalBill +=$cart->total;
-                                       $htmlForReceiptToLoad = $htmlForReceiptToLoad."<tr class='qtystyle'>
-                                        <td>".$cart->product->name."</td>
-                                        <td>".$cart->qty."</td>
-                                        <td>".$cart->price."</td>
-                                        <td>".$cart->price * $cart->qty."</td>
+        foreach ($carts as $cart) {
+            $totalBill += $cart->total;
+            $htmlForReceiptToLoad = $htmlForReceiptToLoad . "<tr class='qtystyle'>
+                                        <td>" . $cart->product->name . "</td>
+                                        <td>" . $cart->qty . "</td>
+                                        <td>" . $cart->price . "</td>
+                                        <td>" . $cart->price * $cart->qty . "</td>
                                        </tr>";
 
-                                    }
+        }
 
-                                $htmlForReceiptToLoad = $htmlForReceiptToLoad."
+        $htmlForReceiptToLoad = $htmlForReceiptToLoad . "
                                         </tbody>
-
                                 <tfoot>
                                         <tr>
                                             <td></td>
                                             <td></td>
                                             <td class='foot foot1' >Total Bill</td>
-                                            <td class='foot' >".$totalBill."</td>
+                                            <td class='foot' >" . $totalBill . "</td>
                                         </tr>
                                 </tfoot>
 
@@ -85,7 +96,7 @@ class OrderController extends Controller
 
     public function loadOrderReceiptOnStartup(Request $request)
     {
-        $totalBill =0;
+        $totalBill = 0;
 //        $orderDetail = Order::where('id',$request->order_id)->first();
 //
         $carts = Cart::where('purchased', '0')->get();
@@ -108,35 +119,28 @@ class OrderController extends Controller
                                     ";
 
 
-        foreach($carts as $cart)
-        {
-            $totalBill +=$cart->total;
-            $htmlForReceiptToLoad = $htmlForReceiptToLoad."<tr class='qtystyle'>
-                                        <td>".$cart->product->name."</td>
-                                        <td>".$cart->qty."</td>
-                                        <td>".$cart->price."</td>
-                                        <td>".$cart->price * $cart->qty."</td>
+        foreach ($carts as $cart) {
+            $totalBill += $cart->total;
+            $htmlForReceiptToLoad = $htmlForReceiptToLoad . "<tr class='qtystyle'>
+                                        <td>" . $cart->product->name . "</td>
+                                        <td>" . $cart->qty . "</td>
+                                        <td>" . $cart->price . "</td>
+                                        <td>" . $cart->price * $cart->qty . "</td>
                                        </tr>";
-
         }
 
-        $htmlForReceiptToLoad = $htmlForReceiptToLoad."
-                                        </tbody>
-
+        $htmlForReceiptToLoad = $htmlForReceiptToLoad . "
+                            </tbody>
                                 <tfoot>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td class='foot foot1' >Total Bill</td>
-                                            <td class='foot' >".$totalBill."</td>
-                                        </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class='foot foot1' >Total Bill</td>
+                                        <td class='foot' >" . $totalBill . "</td>
+                                    </tr>
                                 </tfoot>
-
-
-                                </table>
-
-
-                                ";
+                        </table>
+                    ";
 
 
         return $htmlForReceiptToLoad;
@@ -146,13 +150,16 @@ class OrderController extends Controller
     {
         $carts = Cart::where('purchased', '0')->get();
         $totalBill = 0;
-        foreach($carts as $cart)
-        {
-            $totalBill +=$cart->total;
+        foreach ($carts as $cart) {
+            $totalBill += $cart->total;
+            $product = Product::where('id', $cart->product_id)->first();
+            $product->update([
+                'in_stock' => $product->in_stock - $cart->qty
+            ]);
         }
 
         $order = Order::create([
-           "amount" => $totalBill,
+            "amount" => $totalBill,
             "purchased" => '1',
         ]);
 
@@ -160,11 +167,13 @@ class OrderController extends Controller
             "purchased" => "1",
             "order_id" => $order->id,
         ]);
+
+        return 1;
     }
 
     public function loadAllOrders(Request $request)
     {
-        $onGoingOrders = Order::with('carts','customer')->whereIn('status', ['place'])->get();
+        $onGoingOrders = Order::with('carts', 'customer')->whereIn('status', ['place'])->get();
         $completeOrders = Order::with('carts', 'customer')->whereIn('status', ['complete'])->get();
         $shippedOrder = Order::with('carts', 'customer')->whereIn('status', ['ship'])->get();
         $cancelOrders = Order::with('carts', 'customer', 'driver', 'conversation')->whereIn('status', ['cancel'])->get();
@@ -238,7 +247,7 @@ class OrderController extends Controller
 
     public function onGoingToReady(Order $order)
     {
-        if($order->id){
+        if ($order->id) {
             $order->update([
                 'status' => 'ready',
             ]);
@@ -248,7 +257,7 @@ class OrderController extends Controller
 
     public function onGoingToCancel(Order $order)
     {
-        if($order->id){
+        if ($order->id) {
             $order->update([
                 'status' => 'cancel',
             ]);
@@ -258,7 +267,7 @@ class OrderController extends Controller
 
     public function readyToComplete(Order $order)
     {
-        if($order->id){
+        if ($order->id) {
             $order->update([
                 'status' => 'complete',
             ]);
