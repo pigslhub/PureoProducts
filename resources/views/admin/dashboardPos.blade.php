@@ -48,16 +48,31 @@
                                             <td>{{$product->sub_category->name}}</td>
                                             <td>{{$product->name}}</td>
                                             <td>{{$product->price}}</td>
-                                            <input type="hidden" name="in_stock" value="{{ $product->in_stock }}">
-                                            <td id="stock">{{ $product->in_stock }}</td>
-                                            <td class="quan">
-                                                <input type="text" name="qty" class="form-control qty" id="qty"
-                                                       placeholder="add qty">
+                                            @if($product->in_stock <= 0)
+                                                <td>
+                                                    <span class="badge badge-danger m-2">Out of stock</span>
+                                                </td>
+                                            @else
+                                                <td id="stock">{{ $product->in_stock }}</td>
+                                            @endif
+                                            <td>
+                                                @if($product->in_stock <= 0)
+                                                    <input type="text" name="qty" readonly class="form-control qty" id="qty"
+                                                           placeholder="add qty">
+                                                @else
+                                                    <input type="text" name="qty" class="form-control qty" id="qty"
+                                                           placeholder="add qty">
+                                                @endif
                                             </td>
                                             <td>
-                                                <button value="{{$product->id}}" title="Add to Cart"
-                                                        class="btn-print btn btn-sm btn-success"><i
-                                                        class="fa fa-shopping-cart"></i></button>
+                                                @if($product->in_stock <= 0)
+                                                    <button class="btn btn-sm btn-success disabled"><i
+                                                            class="fa fa-shopping-cart"></i></button>
+                                                @else
+                                                    <button value="{{$product->id}}" title="Add to Cart"
+                                                            class="btn-print btn btn-sm btn-success"><i
+                                                            class="fa fa-shopping-cart"></i></button>
+                                                @endif
                                             </td>
                                         </tr>
                                     </form>
@@ -65,21 +80,6 @@
 
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-8 products d-none">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Select Category</h4>
-                        {{--            @foreach (_getAllCategoriesForShopTypeId() as $category)--}}
-                        {{--                <button class="btn btn-large btn-category btn-success m-2" value="{{$category->id}}">{{$category->category_name}}</button>--}}
-                        {{--            @endforeach--}}
-
-                        <div class="row category-container">
-
                         </div>
                     </div>
                 </div>
@@ -96,6 +96,7 @@
                             </div>
                         </div>
                         <hr class="hr1">
+                            <h1 style="text-align: center">Insaf Gift Center</h1>
                         <div class="table-responsive posReceipt">
                         </div>
                     </div>
@@ -157,7 +158,7 @@
                     success: function (data) {
                         console.log(data);
                         $('.posReceipt').html(data);
-                        $('.btn-print-receipt').removeClass('d-none');
+                        // $('.btn-print-receipt').removeClass('d-none');
                     },
                     error: function (err) {
                         alert("error");
@@ -173,8 +174,7 @@
                     url: "{{route('orders.completeOrderOnPrint')}}",
                     method: "POST",
                     success: function (data) {
-                        $('.posReceipt').html(data);
-                        $('.btn-print-receipt').removeClass('d-none');
+                        location.reload()
                     },
                     error: function (err) {
                         alert("error");
@@ -192,21 +192,13 @@
             $('.btn-print').click(function () {
                 let id = $(this).val();
 
-                let stock = $(this).closest('tr').children('#stock').text();
+                let stock = Number($(this).closest('tr').find('#stock').text());
+                let quantity = Number($(this).closest('tr').find('.qty').val());
+                // alert(quantity);
 
-                // let in_stock = "";
-                // $('input[name="in_stock"]').each(function(){
-                //     in_stock += $(this).val() + "\n";
-                // });
-
-                let quantity = "";
-                $('input[name="qty"]').each(function(){
-                    quantity += $(this).val() + "\n";
-                });
-
-                if(stock < quantity){
-                    // alert("Please select within stock range" + " " + stock + " " + quantity);
-                    alert("Please select within stock range");
+                if (stock < quantity) {
+                    alert(`You have ${stock} items in your stock.`);
+                    // alert("Please select within stock range");
                     $('.qty').val('');
                 } else {
                     // alert("okay" + " " + stock + " " + quantity);
@@ -219,7 +211,7 @@
             // Print div code
 
             function printDiv(elementId) {
-
+                completeOrderOnPrint();
                 var divToPrint = document.getElementById(elementId);
 
                 var newWin = window.open('', 'Print-Window');

@@ -23,10 +23,10 @@
             </li> -->
             <li><a class="sidebar-header" href="{{route('orders.loadAllOrders')}}"><i data-feather="package"></i><span>Order</span></a>
             </li>
-            <li><a class="sidebar-header" href="{{route('adminAdmins.index')}}"><i data-feather="user-plus"></i><span>Admins Management</span></a>
-            </li>
-            <li><a class="sidebar-header" href="{{route('adminCustomers.index')}}"><i data-feather="users"></i><span>Customers Management</span></a>
-            </li>
+{{--            <li><a class="sidebar-header" href="{{route('adminAdmins.index')}}"><i data-feather="user-plus"></i><span>Admins Management</span></a>--}}
+{{--            </li>--}}
+{{--            <li><a class="sidebar-header" href="{{route('adminCustomers.index')}}"><i data-feather="users"></i><span>Customers Management</span></a>--}}
+{{--            </li>--}}
         </ul>
     </div>
 </div>
