@@ -25,10 +25,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -38,10 +35,7 @@
                                         <td><?php echo e($loop->iteration); ?></td>
                                         <td><?php echo e($orders->order_id); ?></td>
                                         <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->driver ==null ? '---': $orders->driver->name); ?></td>
                                         <td><?php echo e($orders->amount); ?></td>
-                                        <td><?php echo e($orders->due_date); ?></td>
-                                        <td><?php echo e($orders->due_time); ?></td>
                                         <td>
                                                 <?php if($orders->conversation != null): ?>
                                                     <a href="<?php echo e(route('orders.showAllChats', ['conversation' => $orders->conversation->id])); ?>" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
@@ -61,7 +55,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Ready Orders</h4>
+                        <h4>Shipped Orders</h4>
                     </div>
                     <div class="card-body">  
                         <div class="table-responsive">
@@ -71,23 +65,17 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $__currentLoopData = $readyOrders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $shippedOrder; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td><?php echo e($loop->iteration); ?></td>
                                         <td><?php echo e($orders->order_id); ?></td>
                                         <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->driver ==null ? '---': $orders->driver->name); ?></td>
                                         <td><?php echo e($orders->amount); ?></td>
-                                        <td><?php echo e($orders->due_date); ?></td>
-                                        <td><?php echo e($orders->due_time); ?></td>
                                         <td>
                                             <?php if($orders->conversation != null): ?>
                                             <a href="<?php echo e(route('orders.showAllChats', ['conversation' => $orders->conversation->id])); ?>" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
@@ -116,10 +104,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -129,10 +114,7 @@
                                         <td><?php echo e($loop->iteration); ?></td>
                                         <td><?php echo e($orders->order_id); ?></td>
                                         <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->driver ==null ? '---': $orders->driver->name); ?></td>
                                         <td><?php echo e($orders->amount); ?></td>
-                                        <td><?php echo e($orders->due_date); ?></td>
-                                        <td><?php echo e($orders->due_time); ?></td>
                                         <td>
                                             <?php if($orders->conversation != null): ?>
                                             <a href="<?php echo e(route('orders.showAllChats', ['conversation' => $orders->conversation->id])); ?>" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
@@ -140,11 +122,8 @@
                                             <p>N/A</p>
                                             <?php endif; ?>
                                         </td>
-
                                     </tr>
-
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                 </tbody>
                             </table>
                         </div>
@@ -164,11 +143,8 @@
                                 <tr><th scope="col">ID</th>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Customer Name</th>
-                                    <th scope="col">Driver Name</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">Due Time</th>
-                                </tr>
+                                   </tr>
                                 </thead>
                                 <tbody>
                                 <?php $__currentLoopData = $cancelOrders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -176,14 +152,9 @@
                                         <td><?php echo e($loop->iteration); ?></td>
                                         <td><?php echo e($orders->order_id); ?></td>
                                         <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->driver ==null ? '---': $orders->driver->name); ?></td>
                                         <td><?php echo e($orders->amount); ?></td>
-                                        <td><?php echo e($orders->due_date); ?></td>
-                                        <td><?php echo e($orders->due_time); ?></td>
                                     </tr>
-
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                 </tbody>
                             </table>
                         </div>
