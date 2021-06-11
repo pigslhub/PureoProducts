@@ -12,7 +12,7 @@
             <p><?php echo e(auth('admin')->user()->zip_code); ?></p>
         </div>
         <ul class="sidebar-menu">
-            <li><a class="sidebar-header" href="<?php echo e(route('admin.dashboard')); ?>"><i data-feather="grid"></i><span>Dashboard</span></a></li>
+            <li><a class="sidebar-header" href="<?php echo e(route('admin.dashboardPos')); ?>"><i data-feather="grid"></i><span>Dashboard</span></a></li>
             <li><a class="sidebar-header" href="<?php echo e(route('adminCategories.index')); ?>"><i
                         data-feather="bar-chart-2"></i><span>Categories</span></a></li>
             <li><a class="sidebar-header" href="<?php echo e(route('adminSubCategories.index')); ?>"><i data-feather="server"></i><span>Sub Categories</span></a>
@@ -23,10 +23,10 @@
             </li> -->
             <li><a class="sidebar-header" href="<?php echo e(route('orders.loadAllOrders')); ?>"><i data-feather="package"></i><span>Order</span></a>
             </li>
-            <li><a class="sidebar-header" href="<?php echo e(route('adminAdmins.index')); ?>"><i data-feather="user-plus"></i><span>Admins Management</span></a>
-            </li>
-            <li><a class="sidebar-header" href="<?php echo e(route('adminCustomers.index')); ?>"><i data-feather="users"></i><span>Customers Management</span></a>
-            </li>
+
+
+
+
         </ul>
     </div>
 </div>
