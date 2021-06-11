@@ -176,9 +176,12 @@
 #43 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\server.php(21): require_once('C:\\\\Users\\\\shiza\\\\...')
 #44 {main}
 "} 
-[2021-06-11 15:09:23] local.ERROR: Undefined variable: cartProducts (View: C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning\viewEarning.blade.php) {"userId":30000001,"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Undefined variable: cartProducts (View: C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views\\admin\\earning\\viewEarning.blade.php) at C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views/admin/earning/viewEarning.blade.php:61)
+[2021-06-11 15:09:23] local.ERROR: Undefined variable: cartProducts (View: C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning\viewEarning.blade.php) {"userId":30000001,"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Undefined variable: cartProducts (View: C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views\\admin\\earning\\viewEarning.blade.php) at C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views/admin/earning/viewEarning.blade.php:61)
 [stacktrace]
-#0 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views/admin/earning/viewEarning.blade.php(61): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined varia...', 'C:\\\\Users\\\\shiza\\\\...', 59, Array)
+#0 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views/admin/earning/viewEarning.blade.php(61): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined varia...', 'C:\\\\Users\\\\shiza\\\\...', 59, Array)
 #1 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(43): include('C:\\\\Users\\\\shiza\\\\...')
 #2 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\shiza\\\\...', Array)
 #3 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\facade\\ignition\\src\\Views\\Engines\\CompilerEngine.php(36): Illuminate\\View\\Engines\\CompilerEngine->get('C:\\\\Users\\\\shiza\\\\...', Array)
@@ -282,7 +285,9 @@
 #48 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\server.php(21): require_once('C:\\\\Users\\\\shiza\\\\...')
 #49 {main}
 "} 
-[2021-06-11 15:10:04] local.ERROR: Call to a member function count() on float (View: C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning\viewEarning.blade.php) {"userId":30000001,"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Call to a member function count() on float (View: C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views\\admin\\earning\\viewEarning.blade.php) at C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views/admin/earning/viewEarning.blade.php:58)
+[2021-06-11 15:10:04] local.ERROR: Call to a member function count() on float (View: C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning\viewEarning.blade.php) {"userId":30000001,"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Call to a member function count() on float (View: C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views\\admin\\earning\\viewEarning.blade.php) at C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views/admin/earning/viewEarning.blade.php:58)
 [stacktrace]
 #0 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(43): include()
 #1 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\shiza\\\\...', Array)
@@ -386,7 +391,9 @@
 #47 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\server.php(21): require_once('C:\\\\Users\\\\shiza\\\\...')
 #48 {main}
 "} 
-[2021-06-11 15:10:32] local.ERROR: Call to undefined function Number() (View: C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning\viewEarning.blade.php) {"userId":30000001,"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Call to undefined function Number() (View: C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views\\admin\\earning\\viewEarning.blade.php) at C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\esources\\views/admin/earning/viewEarning.blade.php:58)
+[2021-06-11 15:10:32] local.ERROR: Call to undefined function Number() (View: C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning\viewEarning.blade.php) {"userId":30000001,"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Call to undefined function Number() (View: C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views\\admin\\earning\\viewEarning.blade.php) at C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\
+esources\\views/admin/earning/viewEarning.blade.php:58)
 [stacktrace]
 #0 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(43): include()
 #1 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\Users\\\\shiza\\\\...', Array)
@@ -845,7 +852,7 @@
 #41 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #42 C:\\Users\\shiza\\Desktop\\SirImran\\PureoProducts\\server.php(21): require_once('C:\\\\Users\\\\shiza\\\\...')
 #43 {main}
-"} 
+"}
 [2021-06-11 19:48:50] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'purchase_price' in 'field list' (SQL: update `products` set `purchase_price` = 1300, `selling_price` = 1500, `wholesalePrice` = 1200, `min_price` = 1400, `product_code` = p1, `products`.`updated_at` = 2021-06-11 19:48:50 where `id` = 1) {"userId":30000001,"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'purchase_price' in 'field list' (SQL: update `products` set `purchase_price` = 1300, `selling_price` = 1500, `wholesalePrice` = 1200, `min_price` = 1400, `product_code` = p1, `products`.`updated_at` = 2021-06-11 19:48:50 where `id` = 1) at /Volumes/MyFiles/Projects/PureoProducts/vendor/laravel/framework/src/Illuminate/Database/Connection.php:669)
 [stacktrace]
 #0 /Volumes/MyFiles/Projects/PureoProducts/vendor/laravel/framework/src/Illuminate/Database/Connection.php(629): Illuminate\\Database\\Connection->runQueryCallback('update `product...', Array, Object(Closure))
