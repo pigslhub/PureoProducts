@@ -11,7 +11,15 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::get();
-        return view('admin.newproduct.index', compact('products'));
+
+        $productsCount = Product::get()->count();
+
+        $totalPurchase = 0;
+
+        foreach ($products as $product){
+            $totalPurchase += $product->purchase_price;
+        }
+        return view('admin.newproduct.index', compact('products', 'productsCount'));
     }
 
     public function create()

@@ -9,6 +9,30 @@
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-6 col-xl-6 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i class="fa fa-cubes" style="font-size: 30px"></i></div>
+                            <div class="media-body"><span class="m-0">Total Products</span>
+                                <h4 class="mb-0 counter"><?php echo e($productsCount); ?></h4><i class="icon-bg" data-feather="package"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i class="fa fa-money" style="font-size: 30px"></i></div>
+                            <div class="media-body"><span class="m-0">Total Purchase</span>
+                                <h4 class="mb-0 counter"><?php echo e(20); ?></h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
@@ -67,4 +91,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views/admin/newproduct/viewEarning.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views/admin/newproduct/index.blade.php ENDPATH**/ ?>
