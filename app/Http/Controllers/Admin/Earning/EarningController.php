@@ -15,13 +15,12 @@ class EarningController extends Controller
         $totalEarning = 0;
         $purchasePrice = 0;
         foreach($orders as $order) {
+            $profit = 0;
             $totalEarning += $order->amount - $order->discount;
-
-            foreach ($order->carts as $cart) {
-                $purchasePrice += $cart->product->purchase_price;
-                $profit = $order->amount - $purchasePrice;
-                $purchasePrice = 0;
-            }
+//            foreach($order->carts as $cart) {
+//                $purchasePrice += $cart->product->purchase_price;
+//                $profit = $order->amount - $purchasePrice;
+//            }
         }
 
         return view('admin.earning.viewEarning', compact('totalEarning', 'orders', 'purchasePrice'));
