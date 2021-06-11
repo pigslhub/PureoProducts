@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Ongoing Orders</h4>
+                        <h4>All Orders</h4>
                     </div>
                     <div class="card-body">  
                         <div class="table-responsive">
@@ -23,136 +23,43 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Product Item</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $__currentLoopData = $onGoingOrders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <td><?php echo e($loop->iteration); ?></td>
-                                        <td><?php echo e($orders->order_id); ?></td>
-                                        <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->amount); ?></td>
-                                        <td>
-                                                <?php if($orders->conversation != null): ?>
-                                                    <a href="<?php echo e(route('orders.showAllChats', ['conversation' => $orders->conversation->id])); ?>" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
-                                                <?php endif; ?>
-                                                <a href="<?php echo e(route('orders.onGoingToReady', ['order' => $orders->id])); ?>" title="Mark Order As Ready" class="btn btn-xs btn-info"><i class="fa fa-spinner"></i></a>
-                                                    <a href="<?php echo e(route('orders.onGoingToCancel', ['order' => $orders->id])); ?>" title="Cancel Order" class="btn btn-xs btn-danger"><i class="fa fa-times-circle"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    <th scope="col">Discount</th>
+                                    <th scope="col">Net Bill</th>
+                                    <th scope="col">Status</th>
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Shipped Orders</h4>
-                    </div>
-                    <div class="card-body">  
-                        <div class="table-responsive">
-                            <table class="display" id="basic-2">
-                                <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $__currentLoopData = $shippedOrder; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td><?php echo e($loop->iteration); ?></td>
-                                        <td><?php echo e($orders->order_id); ?></td>
-                                        <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->amount); ?></td>
                                         <td>
-                                            <?php if($orders->conversation != null): ?>
-                                            <a href="<?php echo e(route('orders.showAllChats', ['conversation' => $orders->conversation->id])); ?>" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
-                                            <?php endif; ?>
-                                            <a href="<?php echo e(route('orders.readyToComplete', ['order' => $orders->id])); ?>" title="Mark Order As Complete" class="btn btn-xs btn-info"><i class="fa fa-check-circle"></i></a>
-                                        </td>
-                                    </tr>
-                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Completed Orders</h4>
-                    </div>
-                    <div class="card-body">  
-                        <div class="table-responsive">
-                            <table class="display" id="basic-3">
-                                <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $__currentLoopData = $completeOrders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <td><?php echo e($loop->iteration); ?></td>
-                                        <td><?php echo e($orders->order_id); ?></td>
-                                        <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->amount); ?></td>
-                                        <td>
-                                            <?php if($orders->conversation != null): ?>
-                                            <a href="<?php echo e(route('orders.showAllChats', ['conversation' => $orders->conversation->id])); ?>" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
+                                        <?php $__currentLoopData = $order->carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($cart->product != '' || $cart->product != null): ?>
+                                                <li><span class="badge badge-secondary"><?php echo e($cart->product->name); ?><span class="badge badge-danger ml-1"><?php echo e($cart->qty); ?></span></span></li>
                                             <?php else: ?>
-                                            <p>N/A</p>
+                                                N/A
                                             <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
-                                    </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                        <td><p class="badge badge-secondary p-2"><?php echo e($order->amount); ?></p></td>
+                                        <td><p class="badge badge-secondary p-2"><?php echo e($order->discount); ?></p></td>
+                                        <td><p class="badge badge-secondary p-2"><?php echo e($order->amount - $order->discount); ?></p></td>
+                                        <?php if($order->status == 1): ?>
+                                            <td><span class="badge badge-success p-2">Completed</span></td>
+                                        <?php else: ?>
+                                            <td><span class="badge badge-danger p-2">Pending</span></td>
+                                        <?php endif; ?>
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Cancelled Orders</h4>
-                    </div>
-                    <div class="card-body">  
-                        <div class="table-responsive">
-                            <table class="display" id="basic-4">
-                                <thead>
-                                <tr><th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Amount</th>
-                                   </tr>
-                                </thead>
-                                <tbody>
-                                <?php $__currentLoopData = $cancelOrders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <td><?php echo e($loop->iteration); ?></td>
-                                        <td><?php echo e($orders->order_id); ?></td>
-                                        <td><?php echo e($orders->customer ==null ? '---': $orders->customer->name); ?></td>
-                                        <td><?php echo e($orders->amount); ?></td>
+
+
+
+
+
+
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>

@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Ongoing Orders</h4>
+                        <h4>All Orders</h4>
                     </div>
                     <div class="card-body">  
                         <div class="table-responsive">
@@ -25,136 +25,43 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Product Item</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Discount</th>
+                                    <th scope="col">Net Bill</th>
+                                    <th scope="col">Status</th>
+{{--                                    <th scope="col">Action</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($onGoingOrders as $orders)
+                                @foreach ($orders as $order)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$orders->order_id}}</td>
-                                        <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->amount}}</td>
                                         <td>
-                                                @if($orders->conversation != null)
-                                                    <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
-                                                @endif
-                                                <a href="{{route('orders.onGoingToReady', ['order' => $orders->id])}}" title="Mark Order As Ready" class="btn btn-xs btn-info"><i class="fa fa-spinner"></i></a>
-                                                    <a href="{{route('orders.onGoingToCancel', ['order' => $orders->id])}}" title="Cancel Order" class="btn btn-xs btn-danger"><i class="fa fa-times-circle"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Shipped Orders</h4>
-                    </div>
-                    <div class="card-body">  
-                        <div class="table-responsive">
-                            <table class="display" id="basic-2">
-                                <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($shippedOrder as $orders)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$orders->order_id}}</td>
-                                        <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->amount}}</td>
-                                        <td>
-                                            @if($orders->conversation != null)
-                                            <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
-                                            @endif
-                                            <a href="{{route('orders.readyToComplete', ['order' => $orders->id])}}" title="Mark Order As Complete" class="btn btn-xs btn-info"><i class="fa fa-check-circle"></i></a>
-                                        </td>
-                                    </tr>
-                                 @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Completed Orders</h4>
-                    </div>
-                    <div class="card-body">  
-                        <div class="table-responsive">
-                            <table class="display" id="basic-3">
-                                <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($completeOrders as $orders)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$orders->order_id}}</td>
-                                        <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->amount}}</td>
-                                        <td>
-                                            @if($orders->conversation != null)
-                                            <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>
+                                        @foreach ($order->carts as $cart)
+                                            @if($cart->product != '' || $cart->product != null)
+                                                <li><span class="badge badge-secondary">{{ $cart->product->name }}<span class="badge badge-danger ml-1">{{ $cart->qty }}</span></span></li>
                                             @else
-                                            <p>N/A</p>
+                                                N/A
                                             @endif
+                                        @endforeach
                                         </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Cancelled Orders</h4>
-                    </div>
-                    <div class="card-body">  
-                        <div class="table-responsive">
-                            <table class="display" id="basic-4">
-                                <thead>
-                                <tr><th scope="col">ID</th>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Amount</th>
-                                   </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($cancelOrders as $orders)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$orders->order_id}}</td>
-                                        <td>{{$orders->customer ==null ? '---': $orders->customer->name}}</td>
-                                        <td>{{$orders->amount}}</td>
+                                        <td><p class="badge badge-secondary p-2">{{$order->amount}}</p></td>
+                                        <td><p class="badge badge-secondary p-2">{{$order->discount}}</p></td>
+                                        <td><p class="badge badge-secondary p-2">{{$order->amount - $order->discount}}</p></td>
+                                        @if($order->status == 1)
+                                            <td><span class="badge badge-success p-2">Completed</span></td>
+                                        @else
+                                            <td><span class="badge badge-danger p-2">Pending</span></td>
+                                        @endif
+{{--                                        <td>--}}
+{{--                                                @if($orders->conversation != null)--}}
+{{--                                                    <a href="{{route('orders.showAllChats', ['conversation' => $orders->conversation->id])}}" title="Chat" class="btn btn-xs btn-success"><i class="fa fa-comment"></i></a>--}}
+{{--                                                @endif--}}
+{{--                                                <a href="{{route('orders.onGoingToReady', ['order' => $orders->id])}}" title="Mark Order As Ready" class="btn btn-xs btn-info"><i class="fa fa-spinner"></i></a>--}}
+{{--                                                    <a href="{{route('orders.onGoingToCancel', ['order' => $orders->id])}}" title="Cancel Order" class="btn btn-xs btn-danger"><i class="fa fa-times-circle"></i></a>--}}
+{{--                                        </td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>

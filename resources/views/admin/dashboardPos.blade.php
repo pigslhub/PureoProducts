@@ -29,10 +29,9 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Sub Category</th>
                                     <th scope="col">Product Name</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">Selling Price</th>
+                                    <th scope="col">Min Price</th>
                                     <th scope="col">In Stock</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Action</th>
@@ -40,14 +39,13 @@
                                 </thead>
                                 <tbody>
                                 @foreach (_getAllProducts() as $product)
-                                    <form action="{{route('carts.store')}}" method="POST">
-                                        @csrf
+{{--                                    <form action="{{route('carts.store')}}" method="POST">--}}
+{{--                                        @csrf--}}
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$product->sub_category->category->name}}</td>
-                                            <td>{{$product->sub_category->name}}</td>
                                             <td>{{$product->name}}</td>
-                                            <td>{{$product->price}}</td>
+                                            <td>{{$product->selling_price}}</td>
+                                            <td>{{$product->min_price}}</td>
                                             @if($product->in_stock <= 0)
                                                 <td>
                                                     <span class="badge badge-danger m-2">Out of stock</span>
@@ -75,7 +73,7 @@
                                                 @endif
                                             </td>
                                         </tr>
-                                    </form>
+{{--                                    </form>--}}
                                 @endforeach
 
                                 </tbody>
@@ -173,8 +171,10 @@
                 $.ajax({
                     url: "{{route('orders.completeOrderOnPrint')}}",
                     method: "POST",
+                    data: {"discount": $(".discountfield").val()},
                     success: function (data) {
-                        location.reload()
+                        // alert(data);
+                        location.reload();
                     },
                     error: function (err) {
                         alert("error");
@@ -188,12 +188,17 @@
             //     let quantity = $('.qty').val();
             //     // loadReceipt(id, quantity);
             // });
+            $( ".posReceipt" ).delegate( ".discountfield", "input", function() {
+                let tb = $(".totalbillamount").text();
+                $(".lblNetBill").text(tb- $(this).val())
+            });
 
             $('.btn-print').click(function () {
                 let id = $(this).val();
 
                 let stock = Number($(this).closest('tr').find('#stock').text());
                 let quantity = Number($(this).closest('tr').find('.qty').val());
+
                 // alert(quantity);
 
                 if (stock < quantity) {
@@ -367,6 +372,7 @@
 
             $(".btn-print-receipt").on('click', function () {
                 printDiv('divToPrint');
+                // completeOrderOnPrint();
             });
 
         });

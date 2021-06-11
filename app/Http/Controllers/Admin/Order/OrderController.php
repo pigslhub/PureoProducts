@@ -14,6 +14,12 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $orders = Order::get();
+        return view('admin.orders.index', compact('orders'));
+    }
+
     public function loadOrderReceipt(Request $request)
     {
         $product = Product::where('id', $request->product_id)->first();
@@ -23,18 +29,16 @@ class OrderController extends Controller
 
             $productInCart->update([
                     "qty" => $productInCart->qty + $request->quantity,
-                    "total" => $productInCart->total + $product->price * $request->quantity
+                    "total" => $productInCart->total + $product->selling_price * $request->quantity
                 ]);
 
             } else {
                 $cart = Cart::create([
                     "product_id" => $product->id,
                     "qty" => $request->quantity,
-                    "price" => $product->price,
-                    "total" => $product->price * $request->quantity,
+                    "price" => $product->selling_price,
+                    "total" => $product->selling_price * $request->quantity,
                 ]);
-
-
             }
 
 
@@ -43,7 +47,6 @@ class OrderController extends Controller
 //        $orderDetail = Order::where('id',$request->order_id)->first();
 //
         $carts = Cart::where('purchased', '0')->get();
-
 
         $htmlForReceiptToLoad = "
 
@@ -74,21 +77,29 @@ class OrderController extends Controller
         }
 
         $htmlForReceiptToLoad = $htmlForReceiptToLoad . "
-                                        </tbody>
+                                </tbody>
                                 <tfoot>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td class='foot foot1' >Total Bill</td>
-                                            <td class='foot' >" . $totalBill . "</td>
-                                        </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class='foot foot1' >Total Bill</td>
+                                        <td class='foot totalbillamount' >" . $totalBill . "</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class='foot foot1' >Discount</td>
+                                        <td class='foot1' > <input type='text' name='discount' class='form-control discountfield' > </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class='foot foot1' >Net Bill</td>
+                                        <td class='foot1' ><label class='lblNetBill'></label> </td>
+                                    </tr>
                                 </tfoot>
-
-
-                                </table>
-
-
-                                ";
+                            </table>
+                            ";
 
 
         return $htmlForReceiptToLoad;
@@ -146,7 +157,7 @@ class OrderController extends Controller
         return $htmlForReceiptToLoad;
     }
 
-    public function completeOrderOnPrint()
+    public function completeOrderOnPrint(Request $request)
     {
         $carts = Cart::where('purchased', '0')->get();
         $totalBill = 0;
@@ -161,6 +172,9 @@ class OrderController extends Controller
         $order = Order::create([
             "amount" => $totalBill,
             "purchased" => '1',
+            "status" => '1',
+            "product_id" =>  $product->id,
+            "discount" => $request->discount
         ]);
 
         Cart::where('purchased', '0')->update([
@@ -170,110 +184,4 @@ class OrderController extends Controller
 
         return 1;
     }
-
-    public function loadAllOrders(Request $request)
-    {
-        $onGoingOrders = Order::with('carts', 'customer')->whereIn('status', ['place'])->get();
-        $completeOrders = Order::with('carts', 'customer')->whereIn('status', ['complete'])->get();
-        $shippedOrder = Order::with('carts', 'customer')->whereIn('status', ['ship'])->get();
-        $cancelOrders = Order::with('carts', 'customer', 'driver', 'conversation')->whereIn('status', ['cancel'])->get();
-        return view('admin.orders.index', compact('onGoingOrders', 'completeOrders', 'shippedOrder', 'cancelOrders'));
-    }
-
-    public function loadAllOrdersForChart(Request $request)
-    {
-        $allOnGoingOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['place', 'accept'])->get();
-        $allCompleteOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['complete'])->get();
-        $allReadyOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['ready'])->get();
-        $allCancelOrders = Order::with('shop', 'customer', 'driver', 'conversation')->whereIn('status', ['cancel'])->get();
-        return json_encode(["allongoing" => $allOnGoingOrders->count(), "allcomplete" => $allCompleteOrders->count(), "allready" => $allReadyOrders->count(), "allcancel" => $allCancelOrders->count()]);
-    }
-
-    public function loadMonthlyOrdersForChart(Request $request)
-    {
-        $startDate = Carbon::now()->subDays(30);
-        $endDate = Carbon::now();
-
-        $monthlyOnGoingOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['place', 'accept'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-
-        $monthlyCompleteOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['complete'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-//
-        $monthlyReadyOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['ready'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-//
-        $monthlyCancelOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['cancel'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-
-        return json_encode(["monthlyongoing" => $monthlyOnGoingOrders->count(), "monthlycomplete" => $monthlyCompleteOrders->count(), "monthlyready" => $monthlyReadyOrders->count(), "monthlycancel" => $monthlyCancelOrders->count()]);
-    }
-
-    public function loadWeeklyOrdersForChart(Request $request)
-    {
-        $startDate = Carbon::now()->subDays(7);
-        $endDate = Carbon::now();
-
-        $weeklyOnGoingOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['place', 'accept'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-
-        $weeklyCompleteOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['complete'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-
-        $weeklyReadyOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['ready'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-
-        $weeklyCancelOrders = Order::with('shop', 'customer', 'driver', 'conversation')
-            ->whereIn('status', ['cancel'])
-            ->whereBetween('created_at', [$startDate, $endDate])->get();
-
-        return json_encode(["weeklyongoing" => $weeklyOnGoingOrders->count(), "weeklycomplete" => $weeklyCompleteOrders->count(), "weeklyready" => $weeklyReadyOrders->count(), "weeklycancel" => $weeklyCancelOrders->count()]);
-    }
-
-    public function showAllChats(Conversation $conversation)
-    {
-        $status = Order::get('status');
-//        dd($status->toArray());
-        $chats = Chat::where('conversation_id', $conversation->id)->get();
-        return view('admin.conversation.index', compact('chats', 'status'));
-    }
-
-    public function onGoingToReady(Order $order)
-    {
-        if ($order->id) {
-            $order->update([
-                'status' => 'ready',
-            ]);
-        }
-        return redirect()->back();
-    }
-
-    public function onGoingToCancel(Order $order)
-    {
-        if ($order->id) {
-            $order->update([
-                'status' => 'cancel',
-            ]);
-        }
-        return redirect()->back();
-    }
-
-    public function readyToComplete(Order $order)
-    {
-        if ($order->id) {
-            $order->update([
-                'status' => 'complete',
-            ]);
-        }
-        return redirect()->back();
-    }
-
-
 }

@@ -3,7 +3,7 @@
   <head>
     @include('admin.includes.partials.head')
 
-    <title>@yield('title') | PureONaturalProducts</title>
+    <title>@yield('title') | InsafGiftCenter</title>
     @include('admin.includes.partials.styles')
   </head>
   <body>

@@ -128,7 +128,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/earning" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -138,11 +138,11 @@
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\includes\partials" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\earning" />
+      <recent name="C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin\newproduct" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views\admin" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\customer\auth" />
       <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend\orders" />
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\resources\views\frontend" />
-      <recent name="C:\Users\shiza\Desktop\SirImran\PureONaturalProducts\app\Http\Controllers\Frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -186,6 +186,12 @@
       <workItem from="1622636201877" duration="8620000" />
       <workItem from="1622890364080" duration="13964000" />
       <workItem from="1622976281357" duration="19331000" />
+      <workItem from="1623151461987" duration="6684000" />
+      <workItem from="1623224346486" duration="8392000" />
+      <workItem from="1623264835849" duration="3426000" />
+      <workItem from="1623309231636" duration="7200000" />
+      <workItem from="1623351380979" duration="4140000" />
+      <workItem from="1623409614595" duration="9814000" />
     </task>
     <servers />
   </component>
@@ -201,10 +207,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1616068138020" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622892364065">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1623413345455">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1622892364065" />
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1623413345455" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1623239844139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1623239844139" />
     <state x="369" y="85" width="758" height="558" key="find.popup" timestamp="1615889360829">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

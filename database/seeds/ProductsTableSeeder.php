@@ -8,20 +8,18 @@ class ProductsTableSeeder extends Seeder
     {
         $products = array(
             array(
-                'name' => 'Argana Shampoo',
+                'name' => 'Picture Frame',
                 'icon' => '',
-                'sub_category_id' => '1',
                 'price' => '150.00',
                 'description' => 'Product Description',
-                'volumes' => '8oz',
                 'in_stock' => 5,
-                'instruction' => 'Product Instructions',
-                'ingredients' => 'Product Ingredients',
+                'product_code' => 'AB67F',
+                'min_price' => '100',
             ),
         );
         foreach ($products as $product)
         {
-            \App\Models\Product::create($product);
+            \App\Models\General\Product::create($product);
         }
     }
 }

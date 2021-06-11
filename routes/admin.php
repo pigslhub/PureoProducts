@@ -32,10 +32,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
         Route::resource('adminSubCategories','SubCategoryController');
     });
     //Route For Product and Child Group Route
-    Route::group(['namespace' => 'Product'], function(){
-        Route::get('adminProduct/create/field/{id}','ProductController@create')->name('product.createField');
-        Route::get('adminProduct/create/{id}','ProductController@show')->name('product.showCategories');
-        Route::resource('adminProducts','ProductController');
+//    Route::group(['namespace' => 'Product'], function(){
+//        Route::get('adminProduct/create/field/{id}','ProductController@create')->name('product.createField');
+//        Route::get('adminProduct/create/{id}','ProductController@show')->name('product.showCategories');
+//        Route::resource('adminProducts','ProductController');
+//    });
+    Route::group(['namespace' => 'NewProduct'], function(){
+        Route::resource('products','ProductController');
     });
 
     //Route For Shop Mangaement and Child Group Route
@@ -61,7 +64,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
         Route::resource('adminAdmins','AdminController');
     });
 
+    Route::group(['namespace' => 'Earning'], function() {
+        Route::get('/viewTotalEarning', ['uses' => 'EarningController@viewTotalEarning'])->name('earnings.viewTotalEarning');
+    });
+
     Route::group(['namespace' => 'Order'], function(){
+        Route::get('/index' , ['uses' => 'OrderController@index'])->name('orders.index');
         Route::post('/loadOrderReceipt' , ['uses' => 'OrderController@loadOrderReceipt'])->name('orders.loadOrderReceipt');
         Route::post('/loadOrderReceiptOnStartup' , ['uses' => 'OrderController@loadOrderReceiptOnStartup'])->name('orders.loadOrderReceiptOnStartup');
         Route::post('/completeOrderOnPrint' , ['uses' => 'OrderController@completeOrderOnPrint'])->name('orders.completeOrderOnPrint');

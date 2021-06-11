@@ -2,16 +2,12 @@
 
 namespace App\Models\General;
 
-use App\Models\Chat\Conversation;
-use App\Models\Customer;
-use App\Models\Driver;
-use App\Models\Product;
-use App\Shop;
+use App\Models\General\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['amount', 'status', 'purchased'];
+    protected $fillable = ['amount', 'status', 'purchased', 'discount'];
 
     public function carts()
     {
