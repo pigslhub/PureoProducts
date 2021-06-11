@@ -451,4 +451,4 @@
         <?php echo $__env->make('front.includes.partials.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </body>
 </html>
-<?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/front/index.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/front/viewEarning.blade.php ENDPATH**/ ?>

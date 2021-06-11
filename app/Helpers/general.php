@@ -79,7 +79,7 @@ function _getCartsCount()
 
 function _getAllProducts()
 {
-    $products = \App\Models\Product::get();
+    $products = \App\Models\General\Product::get();
     return $products;
 }
 
