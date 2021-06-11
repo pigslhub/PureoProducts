@@ -14,16 +14,17 @@ class EarningController extends Controller
         $orders = Order::get();
         $totalEarning = 0;
         $purchasePrice = 0;
+        $totalProfit = 0;
+        $totalDiscounts = 0;
         foreach($orders as $order) {
-            $profit = 0;
-            $totalEarning += $order->amount - $order->discount;
-//            foreach($order->carts as $cart) {
-//                $purchasePrice += $cart->product->purchase_price;
-//                $profit = $order->amount - $purchasePrice;
-//            }
+            $totalDiscounts +=  $order->discount;
+            foreach($order->carts as $cart) {
+                $purchasePrice += $cart->product->purchase_price * $cart->qty;
+                $totalEarning += $cart->product->selling_price * $cart->qty;
+            }
         }
-
-        return view('admin.earning.viewEarning', compact('totalEarning', 'orders', 'purchasePrice'));
+        $totalProfit += $totalEarning - $totalDiscounts - $purchasePrice;
+        return view('admin.earning.viewEarning', compact('totalEarning', 'orders','totalProfit'));
     }
 
     public function index()
