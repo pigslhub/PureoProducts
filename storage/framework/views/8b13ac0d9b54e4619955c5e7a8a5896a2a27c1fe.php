@@ -3,7 +3,7 @@
   <head>
     <?php echo $__env->make('admin.includes.partials.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <title><?php echo $__env->yieldContent('title'); ?> | PureONaturalProducts</title>
+    <title><?php echo $__env->yieldContent('title'); ?> | InsafGiftCenter</title>
     <?php echo $__env->make('admin.includes.partials.styles', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </head>
   <body>

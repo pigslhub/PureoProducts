@@ -22,8 +22,8 @@
                                     class="fa fa-plus"></i> Add New Admin</a>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
@@ -41,13 +41,13 @@
                                             <th>Email</th>
                                             <th>Type</th>
                                             <th>Avatar</th>
-                                            
+
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            
-                                            
+
+
 
                                                 <?php $__currentLoopData = $admins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $admin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                               <tr>
@@ -72,22 +72,22 @@
                                                 <?php else: ?>
                                                     <a href="<?php echo e(route('adminAdmin.changeStatus', ['adminAdmin' => $admin->id])); ?>"
                                                         class="btn btn-danger btn-sm mb-1 px-2" title="Change Status">Deactive</a>
-                                                
+
                                                 <?php endif; ?>
                                                </td>
                                                   <td><?php echo e($admin->name); ?></td>
                                                   <td><?php echo e($admin->email); ?></td>
                                                   <td><?php echo e($admin->type); ?></td>
                                                   <td><?php echo e($admin->avatar); ?></td>
-                                                  
+
                                               </tr>
 
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                               
-                                            
+
+
 
                                             <?php else: ?>
-                                             
+
                                                <h1>Only Super Admin Access This Table</h1>
 
                                             <?php endif; ?>
@@ -117,4 +117,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/admin/admin/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/admin/admin/viewEarning.blade.php ENDPATH**/ ?>

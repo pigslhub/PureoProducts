@@ -14,7 +14,7 @@
                     <div class="card-header">
                         <h5 class="pull-left">Sub Categories List</h5>
                         <div class=" pull-right">
-                            
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -53,4 +53,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/admin/subcategory/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/pigstuhq/pureoproducts.pigslhub.com/resources/views/admin/subcategory/viewEarning.blade.php ENDPATH**/ ?>
