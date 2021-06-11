@@ -51,21 +51,29 @@
                                         <td>{{ $order->id }}</td>
                                         <td>
                                             @foreach($order->carts as $cart)
-                                                <li>{{ $cart->product->name }}</li>
+                                                <li>{{ $cart->product->name }}</li><br>
                                             @endforeach
                                         </td>
                                         <td>
                                             @foreach($order->carts as $cart)
-                                                <li>{{ $cart->product->purchase_price }}</li>
+                                                <li>{{ $cart->product->purchase_price }}</li><br>
                                             @endforeach
                                         </td>
                                         <td>
                                             @foreach($order->carts as $cart)
-                                                <li>{{ $cart->product->selling_price }}</li>
+                                                <li>{{ $cart->product->selling_price }}</li><br>
                                             @endforeach
                                         </td>
                                         <td>{{ $order->amount }}</td>
                                         <td>{{ $order->discount }}</td>
+                                        <td>
+                                            @foreach($order->carts as $cart)
+                                                @php
+                                                    $purchasePrice = $order->amount - $cart->product->purchase_price
+                                                @endphp
+                                            @endforeach
+                                            {{ $purchasePrice }}
+                                        </td>
                                     </tr>
                                 @empty
                                 @endforelse
