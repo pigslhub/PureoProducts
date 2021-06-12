@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\General\Cart;
 use App\Models\General\Order;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EarningController extends Controller
 {
-    public function viewTotalEarning()
+    public function viewTotalEarning( Request $request )
     {
         $orders = Order::get();
         $totalEarning = 0;
@@ -24,6 +25,37 @@ class EarningController extends Controller
             }
         }
         $totalProfit += $totalEarning - $totalDiscounts - $purchasePrice;
+        return view('admin.earning.viewEarning', compact('totalEarning', 'orders','totalProfit'));
+    }
+
+    public function searchEarning( Request $request )
+    {
+//        dd($request->toArray());
+//        $orders = Order::get();
+        $totalEarning = 0;
+        $totalProfit = 0;
+        $purchasePrice = 0;
+        $totalDiscounts = 0;
+
+        $from = $request->from_date;
+        $fromDate = Carbon::parse($from);
+        $from_date = $fromDate->format('Y-m-d H:i:s');
+
+        $to =$request->to_date;
+        $toDate = Carbon::parse($to);
+        $to_date = $toDate->format('Y-m-d H:i:s');
+
+        $orders = Order::whereBetween('created_at', array($from_date, $to_date))->get();
+
+        foreach($orders as $order) {
+            $totalDiscounts +=  $order->discount;
+            foreach($order->carts as $cart) {
+                $purchasePrice += $cart->product->purchase_price * $cart->qty;
+                $totalEarning += $cart->product->selling_price * $cart->qty;
+            }
+        }
+        $totalProfit += $totalEarning - $totalDiscounts - $purchasePrice;
+
         return view('admin.earning.viewEarning', compact('totalEarning', 'orders','totalProfit'));
     }
 

@@ -1,27 +1,67 @@
-<?php $__env->startSection('title', 'Category'); ?>
+<?php $__env->startSection('title', 'Earning'); ?>
 
-<?php $__env->startSection('breadcrumb-title', 'Category'); ?>
+<?php $__env->startSection('breadcrumb-title', 'Earning'); ?>
 
 <?php $__env->startSection('breadcrumb-item'); ?>
-    <li class="breadcrumb-item active">Category</li>
+    <li class="breadcrumb-item active">Earning</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
-
-            <div class="col-md-4 col-xl-4 col-lg-4">
+            <div class="col-md-6 col-xl-6 col-lg-6">
                 <div class="card o-hidden">
                     <div class="bg-primary b-r-4 card-body">
                         <div class="media static-top-widget">
-                            <div class="align-self-center text-center"><i class="fa fa-money" style="font-size: 30px"></i></div>
+                            <div class="align-self-center text-center"><i class="fa fa-money"
+                                                                          style="font-size: 30px"></i></div>
                             <div class="media-body"><span class="m-0">Total Earning</span>
-                                <h4 class="mb-0 counter"><?php echo e($totalEarning); ?></h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                                <h4 class="mb-0 counter"><?php echo e($totalEarning); ?></h4><i class="icon-bg"
+                                                                                    data-feather="dollar-sign"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 col-xl-6 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i class="fa fa-money"
+                                                                          style="font-size: 30px"></i></div>
+                            <div class="media-body"><span class="m-0">Total Profit</span>
+                                <h4 class="mb-0 counter"><?php echo e($totalProfit); ?></h4><i class="icon-bg"
+                                                                                   data-feather="dollar-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form method="post" action="<?php echo e(route('earnings.searchEarning')); ?>" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
+                    <div class="form-row pull-right">
+                        <div class="col-md-4">
+                            <label class="col-form-label">From Date</label>
+                            <input type="datetime-local" autocomplete="off"
+                                   class="form-control" name="from_date"
+                                   required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label">To Date</label>
+                            <input type="datetime-local" autocomplete="off"
+                                   class="form-control" name="to_date"
+                                   required>
+                        </div>
+                        <div class="col-md-4" style="margin-top: 37px;">
+                            <button class="btn btn-sm btn-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
+
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
@@ -45,32 +85,36 @@
                                 <tbody>
                                 <?php $__empty_1 = true; $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
+                                        <?php
+                                            $total_purchase_amount = 0
 
+                                        ?>
                                         <td><?php echo e($order->id); ?></td>
                                         <td>
                                             <?php $__currentLoopData = $order->carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <li><?php echo e($cart->product->name); ?></li><br>
+                                                <li><span
+                                                        class="badge badge-secondary"><?php echo e($cart->product->name); ?><span
+                                                            class="badge badge-danger ml-1"><?php echo e($cart->qty); ?></span></span>
+                                                </li><br>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
                                         <td>
                                             <?php $__currentLoopData = $order->carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <li><?php echo e($cart->product->purchase_price); ?></li><br>
+                                                <?php
+                                                    $total_purchase_amount += $cart->product->purchase_price * $cart->qty
+                                                ?>
+                                                <li><?php echo e($cart->product->purchase_price); ?> x <?php echo e($cart->qty); ?> </li><br>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
                                         <td>
                                             <?php $__currentLoopData = $order->carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <li><?php echo e($cart->product->selling_price); ?></li><br>
+                                                <li><?php echo e($cart->product->selling_price); ?> x <?php echo e($cart->qty); ?></li><br>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
                                         <td><?php echo e($order->amount); ?></td>
                                         <td><?php echo e($order->discount); ?></td>
                                         <td>
-                                            <?php $__currentLoopData = $order->carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <?php
-                                                    $purchasePrice = $order->amount - $cart->product->purchase_price
-                                                ?>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            <?php echo e($purchasePrice); ?>
+                                            <?php echo e($order->amount - $order->discount - $total_purchase_amount); ?>
 
                                         </td>
                                     </tr>

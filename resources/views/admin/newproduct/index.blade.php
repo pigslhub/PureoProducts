@@ -29,7 +29,7 @@
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i class="fa fa-money" style="font-size: 30px"></i></div>
                             <div class="media-body"><span class="m-0">Total Purchase</span>
-                                <h4 class="mb-0 counter">{{ 20 }}</h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                                <h4 class="mb-0 counter">{{ $totalPurchase }}</h4><i class="icon-bg" data-feather="dollar-sign"></i>
                             </div>
                         </div>
                     </div>
@@ -51,6 +51,11 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Product Title</th>
+                                    <th scope="col">Purchase</th>
+                                    <th scope="col">Selling</th>
+{{--                                    <th scope="col">Min</th>--}}
+{{--                                    <th scope="col">Wholesale</th>--}}
+                                    <th scope="col">Stock</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -60,6 +65,11 @@
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $product->name}}</td>
+                                        <td>{{ $product->purchase_price}}</td>
+                                        <td>{{ $product->selling_price}}</td>
+{{--                                        <td>{{ $product->wholesalePrice}}</td>--}}
+{{--                                        <td>{{ $product->min_price}}</td>--}}
+                                        <td>{{ $product->in_stock}}</td>
                                         <td>
                                             @if(strpos($product->icon,'100x75'))
                                                 <img class="rounded-circle shadow-lg" src="{{$product->getIconPath()}}" >
@@ -70,15 +80,18 @@
                                             @endif
                                         </td>
                                         <td>
+                                            <a href="{{ route('products.edit', ['product' => $product->id]) }}"
+                                               class="btn btn-primary btn-xs mb-1 px-2" title="Edit Product"><i
+                                                    class="fa fa-pencil"></i></a>
+                                            <a href="{{ route('products.show', ['product' => $product->id]) }}"
+                                               class="btn btn-success btn-xs mb-1 px-2" title="View Product Details"><i
+                                                    class="fa fa-eye"></i></a>
                                             <button data-toggle="modal"
                                                     data-target="#confirm_product_{{$product->id}}"
-                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Product">
+                                                    class="btn btn-danger btn-xs mb-1 px-2" title="Delete Product">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             @include('includes.modals.confirm', ['model' => 'product', 'route' => route('products.destroy', ['product' => $product->id]), 'form' => true])
-                                            <a href="{{ route('products.edit', ['product' => $product->id]) }}"
-                                               class="btn btn-primary btn-sm mb-1 px-2" title="Edit Product"><i
-                                                    class="fa fa-pencil"></i></a>
                                         </td>
                                     </tr>
                                 @empty

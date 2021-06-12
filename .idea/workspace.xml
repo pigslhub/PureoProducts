@@ -128,7 +128,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/earning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../FYP/HostInnWeb" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -162,6 +162,7 @@
         </serviceView>
       </list>
     </option>
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -191,7 +192,9 @@
       <workItem from="1623264835849" duration="3426000" />
       <workItem from="1623309231636" duration="7200000" />
       <workItem from="1623351380979" duration="4140000" />
-      <workItem from="1623409614595" duration="17520000" />
+      <workItem from="1623409614595" duration="20773000" />
+      <workItem from="1623446327736" duration="1600000" />
+      <workItem from="1623483305044" duration="12598000" />
     </task>
     <servers />
   </component>
@@ -211,21 +214,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1623413345455" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1623239844139">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1623487983993">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1623239844139" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1623487983993" />
     <state x="369" y="85" width="758" height="558" key="find.popup" timestamp="1615889360829">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="369" y="85" width="758" height="558" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1615889360829" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1615892872796">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1623497442142">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615892872796" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1615809095675">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1623497442142" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1623497362346">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1615809095675" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1623497362346" />
   </component>
 </project>

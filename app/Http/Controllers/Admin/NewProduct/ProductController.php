@@ -16,10 +16,11 @@ class ProductController extends Controller
 
         $totalPurchase = 0;
 
-        foreach ($products as $product){
+        foreach ($products as $product) {
             $totalPurchase += $product->purchase_price;
         }
-        return view('admin.newproduct.index', compact('products', 'productsCount'));
+//        dd($totalPurchase);
+        return view('admin.newproduct.index', compact('products', 'productsCount', 'totalPurchase'));
     }
 
     public function create()

@@ -216,7 +216,6 @@
             // Print div code
 
             function printDiv(elementId) {
-                completeOrderOnPrint();
                 var divToPrint = document.getElementById(elementId);
 
                 var newWin = window.open('', 'Print-Window');
@@ -367,7 +366,7 @@
                 setTimeout(function () {
                     newWin.close();
                 }, 10);
-
+                completeOrderOnPrint();
             }
 
             $(".btn-print-receipt").on('click', function () {
