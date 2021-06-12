@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
 
-@section('title', 'ShopType')
+@section('title', 'ProductDetail')
 
-@section('breadcrumb-title', 'Shop Type')
+@section('breadcrumb-title', 'Product Detail')
 
 @section('breadcrumb-item')
-    <li class="breadcrumb-item">Shop Type</li>
-    <li class="breadcrumb-item active">Show</li>
+    <li class="breadcrumb-item">Product</li>
+    <li class="breadcrumb-item active">Detail</li>
 @endsection
 
 @section('content')
