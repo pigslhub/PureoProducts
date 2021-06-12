@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
     Route::group(['namespace' => 'Earning'], function() {
         Route::get('/viewTotalEarning', ['uses' => 'EarningController@viewTotalEarning'])->name('earnings.viewTotalEarning');
+        Route::post('/searchEarning', ['uses' => 'EarningController@searchEarning'])->name('earnings.searchEarning');
     });
 
     Route::group(['namespace' => 'Order'], function(){

@@ -9,6 +9,30 @@
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-6 col-xl-6 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i class="fa fa-cubes" style="font-size: 30px"></i></div>
+                            <div class="media-body"><span class="m-0">Total Products</span>
+                                <h4 class="mb-0 counter"><?php echo e($productsCount); ?></h4><i class="icon-bg" data-feather="package"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-6 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i class="fa fa-money" style="font-size: 30px"></i></div>
+                            <div class="media-body"><span class="m-0">Total Purchase</span>
+                                <h4 class="mb-0 counter"><?php echo e($totalPurchase); ?></h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
@@ -25,6 +49,11 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Product Title</th>
+                                    <th scope="col">Purchase</th>
+                                    <th scope="col">Selling</th>
+
+
+                                    <th scope="col">Stock</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -34,6 +63,11 @@
                                     <tr>
                                         <th scope="row"><?php echo e($loop->iteration); ?></th>
                                         <td><?php echo e($product->name); ?></td>
+                                        <td><?php echo e($product->purchase_price); ?></td>
+                                        <td><?php echo e($product->selling_price); ?></td>
+
+
+                                        <td><?php echo e($product->in_stock); ?></td>
                                         <td>
                                             <?php if(strpos($product->icon,'100x75')): ?>
                                                 <img class="rounded-circle shadow-lg" src="<?php echo e($product->getIconPath()); ?>" >
@@ -44,15 +78,18 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
+                                            <a href="<?php echo e(route('products.edit', ['product' => $product->id])); ?>"
+                                               class="btn btn-primary btn-xs mb-1 px-2" title="Edit Product"><i
+                                                    class="fa fa-pencil"></i></a>
+                                            <a href="<?php echo e(route('products.show', ['product' => $product->id])); ?>"
+                                               class="btn btn-success btn-xs mb-1 px-2" title="View Product Details"><i
+                                                    class="fa fa-eye"></i></a>
                                             <button data-toggle="modal"
                                                     data-target="#confirm_product_<?php echo e($product->id); ?>"
-                                                    class="btn btn-danger btn-sm mb-1 px-2" title="Delete Product">
+                                                    class="btn btn-danger btn-xs mb-1 px-2" title="Delete Product">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             <?php echo $__env->make('includes.modals.confirm', ['model' => 'product', 'route' => route('products.destroy', ['product' => $product->id]), 'form' => true], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                            <a href="<?php echo e(route('products.edit', ['product' => $product->id])); ?>"
-                                               class="btn btn-primary btn-sm mb-1 px-2" title="Edit Product"><i
-                                                    class="fa fa-pencil"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -67,4 +104,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views/admin/newproduct/viewEarning.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\shiza\Desktop\SirImran\PureoProducts\resources\views/admin/newproduct/index.blade.php ENDPATH**/ ?>
