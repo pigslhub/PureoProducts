@@ -68,7 +68,7 @@
                                                             class="fa fa-shopping-cart"></i></button>
                                                 @else
                                                     <button value="{{$product->id}}" title="Add to Cart"
-                                                            class="btn-print btn btn-sm btn-success"><i
+                                                            class="btn-print btn btn-xs btn-success">+ <i
                                                             class="fa fa-shopping-cart"></i></button>
                                                 @endif
                                             </td>
@@ -95,7 +95,16 @@
                         </div>
                         <hr class="hr1">
                             <h1 style="text-align: center">Insaf Gift Center</h1>
+                            <br>
                         <div class="table-responsive posReceipt">
+                        </div>
+                        <br><br><br>
+                        <div class="text-center shopDetails d-none">
+                            <h5>Thank you for your visit</h5>
+                            <p>*****************************************************</p>
+                            <p><i class="fa fa-location-arrow"></i> 162B Gulistan Colony Near Ideal Bakery Milat Chowk Faisalabad</p>
+                            <p><i class="fa fa-phone"></i>&nbsp;03457551920</p>
+                            <p><i class="fa fa-phone"></i>&nbsp;03127552019</p>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -183,6 +192,22 @@
                 });
             }
 
+            function removeReceiptFromCart(cart_id) {
+                $.ajax({
+                    url: "{{route('orders.removeReceiptFromCart')}}",
+                    method: "POST",
+                    data: {"cart_id": cart_id},
+                    success: function (data) {
+                        $('.posReceipt').html(data);
+                        $('.btn-print-receipt').removeClass('d-none');
+                    },
+                    error: function (err) {
+                        alert("error");
+                        console.log(err);
+                    }
+                });
+            }
+
             // $(".btn-print").on('click', function () {
             //     let id = $(this).val();
             //     let quantity = $('.qty').val();
@@ -190,8 +215,16 @@
             // });
             $( ".posReceipt" ).delegate( ".discountfield", "input", function() {
                 let tb = $(".totalbillamount").text();
-                $(".lblNetBill").text(tb- $(this).val())
+                $(".lblNetBill").text(tb- $(this).val());
+                $(".discountFieldLabel").text($(this).val());
             });
+
+
+            $( ".posReceipt" ).delegate( "a", "click", function() {
+                let cart_id = $(this).attr('cartid');
+                removeReceiptFromCart(cart_id);
+            });
+
 
             $('.btn-print').click(function () {
                 let id = $(this).val();
@@ -213,6 +246,10 @@
                 }
             });
 
+            $('.btn-remove').click(function () {
+                removeReceiptFromCart();
+            });
+
             // Print div code
 
             function printDiv(elementId) {
@@ -232,7 +269,7 @@
             @media print {
               *{
                 font-family: 'Poppins', sans-serif;
-
+                color: black;
               }
 
              td{
@@ -346,6 +383,9 @@
               .qtystyle{
                 border:2px solid black;
               }
+              .shopDetails{
+                text-align: center;
+              }
               .foot{
                 border-bottom:1px solid black;
 
@@ -370,7 +410,12 @@
             }
 
             $(".btn-print-receipt").on('click', function () {
-                printDiv('divToPrint');
+                $('.bill-action').hide();
+                $('.discountFieldLabel, .shopDetails').removeClass('d-none');
+                $('.discountfield').addClass('d-none');
+                setTimeout(()=>{
+                    printDiv('divToPrint');
+                }, 1000);
                 // completeOrderOnPrint();
             });
 
