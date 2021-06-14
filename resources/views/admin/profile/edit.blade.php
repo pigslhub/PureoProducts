@@ -110,7 +110,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="form-label">Email</label>
-                                                <input class="form-control" type="email" name="email" value="{{$user->email}}">
+                                                <input class="form-control" readonly type="email" name="email" value="{{$user->email}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
@@ -177,21 +177,21 @@
                                                 @endforeach
                                             </select>
                                         </div>--}}
-                                        <div class="mt-3 col-md-12">
-                                            <label class="form-label">Profile Image</label>
-                                            <div class="form-group input-group-square">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend input-group-btn">
-                                                <span class="input-group-text btn-file">
-                                                    <i class="icofont icofont-upload"></i>
-                                                    <input type="file" name="avatar" id="imgInp">
-                                                </span>
-                                                    </div>
-                                                    <input class="form-control" readonly>
-                                                </div>
-                                                <img class="mb-3 mt-3 mx-auto d-block" id='img-upload'/>
-                                            </div>
-                                        </div>
+{{--                                        <div class="mt-3 col-md-12">--}}
+{{--                                            <label class="form-label">Profile Image</label>--}}
+{{--                                            <div class="form-group input-group-square">--}}
+{{--                                                <div class="input-group">--}}
+{{--                                                    <div class="input-group-prepend input-group-btn">--}}
+{{--                                                <span class="input-group-text btn-file">--}}
+{{--                                                    <i class="icofont icofont-upload"></i>--}}
+{{--                                                    <input type="file" name="avatar" id="imgInp">--}}
+{{--                                                </span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <input class="form-control" readonly>--}}
+{{--                                                </div>--}}
+{{--                                                <img class="mb-3 mt-3 mx-auto d-block" id='img-upload'/>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
