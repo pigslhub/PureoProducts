@@ -415,10 +415,9 @@
                 $('.discountfield').addClass('d-none');
                 setTimeout(()=>{
                     printDiv('divToPrint');
-                }, 1000);
+                }, 2000);
                 // completeOrderOnPrint();
             });
-
         });
 
 
