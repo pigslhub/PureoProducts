@@ -102,9 +102,9 @@
                         <div class="text-center shopDetails d-none">
                             <h5>Thank you for your visit</h5>
                             <p>*****************************************************</p>
-                            <p><i class="fa fa-location-arrow"></i> 162B Gulistan Colony Near Ideal Bakery Milat Chowk Faisalabad</p>
-                            <p><i class="fa fa-phone"></i>&nbsp;03457551920</p>
-                            <p><i class="fa fa-phone"></i>&nbsp;03127552019</p>
+                            <h5><i class="fa fa-location-arrow"></i> 162B Gulistan Colony Near Ideal Bakery Milat Chowk Faisalabad</h5>
+                            <h5><i class="fa fa-phone"></i>&nbsp;03457551920</h5>
+                            <h5><i class="fa fa-phone"></i>&nbsp;03127552019</h5>
                         </div>
                     </div>
                     <div class="card-footer">
