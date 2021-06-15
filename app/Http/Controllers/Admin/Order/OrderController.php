@@ -69,10 +69,10 @@ class OrderController extends Controller
         foreach ($carts as $cart) {
             $totalBill += $cart->total;
             $htmlForReceiptToLoad = $htmlForReceiptToLoad . "<tr class='qtystyle'>
-                                        <td class='bill'>" . $cart->product->name . "</td>
-                                        <td class='bill'>" . $cart->qty . "</td>
-                                        <td class='bill'>" . $cart->price . "</td>
-                                        <td class='bill'>" . $cart->price * $cart->qty . "</td>
+                                        <th class='bill'>" . $cart->product->name . "</th>
+                                        <th class='bill'>" . $cart->qty . "</th>
+                                        <th class='bill'>" . $cart->price . "</th>
+                                        <th class='bill'>" . $cart->price * $cart->qty . "</th>
                                         <td class='bill-action'> <a class='btn btn-xs btn-danger btn-remove' cartid = ". $cart->id." title='Remove Item'>
                                         <i class='fa fa-trash' style='color: white'></i> </a> </td>
                                        </tr>";
