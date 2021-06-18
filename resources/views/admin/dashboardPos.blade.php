@@ -226,25 +226,38 @@
             });
 
 
-            $('.btn-print').click(function () {
+            $(document).on('click', '.btn-print',function() {
                 let id = $(this).val();
 
                 let stock = Number($(this).closest('tr').find('#stock').text());
                 let quantity = Number($(this).closest('tr').find('.qty').val());
 
-                // alert(quantity);
-
+             
                 if (stock < quantity) {
                     alert(`You have ${stock} items in your stock.`);
-                    // alert("Please select within stock range");
                     $('.qty').val('');
                 } else {
-                    // alert("okay" + " " + stock + " " + quantity);
-                    // alert(stock);
-                    // alert(quantity);
                     loadReceipt(id, quantity);
                 }
             });
+
+            // $('.btn-print').click(function () {
+            //     let id = $(this).val();
+
+            //     let stock = Number($(this).closest('tr').find('#stock').text());
+            //     let quantity = Number($(this).closest('tr').find('.qty').val());
+
+            //     alert(id);
+            //     alert(stock);
+            //     alert(quantity);
+
+            //     // if (stock < quantity) {
+            //     //     alert(`You have ${stock} items in your stock.`);
+            //     //     $('.qty').val('');
+            //     // } else {
+            //     //     loadReceipt(id, quantity);
+            //     // }
+            // });
 
             $('.btn-remove').click(function () {
                 removeReceiptFromCart();
