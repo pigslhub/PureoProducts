@@ -1,4 +1,0 @@
-[2021-03-16 21:55:15] local.ERROR: Interface 'Tymon\JWTAuth\Contracts\JWTSubject' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Interface 'Tymon\\JWTAuth\\Contracts\\JWTSubject' not found at /home/pigstuhq/pureoproducts.pigslhub.com/app/Models/Customer.php:9)
-[stacktrace]
-#0 {main}
-"} 

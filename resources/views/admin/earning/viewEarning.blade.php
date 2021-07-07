@@ -86,39 +86,76 @@
                                 </thead>
                                 <tbody>
                                 @forelse($orders as $order)
-                                    <tr>
-                                        @php
-                                            $total_purchase_amount = 0
+                                    @if($order->bill_type=="sale")
+                                        <tr>
+                                            @php
+                                                $total_purchase_amount = 0
 
-                                        @endphp
-                                        <td>{{ $order->id }}</td>
-                                        <td>
-                                            @foreach($order->carts as $cart)
-                                                <li><span
-                                                        class="badge badge-secondary">{{ $cart->product->name }}<span
-                                                            class="badge badge-danger ml-1">{{$cart->qty}}</span></span>
-                                                </li><br>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach($order->carts as $cart)
-                                                @php
-                                                    $total_purchase_amount += $cart->product->purchase_price * $cart->qty
-                                                @endphp
-                                                <li>{{ $cart->product->purchase_price }} x {{$cart->qty}} </li><br>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @foreach($order->carts as $cart)
-                                                <li>{{ $cart->product->selling_price }} x {{$cart->qty}}</li><br>
-                                            @endforeach
-                                        </td>
-                                        <td>{{ $order->amount }}</td>
-                                        <td>{{ $order->discount }}</td>
-                                        <td>
-                                            {{ $order->amount - $order->discount - $total_purchase_amount  }}
-                                        </td>
-                                    </tr>
+                                            @endphp
+                                            <td>{{ $order->id }}</td>
+                                            <td>
+                                                @foreach($order->carts as $cart)
+                                                    <li><span
+                                                            class="badge badge-secondary">{{ $cart->product->name }}<span
+                                                                class="badge badge-danger ml-1">{{$cart->qty}}</span></span>
+                                                    </li><br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($order->carts as $cart)
+                                                    @php
+                                                        $total_purchase_amount += $cart->product->purchase_price * $cart->qty
+                                                    @endphp
+                                                    <li>{{ $cart->product->purchase_price }} x {{$cart->qty}} </li><br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($order->carts as $cart)
+                                                    <li>{{ $cart->product->selling_price }} x {{$cart->qty}}</li><br>
+                                                @endforeach
+                                            </td>
+                                            <td>{{ $order->amount - $order->discount }}</td>
+                                            <td>{{ $order->discount }}</td>
+                                            <td>
+                                                {{ $order->amount - $order->discount - $total_purchase_amount  }}
+                                            </td>
+                                        </tr>
+                                    @else
+                                        <tr style="background-color:rgba(255,0,0,0.3);">
+                                            @php
+                                                $total_purchase_amount = 0
+
+                                            @endphp
+                                            <td>{{ $order->id }}</td>
+                                            <td>
+                                                @foreach($order->carts as $cart)
+                                                    <li><span
+                                                            class="badge badge-secondary">{{ $cart->product->name }}<span
+                                                                class="badge badge-danger ml-1">{{$cart->qty}}</span></span>
+                                                    </li><br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($order->carts as $cart)
+                                                    @php
+                                                        $total_purchase_amount += $cart->product->purchase_price * $cart->qty
+                                                    @endphp
+                                                    <li>{{ $cart->product->purchase_price }} x {{$cart->qty}} </li><br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($order->carts as $cart)
+                                                    <li>{{ $cart->product->selling_price }} x {{$cart->qty}}</li><br>
+                                                @endforeach
+                                            </td>
+                                            <td>{{ $order->amount - $order->discount }}</td>
+                                            <td>{{ $order->discount }}</td>
+                                            <td>
+                                                - {{ $order->amount - $order->discount - $total_purchase_amount  }}
+                                            </td>
+                                        </tr>
+                                    @endif
+
                                 @empty
                                 @endforelse
                                 </tbody>

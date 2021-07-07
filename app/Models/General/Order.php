@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['amount', 'status', 'purchased', 'discount'];
+    protected $fillable = ['amount', 'status', 'purchased', 'discount', 'bill_type'];
 
     public function carts()
     {
