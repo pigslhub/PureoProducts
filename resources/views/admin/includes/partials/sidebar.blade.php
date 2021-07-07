@@ -24,8 +24,8 @@
             </li>
             <li><a class="sidebar-header" href="{{route('earnings.viewTotalEarning')}}"><i data-feather="dollar-sign"></i><span>Revenue</span></a>
             </li>
-{{--            <li><a class="sidebar-header" href="{{route('adminAdmins.index')}}"><i data-feather="user-plus"></i><span>Admins Management</span></a>--}}
-{{--            </li>--}}
+            <li><a class="sidebar-header" href="{{route('sales_return.index')}}"><i data-feather="folder-minus"></i><span>Sales Return</span></a>
+            </li>
 {{--            <li><a class="sidebar-header" href="{{route('adminCustomers.index')}}"><i data-feather="users"></i><span>Customers Management</span></a>--}}
 {{--            </li>--}}
         </ul>

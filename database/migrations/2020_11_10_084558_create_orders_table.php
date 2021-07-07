@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->double('discount')->nullable();
             $table->string('status')->default(0);
             $table->string('purchased')->default(0);
+            $table->string('bill_type')->default('sale');
             $table->timestamps();
         });
     }
